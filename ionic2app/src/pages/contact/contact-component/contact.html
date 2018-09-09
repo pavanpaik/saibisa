@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{'CONTACT' | translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Contact us</ion-list-header>
+    <ion-item>
+      <ion-icon name="person" item-left></ion-icon>
+      George I. Tsopouridis
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-twitter" item-left></ion-icon>
+      @AppsHybrid
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" item-left></ion-icon>
+      gtsopour@gmail.com
+    </ion-item>
+    <ion-item>
+      <ion-icon name="leaf" item-left></ion-icon>
+      codecanyon.net/user/gtsopour
+    </ion-item>
+  </ion-list>
+
+  <form (submit)="sendEmail()">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Subject</ion-label>
+        <ion-input type="text" [(ngModel)]="email.subject" name="subject"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Message</ion-label>
+        <ion-textarea rows="3" [(ngModel)]="email.body" name="body"></ion-textarea>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>Send email</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

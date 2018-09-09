@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Google Maps
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <agm-map
+      [latitude]="latitude"
+      [longitude]="longitude"
+      [zoom]="zoom"
+      [disableDefaultUI]="false"
+      [zoomControl]="false">
+
+      <agm-marker
+          *ngFor="let marker of markers; let i = index"
+          [latitude]="marker.latitude"
+          [longitude]="marker.longitude"
+          [label]="marker.label">
+        <agm-info-window>
+          <strong>{{marker.description}}</strong>
+        </agm-info-window>
+      </agm-marker>
+
+      <agm-circle [latitude]="latitude + 0.5" [longitude]="longitude"
+          [radius]="20000"
+          [fillColor]="'red'"
+          [circleDraggable]="true"
+          [editable]="true">
+      </agm-circle>
+
+    </agm-map>
+</ion-content>

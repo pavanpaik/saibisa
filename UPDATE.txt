@@ -1,0 +1,9 @@
+How to update 1.13.0 to 1.14.0 release
+
+- Replace config.xml
+- Replace package.json
+
+- Replace plugins folder
+
+- Run npm install
+- Serve your App with ionic serve
