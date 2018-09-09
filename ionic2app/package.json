@@ -34,9 +34,12 @@
     "@ngx-translate/http-loader": "2.0.0",
     "angularfire2": "4.0.0-rc.2",
     "chart.js": "2.7.1",
-    "cordova-android": "6.3.0",
+    "cordova-android": "6.4.0",
     "cordova-ios": "~4.3.1",
+    "cordova-plugin-app-preferences": "git+https://github.com/apla/me.apla.cordova.app-preferences.git",
+    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "^1.1.0",
+    "cordova-plugin-crosswalk-webview": "~2.2.0",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-email": "^1.2.6",
     "cordova-plugin-facebook4": "^1.7.1",
@@ -104,7 +107,10 @@
       "cordova-plugin-facebook4": {
         "APP_ID": "1404779196200190",
         "APP_NAME": "Ionic2App"
-      }
+      },
+      "cordova-plugin-app-preferences": {},
+      "cordova-plugin-compat": {},
+      "cordova-plugin-crosswalk-webview": {}
     }
   }
 }
