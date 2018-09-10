@@ -31,6 +31,24 @@ export class HomeComponent {
 		private menuController: MenuController,
 		private events: Events) {}
 
+	slides = [
+		{
+			title: "SHIRDI SAI BABA MAHASAMADHI",
+			description: "COME BE A PART OF BABA’S 100TH MAHASAMADHI CELEBRATIONS",
+			image: "assets/img/baba1.png",
+		},
+		{
+			title: "Stop Rape - Walk With US",
+			description: "NO MEANS NO... CANT YOU JUST GET IT? STOP RAPE",
+			image: "assets/img/walk.png",
+		},
+		{
+			title: "WE - BABA'S MAGICAL HEALERS",
+			description: "Our Journey Continues...",
+			image: "assets/img/healing.png",
+		}
+	];
+
 	ngOnInit() {
 	  	this.pages = [
 	      { title: 'ABOUT', component: AboutComponent, icon: 'photos', note: '' },
@@ -38,10 +56,13 @@ export class HomeComponent {
 	      { title: 'POSTS', component: WordpressPosts, icon: 'logo-wordpress', note: 'Wordpress' },
 	      { title: 'CATEGORIES', component: WordpressCategories, icon: 'pricetags', note: 'Wordpress' },
 	      { title: 'TAGS', component: WordpressTags, icon: 'pricetags', note: 'Wordpress' },
-	      { title: 'CATEGORY', component: WordpressPosts, icon: 'pricetags', note: 'Wordpress', params: { category: { name: 'Category Name', id: 16 }}},
+		  
+		  { title: 'CATEGORY', component: WordpressPosts, icon: 'paper', note: 'Wordpress', params: { category: { name: 'Category Name', id: 7 }}},
+
 	      { title: 'FAVORITES', component: WordpressFavorites, icon: 'heart', note: 'Wordpress (Storage)' },
-	      { title: 'PAGES', component: WordpressPages, icon: 'document', note: 'Wordpress' },
-				{ title: 'PAGE', component: WordpressPage, icon: 'document', note: 'Wordpress', params: { id: 2 }},
+		  { title: 'PAGES', component: WordpressPages, icon: 'document', note: 'Wordpress' },
+		  
+		  { title: 'PAGE', component: WordpressPage, icon: 'document', note: 'Wordpress', params: { id: 2 }},
 	      { title: 'MENUS', component: WordpressMenus, icon: 'menu', note: 'Wordpress' },
 	      { title: 'Firebase', component: FirebaseHomeComponent, icon: 'flame', note: 'Firebase' },
 	      { title: 'GOOGLE_MAPS', component: GoogleMapsComponent, icon: 'map', note: '' },
@@ -62,8 +83,8 @@ export class HomeComponent {
 		});
 	}
 
-	openPage(page) {
+	openPage() {
+		let page = { title: 'ABOUT', component: AboutComponent, params: {} };
 		this.navController.push(page.component, page.params);
 	}
-
 }

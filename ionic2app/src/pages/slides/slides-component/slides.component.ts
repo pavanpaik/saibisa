@@ -11,8 +11,8 @@ export class SlidesComponent {
 
   slides = [
     {
-      title: "Welcome to the Ionic 2 App",
-      description: "",
+      title: "SHIRDI SAI BABA MAHASAMADHI",
+      description: "COME BE A PART OF BABA’S 100TH MAHASAMADHI CELEBRATIONS",
       image: "assets/img/ica-slidebox-img-1.png",
     },
     {

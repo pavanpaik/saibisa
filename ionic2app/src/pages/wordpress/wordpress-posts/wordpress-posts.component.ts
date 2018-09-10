@@ -79,22 +79,27 @@ export class WordpressPosts implements OnInit {
 		});
 		let toast = this.toastController.create({
 			message: "There are no more posts.",
-      duration: 2000
+			duration: 2000
 		});
 
 		loader.present();
 		this.wordpressService.getPosts(query)
 		.subscribe(result => {
-			infiniteScroll.complete();
-			if(result.length < 1) { 
+				infiniteScroll.complete();
+				if(result.length < 1) { 
+					infiniteScroll.enable(false);
+					toast.present();
+				} else {
+					this.posts = this.posts.concat(result);
+				}
+			},
+			error => {
 				infiniteScroll.enable(false);
 				toast.present();
-			} else {
-				this.posts = this.posts.concat(result);
-			}
-		},
-		error => console.log(error),
-    () => loader.dismiss());
+				loader.dismiss();
+				console.log(error)
+			},
+		() => loader.dismiss());
 	}
 
 	loadPost(post) {

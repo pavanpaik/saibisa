@@ -1,4 +1,7 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="{{'HOME' | translate}}" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="{{'CONTACT' | translate}}" tabIcon="contacts"></ion-tab>
+ <ion-tabs>
+  <ion-tab [root]="home" tabTitle="{{'HOME' | translate}}" tabIcon="home"></ion-tab>
+  <ion-tab (ionSelect)="openPage('ABOUT')" tabTitle="{{'ABOUT' | translate}}" tabIcon="rose"></ion-tab>
+  <ion-tab (ionSelect)="openPage('VIDEOS')" tabTitle="{{'VIDEOS' | translate}}" tabIcon="videocam"></ion-tab>
+  <ion-tab (ionSelect)="openPage('HEALING')" tabTitle="{{'HEALING' | translate}}" tabIcon="hand"></ion-tab>
+  <ion-tab (ionSelect)="openPage('DONATE')" tabTitle="{{'DONATE' | translate}}" tabIcon="heart"></ion-tab>
 </ion-tabs>

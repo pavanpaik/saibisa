@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController } from 'ionic-angular';
+import { Nav, Platform, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -16,16 +16,19 @@ import { PlaceholderComponent } from '../pages/placeholder/placeholder-component
 import { FacebookConnectComponent } from '../pages/facebook-connect/facebook-connect-component/facebook-connect.component';
 import { LoginComponent } from '../pages/login/login-component/login.component';
 import { WordpressMenus } from '../pages/wordpress/wordpress-menus/wordpress-menus.component';
+import { SlidesComponent } from '../pages/slides/slides-component/slides.component';
+import { YoutubeVideosComponent } from '../pages/youtube/youtube-videos/youtube-videos.component';
+import { YoutubeChannelComponent } from '../pages/youtube/youtube-channel/youtube-channel.component';
+import { WordpressPosts } from '../pages/wordpress/wordpress-posts/wordpress-posts.component';
 
 @Component({
 	templateUrl: './app.html'
 })
 export class MyApp {
 	@ViewChild(Nav) nav: Nav;
-
 	rootPage = TabsComponent;
 	menuPage = WordpressMenus;
-	pages: Array<{title: string, component: any, icon: string}>;
+	pages: Array<{title: string, component: any, icon: string, params?: any}>;
 	wordpressMenusNavigation: boolean = false;
 
 	constructor(
@@ -35,7 +38,8 @@ export class MyApp {
 		private statusBar: StatusBar,
 		private splashScreen: SplashScreen,
 		private config: Config,
-		private menuController: MenuController
+		private menuController: MenuController,
+		private events: Events
 		) {
 		this.initializeApp();
 
@@ -50,18 +54,33 @@ export class MyApp {
 		});
 
 		this.pages = [
-		  { title: 'HOME', component: TabsComponent, icon: 'home' },
-	    { title: 'SETTINGS', component: SettingsComponent, icon: 'settings'},
-	    { title: 'GRID', component: GridComponent, icon: 'grid'},
-	    { title: 'DATETIME', component: DatetimeComponent, icon: 'clock'},
-	    { title: 'RANGES', component: RangesComponent, icon: 'sunny'},
-	    { title: 'ACTION_SHEET', component: ActionSheetComponent, icon: 'create'},
-	    { title: 'PLACEHOLDER', component: PlaceholderComponent, icon: 'logo-buffer' },
-	    { title: 'Facebook Connect', component: FacebookConnectComponent, icon: 'logo-facebook' },
-	    { title: 'LOGIN', component: LoginComponent, icon: 'log-in' }
+			{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Read', id: 7 }}},
+			{ title: 'WATCH', component: YoutubeChannelComponent, icon: 'videocam' },
+			{ title: 'LISTEN', component: PlaceholderComponent, icon: 'musical-notes' },
+			{ title: 'IMAGES', component: PlaceholderComponent, icon: 'images' },
+			{ title: 'CONNECT', component: PlaceholderComponent, icon: 'contacts' },
+			{ title: 'SETTINGS', component: SettingsComponent, icon: 'settings'}
 		];
 		this.wordpressMenusNavigation = config.wordpressMenusNavigation;
 	}
+
+
+	// { title: 'HOME', component: TabsComponent, icon: 'home' },
+	// 		{ title: 'SETTINGS', component: SettingsComponent, icon: 'settings'},
+	// 		{ title: 'GRID', component: GridComponent, icon: 'grid'},
+	// 		{ title: 'DATETIME', component: DatetimeComponent, icon: 'clock'},
+	// 		{ title: 'RANGES', component: RangesComponent, icon: 'sunny'},
+	// 		{ title: 'ACTION_SHEET', component: ActionSheetComponent, icon: 'create'},
+	// 		{ title: 'PLACEHOLDER', component: PlaceholderComponent, icon: 'logo-buffer' },
+	// 		{ title: 'Facebook Connect', component: FacebookConnectComponent, icon: 'logo-facebook' },
+	// 		{ title: 'LOGIN', component: LoginComponent, icon: 'log-in' }
+
+	//Healing
+	//Who We Are
+	//What we Do
+	//Become a healer
+	//Healing Videos
+	//Testimonials
 
 	initializeApp() {
 		this.platform.ready().then(() => {
@@ -73,7 +92,6 @@ export class MyApp {
 	}
 
 	openPage(page) {
-		this.menuController.close();
-		this.nav.setRoot(page.component);
+		this.events.publish('navigationEvent', page);
 	}
 }
