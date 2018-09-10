@@ -39,3 +39,10 @@ https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview/issues/205
 ionic cordova build android --release --prod
 cd platforms/android/build/outputs/apk/
 ```
+
+https://github.com/maoxm/zipalign/blob/master/zipalign
+
+
+```
+
+```
