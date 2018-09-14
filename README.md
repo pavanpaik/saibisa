@@ -75,8 +75,17 @@ configurations.all {
 ```
 
 ### Issue 4
+
+https://github.com/phonegap/phonegap-plugin-barcodescanner/issues/535#issuecomment-325153055
+
+```
+./patch.sh
+```
+
+### Issue 5
 If you dont find zipalign for signing then download the executable from here - 
 https://github.com/maoxm/zipalign/blob/master/zipalign
+
 
 ## Extras
 ```
