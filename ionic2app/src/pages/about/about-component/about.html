@@ -5,7 +5,7 @@
 		</button>
 		<ion-title>{{'ABOUT' | translate}}</ion-title>
 	</ion-navbar>
-	<ion-segment [(ngModel)]="aboutSegment1">
+	<ion-segment [(ngModel)]="selectedPage">
 		<ion-segment-button value="read">
 			<i class="fa fa-book"></i>
 			Read
@@ -14,10 +14,10 @@
 			<i class="fa fa-video-camera"></i>
 			Watch
 		</ion-segment-button>
-		<ion-segment-button value="listen">
+		<!-- <ion-segment-button value="listen">
 			<i class="fa fa-headphones"></i>
 			Listen
-		</ion-segment-button>
+		</ion-segment-button> -->
 		<ion-segment-button value="connect">
 			<i class="fa fa-address-card-o"></i>
 			Connect
@@ -25,33 +25,24 @@
 	</ion-segment>
 </ion-header>
 
-<ion-content>
-
-	<ion-card>
-		<ion-card-content class="banner-container">
-			<ion-slides pager=true centeredSlides=true autoplay=3000>
-				<ion-slide *ngFor="let slide of slides">
-					<div>
-						<img [src]="slide.image" class="slide-image" />
-					</div>
-				</ion-slide>
-			</ion-slides>
+<ion-content [ngSwitch]="selectedPage">
+	<ion-card *ngSwitchCase="'read'">
+		<ion-card-content class="banner-container" text-wrap>
+			<img *ngIf="media" src="{{media.source_url}}" />
+			<p padding *ngIf="page" padding [innerHTML]="page.content.rendered"></p>
 		</ion-card-content>
 	</ion-card>
-
-	<ion-card>
-		<ion-card-content>
-			<h1>Build apps with web tech you know and love</h1>
-			<p>Know how to build websites? Then you already know how to build mobile apps. Ionic Framework offers the best web
-				and native app components for building highly interactive native and progressive web apps with Angular.</p>
+	<ion-card *ngSwitchCase="'watch'">
+		<ion-card-content class="banner-container" text-wrap>
+			<h1>Videos here</h1>
+			“Baba Sai is the divinity within us, the goodness within us, the love within us. He is birth-less, death-less,
+			time-less, space-less... He is the One Eternal Cosmic Soul... our Soul.”
 		</ion-card-content>
 	</ion-card>
-
-	<ion-card>
-		<ion-card-content>
-			<h1>Build apps with the Ionic 2 App</h1>
-			<p>Use the Ionic 2 App to get you up and running with mobile apps faster than ever before.</p>
+	<ion-card *ngSwitchCase="'connect'" >
+		<ion-card-content class="banner-container" text-wrap>
+			<img *ngIf="connectMedia" src="{{connectMedia.source_url}}" />
+			<p padding *ngIf="connectPage" padding [innerHTML]="connectPage.content.rendered" class="connect-container"></p>
 		</ion-card-content>
 	</ion-card>
-
 </ion-content>

@@ -40,5 +40,6 @@ export class WordpressCategories {
 			category: category
 		});
 	}
+	
 
 }

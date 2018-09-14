@@ -20,6 +20,7 @@ import { SlidesComponent } from '../pages/slides/slides-component/slides.compone
 import { YoutubeVideosComponent } from '../pages/youtube/youtube-videos/youtube-videos.component';
 import { YoutubeChannelComponent } from '../pages/youtube/youtube-channel/youtube-channel.component';
 import { WordpressPosts } from '../pages/wordpress/wordpress-posts/wordpress-posts.component';
+import { WordpressPost } from '../pages/wordpress/wordpress-post/wordpress-post.component';
 
 @Component({
 	templateUrl: './app.html'
@@ -28,11 +29,11 @@ export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 	rootPage = TabsComponent;
 	menuPage = WordpressMenus;
-	pages: Array<{title: string, component: any, icon: string, params?: any}>;
+	pages: Array<{ title: string, component: any, icon: string, params?: any }>;
 	wordpressMenusNavigation: boolean = false;
 
 	public theme: String = 'facebook-messenger-theme';
-	
+
 	constructor(
 		private platform: Platform,
 		private translate: TranslateService,
@@ -42,7 +43,7 @@ export class MyApp {
 		private config: Config,
 		private menuController: MenuController,
 		private events: Events
-		) {
+	) {
 		this.initializeApp();
 
 		this.translate.setDefaultLang('en');
@@ -56,12 +57,12 @@ export class MyApp {
 		});
 
 		this.pages = [
-			{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Read', id: 7 }}},
+			{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Read', id: 7 } } },
 			{ title: 'WATCH', component: YoutubeChannelComponent, icon: 'videocam' },
-			{ title: 'LISTEN', component: PlaceholderComponent, icon: 'musical-notes' },
-			{ title: 'IMAGES', component: PlaceholderComponent, icon: 'images' },
-			{ title: 'CONNECT', component: PlaceholderComponent, icon: 'contacts' },
-			{ title: 'SETTINGS', component: SettingsComponent, icon: 'settings'}
+			// { title: 'LISTEN', component: PlaceholderComponent, icon: 'musical-notes' },
+			// { title: 'IMAGES', component: PlaceholderComponent, icon: 'images' },
+			{ title: 'CONNECT', component: WordpressPost, icon: 'paper', params: { id: 1006 } }
+			// { title: 'SETTINGS', component: SettingsComponent, icon: 'settings' }
 		];
 		this.wordpressMenusNavigation = config.wordpressMenusNavigation;
 	}
