@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { SharedModule } from './shared/shared.module'
@@ -12,19 +12,20 @@ import { SettingsModule } from '../pages/settings/settings.module';
 import { FeedsModule } from '../pages/feeds/feeds.module';
 import { YoutubeModule } from '../pages/youtube/youtube.module';
 import { AboutModule } from '../pages/about/about.module';
+import { PodcastModule } from '../pages/podcast/podcast.module';
 import { ContactModule } from '../pages/contact/contact.module';
 import { DatetimeModule } from '../pages/datetime/datetime.module';
 import { RangesModule } from '../pages/ranges/ranges.module';
 import { ActionSheetModule } from '../pages/action-sheet/action-sheet.module';
 import { FacebookConnectModule } from '../pages/facebook-connect/facebook-connect.module';
 import { LoginModule } from '../pages/login/login.module';
-import { BarcodeScannerModule } from '../pages/barcode-scanner/barcode-scanner.module';
 import { ChartsModule } from '../pages/charts/charts.module';
 import { FirebaseModule } from '../pages/firebase/firebase.module';
 // Module Example: Use the PlaceholderModule for any new App Module
 import { PlaceholderModule } from '../pages/placeholder/placeholder.module';
 
 import { MyApp } from './app.component';
+import { IonicAudioModule, AudioProvider, WebAudioProvider, defaultAudioProviderFactory } from 'ionic-audio';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MyApp } from './app.component';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
+    IonicAudioModule.forRoot(defaultAudioProviderFactory),
     SharedModule,
     HomeModule,
     TabsModule,
@@ -43,21 +45,22 @@ import { MyApp } from './app.component';
     FeedsModule,
     YoutubeModule,
     AboutModule,
+    PodcastModule,
     ContactModule,
     DatetimeModule,
     RangesModule,
     ActionSheetModule,
     FacebookConnectModule,
     LoginModule,
-    BarcodeScannerModule,
     ChartsModule,
     FirebaseModule,
-    PlaceholderModule
+    PlaceholderModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {}

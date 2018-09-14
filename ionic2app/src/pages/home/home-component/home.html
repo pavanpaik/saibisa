@@ -7,35 +7,29 @@
   </ion-navbar>
 </ion-header>
 
-<!-- <ion-content padding class="home">
-  <h2>{{'HOME_TITLE' | translate}}</h2>
-  <p>
-    {{'HOME_MESSAGE' | translate}}
-  </p>
-  <ion-list>
-    <ion-item *ngFor="let page of pages" (tap)="openPage(page)">
-      <ion-icon [name]="page.icon" item-left></ion-icon>
-      {{page.title | translate}}
-      <ion-note item-right>
-      {{page.note}} 
-      </ion-note>
-    </ion-item>
-  </ion-list>
-</ion-content> -->
-
-
 <ion-content class="tutorial-page">
-    <ion-slides pager=true centeredSlides=true autoplay=3000>
-      <ion-slide *ngFor="let slide of slides">
-        <div>
-          <img [src]="slide.image" class="slide-image"/>
-          <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-          <p [innerHTML]="slide.description"></p>
-          <button ion-button large clear icon-right (click)=openPage()>
+  <ion-card>
+    <ion-card-content>
+      <h1>Di Jaan Speaks...</h1>
+      “Baba Sai is the divinity within us, the goodness within us, the love within us. He is birth-less, death-less,
+      time-less, space-less... He is the One Eternal Cosmic Soul... our Soul.”
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-slides pager=true centeredSlides=true autoplay=3000>
+        <ion-slide *ngFor="let slide of slides">
+          <div>
+            <img [src]="slide.image" class="slide-image" />
+            <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+            <p [innerHTML]="slide.description"></p>
+            <button ion-button large clear icon-right (click)=openPage()>
               Continue
-            <ion-icon name="arrow-forward"></ion-icon>
-          </button>
-        </div>
-      </ion-slide>
-    </ion-slides>
-  </ion-content>
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

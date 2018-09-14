@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Events, MenuController } from 'ionic-angular';
+import { App, NavController, Events, MenuController } from 'ionic-angular';
 
 import { AboutComponent } from '../../about/about-component/about.component';
 import { WordpressHome } from '../../wordpress/wordpress-home/wordpress-home.component';
@@ -16,9 +16,9 @@ import { FeedCategoriesComponent } from '../../feeds/feed-categories/feed-catego
 import { FeedCategoryComponent } from '../../feeds/feed-category/feed-category.component';
 import { YoutubeVideosComponent } from '../../youtube/youtube-videos/youtube-videos.component';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
-import { BarcodeScannerComponent } from '../../barcode-scanner/barcode-scanner-component/barcode-scanner.component';
 import { ChartsComponent } from '../../charts/charts-component/charts.component';
 import { FirebaseHomeComponent } from '../../firebase/firebase-home/firebase-home.component';
+import { TabsComponent } from '../../tabs/tabs-component/tabs.component';
 
 @Component({
 	selector: 'page-home',
@@ -29,7 +29,8 @@ export class HomeComponent {
 	constructor(
 		private navController: NavController,
 		private menuController: MenuController,
-		private events: Events) {}
+		private events: Events,
+		private app: App) {}
 
 	slides = [
 		{
@@ -71,17 +72,20 @@ export class HomeComponent {
 	      { title: 'FEED_CATEGORY', component: FeedCategoryComponent, icon: 'logo-rss', note: 'RSS (YQL)' },
 	      { title: 'YOUTUBE_VIDEOS', component: YoutubeVideosComponent, icon: 'logo-youtube', note: 'Youtube' },
 	      { title: 'YOUTUBE_CHANNEL', component: YoutubeChannelComponent, icon: 'logo-youtube', note: 'Youtube' },
-	      { title: 'CHARTS', component: ChartsComponent, icon: 'pie', note: 'Chart.js' },
-	      { title: 'BARCODE_SCANNER', component: BarcodeScannerComponent, icon: 'barcode', note: '' }
+	      { title: 'CHARTS', component: ChartsComponent, icon: 'pie', note: 'Chart.js' }
 	    ];
 
 	    this.events.subscribe('navigationEvent',(object) => {
 	    	this.menuController.close();
 				if (object.component) {
+					this.events.publish('tabEvent', 0);
+					this.app.getRootNav().getActiveChildNav().select(0);
 					this.navController.push(object.component, object.params);
 				}
 		});
 	}
+
+	
 
 	openPage() {
 		let page = { title: 'ABOUT', component: AboutComponent, params: {} };

@@ -8,6 +8,8 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutComponent {
 
+  aboutSegment1 = "read";
+
   constructor(public navCtrl: NavController) {
 
   }
