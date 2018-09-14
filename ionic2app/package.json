@@ -91,8 +91,8 @@
   },
   "cordova": {
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ],
     "plugins": {
       "ionic-plugin-keyboard": {},

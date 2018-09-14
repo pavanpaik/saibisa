@@ -14,15 +14,12 @@
 
 <ion-content class="post">
   <ion-list *ngIf="post">
-    <ion-card>
-        <ion-item text-wrap>
+    <ion-card text-wrap>
+        <ion-item>
             <h1 [innerHTML]="post.title.rendered"></h1>
         </ion-item>
         <wordpress-feature-media *ngIf="post.featured_media" [id]="post.featured_media"></wordpress-feature-media>
-    </ion-card>
-
-    <ion-card text-wrap *ngIf="post.content.rendered">
-        <p padding [innerHtml]="post.content.rendered"></p>
+        <p padding [innerHtml]="post.content.rendered" *ngIf="post.content.rendered"></p>
     </ion-card>
   </ion-list>
 </ion-content>

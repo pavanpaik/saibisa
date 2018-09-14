@@ -31,6 +31,8 @@ export class MyApp {
 	pages: Array<{title: string, component: any, icon: string, params?: any}>;
 	wordpressMenusNavigation: boolean = false;
 
+	public theme: String = 'facebook-messenger-theme';
+	
 	constructor(
 		private platform: Platform,
 		private translate: TranslateService,

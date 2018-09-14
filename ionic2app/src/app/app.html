@@ -1,4 +1,4 @@
-<ion-split-pane>
+<ion-split-pane [class]="theme">
 
   <ion-menu *ngIf="!wordpressMenusNavigation" [content]="content">
     <ion-header>
@@ -18,9 +18,9 @@
     </ion-content>
   </ion-menu>
 
-  <ion-menu *ngIf="wordpressMenusNavigation" [content]="content">
+  <ion-menu *ngIf="wordpressMenusNavigation" [content]="content" >
     <ion-nav [root]="menuPage"></ion-nav>
   </ion-menu>
 
-  <ion-nav [root]="rootPage" main #content></ion-nav>  
+  <ion-nav [root]="rootPage" main #content></ion-nav>
 </ion-split-pane>

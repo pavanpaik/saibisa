@@ -27,25 +27,17 @@
 
 <ion-content>
 
-	<ion-fab right top>
-		<button ion-fab color="primary">
-			<ion-icon name="add"></ion-icon>
-		</button>
-		<ion-fab-list side="left">
-			<button ion-fab>
-				<ion-icon name="logo-facebook"></ion-icon>
-			</button>
-			<button ion-fab>
-				<ion-icon name="logo-twitter"></ion-icon>
-			</button>
-			<button ion-fab>
-				<ion-icon name="logo-vimeo"></ion-icon>
-			</button>
-			<button ion-fab>
-				<ion-icon name="logo-googleplus"></ion-icon>
-			</button>
-		</ion-fab-list>
-	</ion-fab>
+	<ion-card>
+		<ion-card-content class="banner-container">
+			<ion-slides pager=true centeredSlides=true autoplay=3000>
+				<ion-slide *ngFor="let slide of slides">
+					<div>
+						<img [src]="slide.image" class="slide-image" />
+					</div>
+				</ion-slide>
+			</ion-slides>
+		</ion-card-content>
+	</ion-card>
 
 	<ion-card>
 		<ion-card-content>

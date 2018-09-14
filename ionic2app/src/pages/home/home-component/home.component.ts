@@ -34,19 +34,10 @@ export class HomeComponent {
 
 	slides = [
 		{
-			title: "SHIRDI SAI BABA MAHASAMADHI",
-			description: "COME BE A PART OF BABA’S 100TH MAHASAMADHI CELEBRATIONS",
-			image: "assets/img/baba1.png",
+			image: "assets/img/banners/baba_100.jpg",
 		},
 		{
-			title: "Stop Rape - Walk With US",
-			description: "NO MEANS NO... CANT YOU JUST GET IT? STOP RAPE",
-			image: "assets/img/walk.png",
-		},
-		{
-			title: "WE - BABA'S MAGICAL HEALERS",
-			description: "Our Journey Continues...",
-			image: "assets/img/healing.png",
+			image: "assets/img/banners/walkathon_1.jpg",
 		}
 	];
 
