@@ -1,39 +1,60 @@
-## Setup Instructions
+# saibisa
 
+This is a Hybrid application built using ionic framework as front end and wordpress as backend.
+
+## Setup Instructions
 ```
+//install framework components
 npm install -g ionic@latest
 npm i -g p
 npm i -D -E @ionic/lab
-```
 
-Browse the App, Install package.json dependencies
-
-```
+//install general application dependencies
 cd ionic2app
 npm install
 
+//install mobile/cordova application dependencies
 ionic cordova platform add ios --save
 ionic cordova platform add android@6.4.0 --save
-ionic cordova prepare
 ```
 
+## Local Testing
+### Web Testing
 ```
-ionic serve
+ionic serve --lab
 ```
 
+### Mobile Testing
+```
+//List OS avilable for emulation
+ionic cordova emulate ios --list
+./platforms/ios/cordova/lib/list-emulator-images
 
-Build Android
+//start the emulator with a specific OS
+ionic cordova emulate ios --target "iPhone-X"
+```
+
+## Release/Deployment
+
+### Web
+```
+firebase deploy
+```
+
+## Mobile
+
+### Generate Key
+```
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+```
+
+### Build apk
 ```
 ionic cordova build android --prod
 ionic cordova build android --release --prod
 ```
 
-
-Generate Key
-```
-keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
-```
-
+### Sign apk and Release
 
 ```
 cp ../my-release-key.keystore ./platforms/android/build/outputs/apk/armv7/release/
@@ -44,6 +65,11 @@ curl https://raw.githubusercontent.com/maoxm/zipalign/master/zipalign >> zipalig
 chmod 775 zipalign
 ./zipalign -vf 4 android-armv7-release-unsigned.apk saibisa-app.apk
 ```
+
+Manually publish `saibisa-app.apk` using [play console](https://play.google.com/apps/publish)
+
+
+
 
 ## Issues
 
