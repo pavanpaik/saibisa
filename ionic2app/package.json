@@ -1,6 +1,6 @@
 {
   "name": "ionic2app",
-  "version": "1.14.0",
+  "version": "1.14.4",
   "author": "Pavan Pai",
   "homepage": "https://codecanyon.net/user/gtsopour/portfolio",
   "private": true,
@@ -34,7 +34,6 @@
     "angularfire2": "4.0.0-rc.2",
     "chart.js": "2.7.1",
     "cordova-android": "6.4.0",
-    "cordova-ios": "4.5.5",
     "cordova-plugin-app-preferences": "git+https://github.com/apla/me.apla.cordova.app-preferences.git",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "^1.1.0",
@@ -91,7 +90,6 @@
   },
   "cordova": {
     "platforms": [
-      "ios",
       "android"
     ],
     "plugins": {

@@ -2,6 +2,7 @@
 
 ```
 npm install -g ionic@latest
+npm i -g p
 npm i -D -E @ionic/lab
 ```
 
@@ -27,9 +28,17 @@ ionic cordova build android --prod
 ionic cordova build android --release --prod
 ```
 
+
+Generate Key
 ```
-cd platforms/android/build/outputs/apk/armv7/release
 keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+```
+
+
+```
+cp ../my-release-key.keystore ./platforms/android/build/outputs/apk/armv7/release/
+cd platforms/android/build/outputs/apk/armv7/release
+
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-armv7-release-unsigned.apk alias_name
 curl https://raw.githubusercontent.com/maoxm/zipalign/master/zipalign >> zipalign
 chmod 775 zipalign
