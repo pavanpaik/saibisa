@@ -9,6 +9,7 @@ export class Config {
 	public feedsCategoryUrl = './assets/data/feeds-category.json';
 	public youtubeKey = 'AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc';
 	public youtubeApiUrl = 'https://www.googleapis.com/youtube/v3/';
+	public youtubeUrl: string = 'https://www.youtube.com/';
 	public youtubeUsername = 'ColdplayVEVO';
 	public youtubeChannelId = 'UCnb6PA08HFf9hRpfPlZgy0A';
 	public youtubeResults = 50;

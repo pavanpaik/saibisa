@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content class="youtube-video">
-    <iframe *ngIf="video.id.videoId" [src]="videoUrl" frameborder="0" allowfullscreen="true"></iframe>
+    <iframe *ngIf="video.id.videoId" [src]="videoUrl" frameborder="0" allowfullscreen="true" allow="autoplay; encrypted-media"></iframe>
         
     <div padding>
         <h2>{{video.snippet.title}}</h2>
