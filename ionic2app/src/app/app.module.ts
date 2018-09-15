@@ -13,7 +13,6 @@ import { FeedsModule } from '../pages/feeds/feeds.module';
 import { YoutubeModule } from '../pages/youtube/youtube.module';
 import { AboutModule } from '../pages/about/about.module';
 import { DonateModule } from '../pages/donate/donate.module';
-import { PodcastModule } from '../pages/podcast/podcast.module';
 import { ContactModule } from '../pages/contact/contact.module';
 import { DatetimeModule } from '../pages/datetime/datetime.module';
 import { RangesModule } from '../pages/ranges/ranges.module';
@@ -26,7 +25,6 @@ import { FirebaseModule } from '../pages/firebase/firebase.module';
 import { PlaceholderModule } from '../pages/placeholder/placeholder.module';
 
 import { MyApp } from './app.component';
-import { IonicAudioModule, AudioProvider, WebAudioProvider, defaultAudioProviderFactory } from 'ionic-audio';
 
 @NgModule({
   declarations: [
@@ -34,7 +32,6 @@ import { IonicAudioModule, AudioProvider, WebAudioProvider, defaultAudioProvider
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    IonicAudioModule.forRoot(defaultAudioProviderFactory),
     SharedModule,
     HomeModule,
     TabsModule,
@@ -47,7 +44,6 @@ import { IonicAudioModule, AudioProvider, WebAudioProvider, defaultAudioProvider
     YoutubeModule,
     AboutModule,
     DonateModule,
-    PodcastModule,
     ContactModule,
     DatetimeModule,
     RangesModule,

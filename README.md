@@ -57,7 +57,7 @@ ionic cordova build android --release --prod
 ### Sign apk and Release
 
 ```
-cp ../my-release-key.keystore ./platforms/android/build/outputs/apk/armv7/release/
+cp ${LOCAL_VAULT}/my-release-key.keystore ./platforms/android/build/outputs/apk/armv7/release/
 cd platforms/android/build/outputs/apk/armv7/release
 
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-armv7-release-unsigned.apk alias_name
