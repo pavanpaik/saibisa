@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavParams, NavController, Events, MenuController } from 'ionic-angular';
 import { HomeComponent } from '../../home/home-component/home.component';
 import { AboutComponent } from '../../about/about-component/about.component';
+import { DonateComponent } from '../../donate/donate-component/donate.component';
 import { PodcastComponent } from '../../podcast/podcast-component/podcast.component';
 import { YoutubeVideosComponent } from '../../youtube/youtube-videos/youtube-videos.component';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
@@ -17,10 +18,10 @@ import { PlaceholderComponent } from '../../placeholder/placeholder-component/pl
 export class TabsComponent {
   home: any = HomeComponent;
   about: any = AboutComponent
+  donate: any = DonateComponent
   podcast: any = PodcastComponent
   videos: any = YoutubeChannelComponent;
   healing: any = PlaceholderComponent;
-  donate: any = PlaceholderComponent;
   mySelectedIndex: number = 0;
 
 

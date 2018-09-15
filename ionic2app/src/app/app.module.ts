@@ -12,6 +12,7 @@ import { SettingsModule } from '../pages/settings/settings.module';
 import { FeedsModule } from '../pages/feeds/feeds.module';
 import { YoutubeModule } from '../pages/youtube/youtube.module';
 import { AboutModule } from '../pages/about/about.module';
+import { DonateModule } from '../pages/donate/donate.module';
 import { PodcastModule } from '../pages/podcast/podcast.module';
 import { ContactModule } from '../pages/contact/contact.module';
 import { DatetimeModule } from '../pages/datetime/datetime.module';
@@ -45,6 +46,7 @@ import { IonicAudioModule, AudioProvider, WebAudioProvider, defaultAudioProvider
     FeedsModule,
     YoutubeModule,
     AboutModule,
+    DonateModule,
     PodcastModule,
     ContactModule,
     DatetimeModule,

@@ -1,0 +1,18 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle icon-only>
+			<ion-icon name='menu'></ion-icon>
+		</button>
+		<ion-title>{{'DONATE' | translate}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	<ion-card>
+		<ion-card-content class="banner-container" text-wrap>
+			<img *ngIf="media" src="{{media.source_url}}" />
+			<p padding *ngIf="page" padding [innerHTML]="page.content.rendered"></p>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
