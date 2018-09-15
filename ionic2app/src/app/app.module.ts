@@ -13,6 +13,7 @@ import { FeedsModule } from '../pages/feeds/feeds.module';
 import { YoutubeModule } from '../pages/youtube/youtube.module';
 import { AboutModule } from '../pages/about/about.module';
 import { DonateModule } from '../pages/donate/donate.module';
+import { HealingModule } from '../pages/healing/healing.module';
 import { ContactModule } from '../pages/contact/contact.module';
 import { DatetimeModule } from '../pages/datetime/datetime.module';
 import { RangesModule } from '../pages/ranges/ranges.module';
@@ -44,6 +45,7 @@ import { MyApp } from './app.component';
     YoutubeModule,
     AboutModule,
     DonateModule,
+    HealingModule,
     ContactModule,
     DatetimeModule,
     RangesModule,
@@ -58,7 +60,6 @@ import { MyApp } from './app.component';
   entryComponents: [
     MyApp
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

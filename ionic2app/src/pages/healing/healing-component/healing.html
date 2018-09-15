@@ -1,0 +1,33 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle icon-only>
+			<ion-icon name='menu'></ion-icon>
+		</button>
+		<ion-title>{{'HEALING' | translate}}</ion-title>
+	</ion-navbar>
+	<ion-segment [(ngModel)]="selectedPage">
+		<ion-segment-button value="read">
+			<i class="fa fa-book"></i>
+			Read
+		</ion-segment-button>
+		<ion-segment-button value="watch">
+			<i class="fa fa-video-camera"></i>
+			Watch
+		</ion-segment-button>
+	</ion-segment>
+</ion-header>
+
+<ion-content [ngSwitch]="selectedPage">
+	<ion-card *ngSwitchCase="'read'">
+		<ion-card-content class="banner-container" text-wrap>
+			<img *ngIf="media" src="{{media.source_url}}" />
+			<p padding *ngIf="page" padding [innerHTML]="page.content.rendered"></p>
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngSwitchCase="'watch'">
+		<ion-card-content class="banner-container" text-wrap>
+			<h1>Videos here</h1>
+			“HEALING videos will be shown here...”
+		</ion-card-content>
+	</ion-card>
+</ion-content>

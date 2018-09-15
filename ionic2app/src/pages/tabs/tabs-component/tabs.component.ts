@@ -4,6 +4,7 @@ import { NavParams, NavController, Events, MenuController } from 'ionic-angular'
 import { HomeComponent } from '../../home/home-component/home.component';
 import { AboutComponent } from '../../about/about-component/about.component';
 import { DonateComponent } from '../../donate/donate-component/donate.component';
+import { HealingComponent } from '../../healing/healing-component/healing.component';
 import { YoutubeVideosComponent } from '../../youtube/youtube-videos/youtube-videos.component';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
 import { WordpressPosts } from '../../wordpress/wordpress-posts/wordpress-posts.component';
@@ -19,7 +20,7 @@ export class TabsComponent {
   about: any = AboutComponent
   donate: any = DonateComponent
   videos: any = YoutubeChannelComponent;
-  healing: any = PlaceholderComponent;
+  healing: any = HealingComponent;
   mySelectedIndex: number = 0;
 
 
