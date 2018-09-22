@@ -33,10 +33,8 @@
 		</ion-card-content>
 	</ion-card>
 	<ion-card *ngSwitchCase="'watch'">
-		<ion-card-content class="banner-container" text-wrap>
-			<h1>Videos here</h1>
-			“Baba Sai is the divinity within us, the goodness within us, the love within us. He is birth-less, death-less,
-			time-less, space-less... He is the One Eternal Cosmic Soul... our Soul.”
+		<ion-card-content class="watch-page">
+			<ion-nav [root]="watchPage"></ion-nav>
 		</ion-card-content>
 	</ion-card>
 	<ion-card *ngSwitchCase="'connect'" >

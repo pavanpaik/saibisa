@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, Events, MenuController } from 'ionic-angular';
 import { WordpressService } from '../../wordpress/shared/services/wordpress.service';
+import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
 
 @Component({
   selector: 'page-about',
@@ -14,13 +15,17 @@ export class AboutComponent {
   selectedPage: string = "read";
   private wpAboutPostId: Number = 993;
 
+  watchPage = YoutubeChannelComponent
+
   connectPage: any;
   connectMedia: any;
   private wpConnectPostId: Number = 1006;
-
-  constructor(public navCtrl: NavController,
+  
+  constructor(public navController: NavController,
     private wordpressService: WordpressService,
-    private loadingController: LoadingController) { }
+    private loadingController: LoadingController,
+		private menuController: MenuController,
+		private events: Events) { }
 
   ngOnInit() {
     this.selectedPage = "read";

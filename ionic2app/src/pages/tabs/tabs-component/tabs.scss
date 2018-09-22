@@ -32,4 +32,25 @@ page-tabs {
         @extend .fa-icons-general;
         content: "\f0c0";
     }
+
+    .ion-ios-fa-activity::before,
+    .ion-ios-fa-activity-outline::before,
+    .ion-md-fa-activity::before {
+        @extend .fa-icons-general;
+        content: "\f00b";
+    }
+
+    .ion-ios-fa-events::before,
+    .ion-ios-fa-events-outline::before,
+    .ion-md-fa-events::before {
+        @extend .fa-icons-general;
+        content: "\f0a1";
+    }
+
+    .ion-ios-fa-about::before,
+    .ion-ios-fa-about-outline::before,
+    .ion-md-fa-about::before {
+        @extend .fa-icons-general;
+        content: "\f075";
+    }
 }

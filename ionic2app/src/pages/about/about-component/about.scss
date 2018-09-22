@@ -3,3 +3,12 @@
         color: color($colors, primary);
     }
 }
+
+.watch-page {
+    .fixed-content, .scroll-content {
+        margin-bottom: 0px !important;
+    }
+    .bar-button-menutoggle {
+        display: none;    
+    }
+}
