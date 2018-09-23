@@ -7,7 +7,7 @@ $primary-grad: #F57C00 , #FF9800;
     danger:     #f53d3d,
     light:      #FFF3E0,
     dark:       rgb(68, 59, 59),
-    content:    #ffffff
+    content:    #FFF3E0
   );
 
   
@@ -31,18 +31,23 @@ $primary-grad: #F57C00 , #FF9800;
     }
 
     ion-card {
-      ion-card-content {
-        background-color: color($theme-colors, content);
-      }
+      background-color: color($theme-colors, content);
     }
 
-
-.inner-page {
-  .fixed-content, .scroll-content {
-      margin-bottom: 0px !important;
-  }
-  .bar-button-menutoggle {
-      display: none;    
-  }
-}
+    .inner-page {
+      .fixed-content, .scroll-content {
+          margin-bottom: 0px !important;
+      }
+      .bar-button-menutoggle {
+          display: none;    
+      }
+    }
+    .inner-island-page {
+      .fixed-content, .scroll-content {
+          margin: 0px !important;
+      }
+      ion-header {
+          display: none;    
+      }
+    }
   }

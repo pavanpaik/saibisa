@@ -15,7 +15,7 @@
 <ion-content class="post">
   <ion-list *ngIf="post">
     <ion-card text-wrap>
-        <ion-item>
+        <ion-item *ngIf="island == false">
             <h1 [innerHTML]="post.title.rendered"></h1>
         </ion-item>
         <wordpress-feature-media *ngIf="post.featured_media" [id]="post.featured_media"></wordpress-feature-media>

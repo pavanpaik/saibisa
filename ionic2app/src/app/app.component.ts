@@ -70,23 +70,21 @@ export class MyApp {
 		this.pages = [
 			{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Activities', id: 10} } },
 			{ title: 'WATCH', component: YoutubeChannelComponent, icon: 'videocam' },
-			// { title: 'LISTEN', component: PlaceholderComponent, icon: 'musical-notes' },
-			// { title: 'IMAGES', component: PlaceholderComponent, icon: 'images' },
 			{ title: 'CONNECT', component: WordpressPost, icon: 'paper', params: { id: 1006 } },
-			{ title: 'EXPERIMENT', component: FirebaseHomeComponent, icon: 'aperture' },
-			// { title: 'SETTINGS', component: SettingsComponent, icon: 'settings' }
+			{ title: 'EXPERIMENT', component: FirebaseHomeComponent, icon: 'aperture' }
 		];
 		this.wordpressMenusNavigation = config.wordpressMenusNavigation;
 	}
 
 	initializeApp() {
 		this.platform.ready().then(() => {
-			// Enable RTL Support
-			// this.platform.setDir('rtl', true);
-			this.statusBar.styleDefault();
-			this.splashScreen.hide();
-
 			if (isCordovaAvailable()){
+				// Enable RTL Support
+				// this.platform.setDir('rtl', true);
+				this.statusBar.styleDefault();
+				this.splashScreen.hide();
+
+				//Handle Push Notification
 				this.oneSignal.startInit(oneSignalAppId, sender_id);
 				this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 				this.oneSignal.handleNotificationReceived().subscribe(data => this.onPushReceived(data.payload));
@@ -103,7 +101,7 @@ export class MyApp {
 	onPushOpened(payload: OSNotificationPayload) {
 		this.events.publish('onPushOpened', payload);
 	}
-	
+
 	openPage(page) {
 		this.events.publish('navigationEvent', page);
 	}

@@ -3,7 +3,7 @@
 		<button ion-button menuToggle icon-only>
 			<ion-icon name='menu'></ion-icon>
 		</button>
-		<ion-title>{{'HEALING' | translate}}</ion-title>
+		<ion-title>{{'ABOUT' | translate}}</ion-title>
 	</ion-navbar>
 	<ion-segment [(ngModel)]="selectedPage">
 		<ion-segment-button value="read">
@@ -14,18 +14,31 @@
 			<i class="fa fa-video-camera"></i>
 			Watch
 		</ion-segment-button>
+		<!-- <ion-segment-button value="listen">
+			<i class="fa fa-headphones"></i>
+			Listen
+		</ion-segment-button> -->
+		<ion-segment-button value="connect">
+			<i class="fa fa-address-card-o"></i>
+			Connect
+		</ion-segment-button>
 	</ion-segment>
 </ion-header>
 
 <ion-content [ngSwitch]="selectedPage">
 	<ion-card *ngSwitchCase="'read'">
 		<ion-card-content class="inner-island-page">
-			<ion-nav [root]="readHealingPage" [rootParams]="readHealingPageParam"></ion-nav>
+			<ion-nav [root]="aboutPage"></ion-nav>
 		</ion-card-content>
 	</ion-card>
 	<ion-card *ngSwitchCase="'watch'">
 		<ion-card-content class="inner-page">
 			<ion-nav [root]="watchPage"></ion-nav>
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngSwitchCase="'connect'" >
+		<ion-card-content class="inner-island-page">
+			<ion-nav [root]="contactPage" [rootParams]="contactPageParam"></ion-nav>
 		</ion-card-content>
 	</ion-card>
 </ion-content>

@@ -1,17 +1,10 @@
 <ion-header>
 	<ion-navbar>
-		<ion-buttons start>
-			<button menuToggle>
-				<ion-icon name="menu"></ion-icon>
-			</button>
-		</ion-buttons>
+		<button ion-button menuToggle icon-only>
+			<ion-icon name='menu'></ion-icon>
+		</button>
 		<ion-title *ngIf="!category">{{'POSTS' | translate}}</ion-title>
 		<ion-title *ngIf="category">{{category.name}} <span *ngIf="category.count">({{category.count}})</span></ion-title>
-		<ion-buttons end>
-	      <button (tap)="toggleSearchbar()" ion-button icon-only>
-	        <ion-icon name="search"></ion-icon>
-	      </button>
-	    </ion-buttons>
 	</ion-navbar>
 	<ion-toolbar [hidden]="hideSearchbar">
 		<ion-searchbar [(ngModel)]="search" (ionInput)="searchPosts()" debounce=500></ion-searchbar>
@@ -30,12 +23,12 @@
 			<p>{{post.content.rendered | trimHTML | truncate: 100 }}</p>
 		</ion-card-content>
 		<ion-row no-padding>
-			<ion-col text-left>
+			<!-- <ion-col text-left>
 				<button ion-button icon-left clear (click)="favoritePost(post)">
 					<ion-icon name='heart'></ion-icon>
 					Favorite
 				</button>
-			</ion-col>
+			</ion-col> -->
 			<ion-col text-right>
 				<button ion-button clear (click)="loadPost(post)">
 					Read

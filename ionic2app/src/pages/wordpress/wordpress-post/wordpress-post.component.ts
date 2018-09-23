@@ -12,7 +12,8 @@ import { WordpressService } from '../shared/services/wordpress.service';
 export class WordpressPost {
 	post: any;
     authorData: any;
-    comments = [];
+	comments = [];
+	island: boolean = false;
 
 	constructor(
 			private navParams: NavParams,
@@ -30,6 +31,10 @@ export class WordpressPost {
 		}
 		if (navParams.get('id')) {
 			this.getPost(navParams.get('id'));
+		}
+		
+		if (navParams.get('island')) {
+			this.island = navParams.get('island');
 		}
 	}
 

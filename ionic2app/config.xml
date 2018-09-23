@@ -4,7 +4,7 @@
     <description>
     </description>
     <author email="pavanpaik1984@gmail.com" href="https://codecanyon.net/user/gtsopour/portfolio">Pavan Pai</author>
-    <content original-src="index.html" src="http://192.168.1.167:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -81,7 +81,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="ShowSplashScreenSpinner" value="true" />
     <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="loadUrlTimeoutValue" value="70000" />
+    <preference name="loadUrlTimeoutValue" value="60000" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
@@ -102,7 +102,7 @@
         <variable name="APP_NAME" value="Ionic2App" />
     </plugin>
     <plugin name="cordova-plugin-app-preferences" spec="~0.99.3" />
+    <engine name="android" spec="~6.4.0" />
     <allow-navigation href="http://192.168.1.167:8100" />
     <plugin name="onesignal-cordova-plugin" spec="^2.4.3" />
-    <engine name="android" spec="6.4.0" />
 </widget>

@@ -20,6 +20,8 @@ import { ChartsComponent } from '../../charts/charts-component/charts.component'
 import { FirebaseHomeComponent } from '../../firebase/firebase-home/firebase-home.component';
 import { TabsComponent } from '../../tabs/tabs-component/tabs.component';
 
+import { OSNotificationPayload } from '@ionic-native/onesignal';
+
 @Component({
 	selector: 'page-home',
 	templateUrl: 'home.html'
@@ -27,14 +29,13 @@ import { TabsComponent } from '../../tabs/tabs-component/tabs.component';
 export class HomeComponent {
 	msgTitle: string = 'Di Jaan Speaks...';
 	msgContent: string = 'Baba Sai is the divinity within us, the goodness within us, the love within us. He is birth-less, death-less, time-less, space-less... He is the One Eternal Cosmic Soul... our Soul.';
-	
+
 	constructor(
 		private navController: NavController,
 		private menuController: MenuController,
 		private events: Events,
 		private app: App,
 		private cdRef: ChangeDetectorRef) { }
-
 	slides = [
 		{
 			image: "assets/img/banners/baba_100.jpg",
@@ -55,7 +56,6 @@ export class HomeComponent {
 	    this.events.subscribe('navigationEvent',(object) => {
 	    	this.menuController.close();
 				if (object.component) {
-					this.events.publish('tabEvent', 0);
 					this.app.getRootNav().getActiveChildNav().select(0);
 					this.navController.push(object.component, object.params);
 				}

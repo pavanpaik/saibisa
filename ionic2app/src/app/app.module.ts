@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { SharedModule } from './shared/shared.module'
 import { HomeModule } from '../pages/home/home.module';
+import { SaibisaModule } from '../pages/saibisa/saibisa.module';
 import { TabsModule } from '../pages/tabs/tabs.module';
 import { GoogleMapsModule } from '../pages/google-maps/google-maps.module';
 import { WordpressModule } from '../pages/wordpress/wordpress.module';
@@ -44,6 +45,11 @@ import { OneSignal } from '@ionic-native/onesignal';
     SharedModule,
     HomeModule,
     TabsModule,
+    SaibisaModule,
+    DonateModule,
+    HealingModule,
+    ContactModule,
+    AboutModule,
     GoogleMapsModule,
     WordpressModule,
     SlidesModule,
@@ -51,10 +57,6 @@ import { OneSignal } from '@ionic-native/onesignal';
     SettingsModule,
     FeedsModule,
     YoutubeModule,
-    AboutModule,
-    DonateModule,
-    HealingModule,
-    ContactModule,
     DatetimeModule,
     RangesModule,
     ActionSheetModule,
