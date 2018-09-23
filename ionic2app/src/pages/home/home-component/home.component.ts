@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { App, NavController, Events, MenuController } from 'ionic-angular';
 
 import { AboutComponent } from '../../about/about-component/about.component';
@@ -25,12 +25,15 @@ import { TabsComponent } from '../../tabs/tabs-component/tabs.component';
 	templateUrl: 'home.html'
 })
 export class HomeComponent {
-	pages: Array<{title: string, component: any, icon: string, note: string, params?: any}>;
+	msgTitle: string = 'Di Jaan Speaks...';
+	msgContent: string = 'Baba Sai is the divinity within us, the goodness within us, the love within us. He is birth-less, death-less, time-less, space-less... He is the One Eternal Cosmic Soul... our Soul.';
+	
 	constructor(
 		private navController: NavController,
 		private menuController: MenuController,
 		private events: Events,
-		private app: App) {}
+		private app: App,
+		private cdRef: ChangeDetectorRef) { }
 
 	slides = [
 		{
@@ -42,29 +45,12 @@ export class HomeComponent {
 	];
 
 	ngOnInit() {
-	  	this.pages = [
-	      { title: 'ABOUT', component: AboutComponent, icon: 'photos', note: '' },
-	      { title: 'LOGIN', component: WordpressHome, icon: 'log-in', note: 'Wordpress' },
-	      { title: 'POSTS', component: WordpressPosts, icon: 'logo-wordpress', note: 'Wordpress' },
-	      { title: 'CATEGORIES', component: WordpressCategories, icon: 'pricetags', note: 'Wordpress' },
-	      { title: 'TAGS', component: WordpressTags, icon: 'pricetags', note: 'Wordpress' },
-		  
-		  { title: 'CATEGORY', component: WordpressPosts, icon: 'paper', note: 'Wordpress', params: { category: { name: 'Category Name', id: 7 }}},
-
-	      { title: 'FAVORITES', component: WordpressFavorites, icon: 'heart', note: 'Wordpress (Storage)' },
-		  { title: 'PAGES', component: WordpressPages, icon: 'document', note: 'Wordpress' },
-		  
-		  { title: 'PAGE', component: WordpressPage, icon: 'document', note: 'Wordpress', params: { id: 2 }},
-	      { title: 'MENUS', component: WordpressMenus, icon: 'menu', note: 'Wordpress' },
-	      { title: 'Firebase', component: FirebaseHomeComponent, icon: 'flame', note: 'Firebase' },
-	      { title: 'GOOGLE_MAPS', component: GoogleMapsComponent, icon: 'map', note: '' },
-	      { title: 'SLIDES', component: SlidesComponent, icon: 'images', note: 'Welcome Tour' },
-	      { title: 'FEEDS', component: FeedCategoriesComponent, icon: 'logo-rss', note: 'RSS (YQL)' },
-	      { title: 'FEED_CATEGORY', component: FeedCategoryComponent, icon: 'logo-rss', note: 'RSS (YQL)' },
-	      { title: 'YOUTUBE_VIDEOS', component: YoutubeVideosComponent, icon: 'logo-youtube', note: 'Youtube' },
-	      { title: 'YOUTUBE_CHANNEL', component: YoutubeChannelComponent, icon: 'logo-youtube', note: 'Youtube' },
-	      { title: 'CHARTS', component: ChartsComponent, icon: 'pie', note: 'Chart.js' }
-	    ];
+		this.events.subscribe('onPushReceived', (payload: OSNotificationPayload) => {
+			this.handlePushNotification(payload);
+		});
+		this.events.subscribe('onPushOpened', (payload: OSNotificationPayload) => {
+			this.handlePushNotification(payload);
+		});
 
 	    this.events.subscribe('navigationEvent',(object) => {
 	    	this.menuController.close();
@@ -76,10 +62,9 @@ export class HomeComponent {
 		});
 	}
 
-	
-
-	openPage() {
-		let page = { title: 'ABOUT', component: AboutComponent, params: {} };
-		this.navController.push(page.component, page.params);
+	handlePushNotification(payload: OSNotificationPayload) {
+		this.msgTitle=payload.title;
+		this.msgContent=payload.body;
+		this.cdRef.detectChanges();
 	}
 }
