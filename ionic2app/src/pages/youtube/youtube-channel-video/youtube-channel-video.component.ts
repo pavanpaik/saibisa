@@ -46,7 +46,7 @@ export class YoutubeChannelVideoComponent {
 		this.callPlayer("youtubeChannelPlayer", "playVideo");
 	}
 	prepareResource() {
-		let url = this.youtubeUrl + 'embed/' + this.video.id.videoId + '?enablejsapi=1';
+		let url = this.youtubeUrl + 'embed/' + this.video.id.videoId + '?enablejsapi=1&modestbranding=1&rel=0&showinfo=0';
 		this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
 	}
 

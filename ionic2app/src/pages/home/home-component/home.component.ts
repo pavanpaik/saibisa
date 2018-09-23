@@ -56,7 +56,7 @@ export class HomeComponent {
 			this.showToastMessage(payload);
 			this.handlePushNotification(payload);
 		});
-		
+
 		this.events.subscribe('onPushOpened', (payload: OSNotificationPayload) => {
 			this.handlePushNotification(payload);
 		});

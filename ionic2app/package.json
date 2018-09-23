@@ -35,6 +35,7 @@
     "angularfire2": "4.0.0-rc.2",
     "chart.js": "2.7.1",
     "cordova-android": "6.4.0",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-app-preferences": "git+https://github.com/apla/me.apla.cordova.app-preferences.git",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "^1.1.0",
@@ -91,7 +92,8 @@
   },
   "cordova": {
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ],
     "plugins": {
       "ionic-plugin-keyboard": {},

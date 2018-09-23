@@ -1,8 +1,6 @@
 <ion-header>
 	<ion-navbar>
-		<button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
+		<button menuToggle><ion-icon name="menu"></ion-icon></button>
 		<ion-title>{{video.snippet.title}}</ion-title>
         <!-- <ion-buttons end>
           <button (click)="shareVideo()" ion-button icon-only>
@@ -11,7 +9,6 @@
         </ion-buttons> -->
 	</ion-navbar>
 </ion-header>
-
 <ion-content class="youtube-video">
     <div id="youtubeChannelPlayer">
     <iframe *ngIf="video.id.videoId" [src]="videoUrl" frameborder="0" allowfullscreen="true" allow="autoplay; encrypted-media"></iframe>

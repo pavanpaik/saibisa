@@ -8,12 +8,16 @@ This is a Hybrid application built using ionic framework as front end and wordpr
 npm install -g ionic@latest
 npm i -D -E @ionic/lab
 
+sudo gem install cocoapods
+pod setup
+
 //install general application dependencies
 cd ionic2app
 npm install
 
 //install mobile/cordova application dependencies
-ionic cordova platform add ios --save
+ionic cordova platform add browser --save
+ionic cordova platform add ios@4.5.4 --save
 ionic cordova platform add android@6.4.0 --save
 ```
 
@@ -146,6 +150,8 @@ cordova plugin add cordova-plugin-compat
 ionic cordova platform rm android
 ionic cordova platform add android@6.4.0 --save
 ionic cordova prepare android
+
+cordova emulate ios --list
 ```
 
 ## Push Notification setup using OneSignal

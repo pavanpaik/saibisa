@@ -4,7 +4,7 @@
     <description>
     </description>
     <author email="pavanpaik1984@gmail.com" href="https://codecanyon.net/user/gtsopour/portfolio">Pavan Pai</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.167:8100" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -105,4 +105,5 @@
     <allow-navigation href="http://192.168.1.167:8100" />
     <plugin name="onesignal-cordova-plugin" spec="^2.4.3" />
     <engine name="android" spec="6.4.0" />
+    <engine name="ios" spec="4.5.4" />
 </widget>
