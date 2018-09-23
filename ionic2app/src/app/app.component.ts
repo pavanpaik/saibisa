@@ -68,10 +68,10 @@ export class MyApp {
 		});
 
 		this.pages = [
-			{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Activities', id: 10} } },
-			{ title: 'WATCH', component: YoutubeChannelComponent, icon: 'videocam' },
-			{ title: 'CONNECT', component: WordpressPost, icon: 'paper', params: { id: 1006 } },
-			{ title: 'EXPERIMENT', component: FirebaseHomeComponent, icon: 'aperture' }
+			{ title: 'Saibisa - Activities', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Activities', id: 10} } },
+			{ title: 'Watch Di Jaan', component: YoutubeChannelComponent, icon: 'videocam' },
+			{ title: 'Connect with us', component: WordpressPost, icon: 'paper', params: { id: 1006 } },
+			// { title: 'EXPERIMENT', component: FirebaseHomeComponent, icon: 'aperture' }
 		];
 		this.wordpressMenusNavigation = config.wordpressMenusNavigation;
 	}

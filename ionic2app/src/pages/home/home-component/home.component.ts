@@ -1,5 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { App, NavController, Events, MenuController } from 'ionic-angular';
+import { App, NavController, Events, MenuController, ToastController } from 'ionic-angular';
 
 import { AboutComponent } from '../../about/about-component/about.component';
 import { WordpressHome } from '../../wordpress/wordpress-home/wordpress-home.component';
@@ -35,6 +35,7 @@ export class HomeComponent {
 		private menuController: MenuController,
 		private events: Events,
 		private app: App,
+		private toastController: ToastController,
 		private cdRef: ChangeDetectorRef) { }
 	slides = [
 		{
@@ -46,9 +47,16 @@ export class HomeComponent {
 	];
 
 	ngOnInit() {
+		// let payload = {
+		// 	title : 'Di Jaan Speaks',
+		// 	body: 'Baba Sai is the divinity within us, the goodness within us, the love within us. He is birth-less, death-less, time-less, space-less... He is the One Eternal Cosmic Soul... our Soul.'
+		// }
+		// this.showToastMessage(payload);
 		this.events.subscribe('onPushReceived', (payload: OSNotificationPayload) => {
+			this.showToastMessage(payload);
 			this.handlePushNotification(payload);
 		});
+		
 		this.events.subscribe('onPushOpened', (payload: OSNotificationPayload) => {
 			this.handlePushNotification(payload);
 		});
@@ -60,6 +68,16 @@ export class HomeComponent {
 					this.navController.push(object.component, object.params);
 				}
 		});
+	}
+
+	showToastMessage(payload:OSNotificationPayload) {
+		let toast = this.toastController.create({
+			message: `${payload.title} : ${payload.body}`,
+			duration: 6000,
+			position: 'top',
+			showCloseButton: true
+		});
+		toast.present();
 	}
 
 	handlePushNotification(payload: OSNotificationPayload) {
