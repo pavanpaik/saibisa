@@ -35,4 +35,14 @@ $primary-grad: #F57C00 , #FF9800;
         background-color: color($theme-colors, content);
       }
     }
+
+
+.inner-page {
+  .fixed-content, .scroll-content {
+      margin-bottom: 0px !important;
+  }
+  .bar-button-menutoggle {
+      display: none;    
+  }
+}
   }

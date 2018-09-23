@@ -27,6 +27,12 @@ import { PlaceholderModule } from '../pages/placeholder/placeholder.module';
 
 import { MyApp } from './app.component';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { firebaseConfig } from './app.firebase.config';
+// import { FlamelinkService } from './shared/services/flamelink.service';
+
 @NgModule({
   declarations: [
     MyApp
@@ -55,11 +61,17 @@ import { MyApp } from './app.component';
     ChartsModule,
     FirebaseModule,
     PlaceholderModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    // FlamelinkService
+  ]
 })
 export class AppModule {}

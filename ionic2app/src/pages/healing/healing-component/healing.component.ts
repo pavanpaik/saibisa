@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController, LoadingController } from 'ionic-angular';
 import { WordpressService } from '../../wordpress/shared/services/wordpress.service';
+import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
 
 @Component({
   selector: 'page-healing',
@@ -13,6 +14,8 @@ export class HealingComponent {
   media: any;
   selectedPage: string = "read";
   private wpPostId: Number = 1019;
+
+  watchPage = YoutubeChannelComponent
 
   constructor(public navCtrl: NavController,
     private wordpressService: WordpressService,

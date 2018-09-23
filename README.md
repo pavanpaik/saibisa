@@ -122,6 +122,25 @@ If you dont find zipalign for signing then download the executable from here -
 https://github.com/maoxm/zipalign/blob/master/zipalign
 
 
+### Issue 6
+Emulator issue with temp fix.
+
+Open file - `/Users/earth/Documents/labs/saibisa/ionic2app/platforms/android/cordova/lib/build.js`
+
+Search for function `findBestApkForArchitecture`
+
+Replace `buildResults.apkPaths`
+
+with 
+```
+[
+        "/Users/earth/Documents/labs/saibisa/ionic2app/platforms/android/build/outputs/apk/armv7/debug/android-armv7-debug.apk",
+        "/Users/earth/Documents/labs/saibisa/ionic2app/platforms/android/build/outputs/apk/armv7/release/android-armv7-release-unsigned.apk",
+        "/Users/earth/Documents/labs/saibisa/ionic2app/platforms/android/build/outputs/apk/x86/debug/android-x86-debug.apk",
+        "/Users/earth/Documents/labs/saibisa/ionic2app/platforms/android/build/outputs/apk/x86/release/android-x86-release-unsigned.apk"
+]
+```
+
 ## Extras
 ```
 cordova plugin add cordova-plugin-compat

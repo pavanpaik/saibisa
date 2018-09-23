@@ -22,6 +22,11 @@ import { YoutubeChannelComponent } from '../pages/youtube/youtube-channel/youtub
 import { WordpressPosts } from '../pages/wordpress/wordpress-posts/wordpress-posts.component';
 import { WordpressPost } from '../pages/wordpress/wordpress-post/wordpress-post.component';
 
+import { FirebaseHomeComponent } from '../pages/firebase/firebase-home/firebase-home.component';
+
+import * as firebase from 'firebase';
+import flamelink from 'flamelink';
+
 @Component({
 	templateUrl: './app.html'
 })
@@ -57,11 +62,12 @@ export class MyApp {
 		});
 
 		this.pages = [
-			{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Read', id: 7 } } },
+			{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Activities', id: 10} } },
 			{ title: 'WATCH', component: YoutubeChannelComponent, icon: 'videocam' },
 			// { title: 'LISTEN', component: PlaceholderComponent, icon: 'musical-notes' },
 			// { title: 'IMAGES', component: PlaceholderComponent, icon: 'images' },
-			{ title: 'CONNECT', component: WordpressPost, icon: 'paper', params: { id: 1006 } }
+			{ title: 'CONNECT', component: WordpressPost, icon: 'paper', params: { id: 1006 } },
+			{ title: 'EXPERIMENT', component: FirebaseHomeComponent, icon: 'aperture' },
 			// { title: 'SETTINGS', component: SettingsComponent, icon: 'settings' }
 		];
 		this.wordpressMenusNavigation = config.wordpressMenusNavigation;
@@ -92,6 +98,35 @@ export class MyApp {
 			this.statusBar.styleDefault();
 			this.splashScreen.hide();
 		});
+	}
+
+	ngOnInit() {
+
+		// const firebaseConfig = {
+		// 	apiKey: "AIzaSyC5R57c9Umd3xmqiGeW5OkGr4Um9XMuNeI",
+		// 	authDomain: "saibisa-3f765.firebaseapp.com",
+		// 	databaseURL: "https://saibisa-3f765.firebaseio.com",
+		// 	projectId: "saibisa-3f765",
+		// 	storageBucket: "saibisa-3f765.appspot.com",
+		// 	messagingSenderId: "889072797417"
+		//   };
+		//const firebaseApp = firebase.initializeApp(firebaseConfig);
+		//   const app = flamelink({ firebaseApp });
+
+
+		// app.content.get('home')
+		// .then(homeContent => {
+		// 	const data:any = homeContent;
+		// 	console.log('homeContent', data);
+		// 	data.imageDeck.forEach(function(val) {
+		// 		console.log(val)
+		// 		app.storage.getURL(val.image[0])
+		// 		.then(url => console.log('File URL:', url))
+		// 		.catch(error => console.error('Something went wrong while retrieving the file URL. Details:', error));
+		// 	})
+		// })
+		// .catch(error => console.log(error))
+
 	}
 
 	openPage(page) {

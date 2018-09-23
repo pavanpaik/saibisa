@@ -23,6 +23,14 @@ export class TabsComponent {
   healing: any = HealingComponent;
   mySelectedIndex: number = 0;
 
+  eventPageComponent: any = WordpressPosts;
+  eventsPageParam: any = { category: { name: 'Events', id: 9 } };
+  
+  activitiesPageComponent: any = WordpressPosts;
+  activitiesPageParam: any = { category: { name: 'Activities', id: 10 } };
+
+
+  //{ title: 'READ', component: WordpressPosts, icon: 'paper', params: { category: { name: 'Read', id: 7 } } }
 
   map: any = {
     'ABOUT': { title: 'ABOUT', component: WordpressPost, params: { id: 993 } },
@@ -40,6 +48,14 @@ export class TabsComponent {
     }
 
     ngOnInit() {
+      // this.events.subscribe('navigationEvent',(object) => {
+      //     this.menuController.close();
+      //     if (object.component) {
+      //       this.events.publish('tabEvent', 0);
+      //       this.app.getRootNav().getActiveChildNav().select(0);
+      //       this.navController.push(object.component, object.params);
+      //     }
+      // });
 
       this.events.subscribe('tabEvent',(val) => {
         this.mySelectedIndex = val;
