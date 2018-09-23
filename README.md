@@ -6,7 +6,6 @@ This is a Hybrid application built using ionic framework as front end and wordpr
 ```
 //install framework components
 npm install -g ionic@latest
-npm i -g p
 npm i -D -E @ionic/lab
 
 //install general application dependencies
@@ -148,3 +147,12 @@ ionic cordova platform rm android
 ionic cordova platform add android@6.4.0 --save
 ionic cordova prepare android
 ```
+
+## Push Notification setup using OneSignal
+
+Working Setup using `onesignal-cordova-plugin` plugin
+https://medium.com/appseed-io/how-to-integrate-onesignal-push-notifications-into-an-ionic-3-application-eb2fdc3e6176
+
+Official documentation (has some extra steps for android and ios. Not tested yet.)
+https://documentation.onesignal.com/docs/ionic-sdk-setup
+https://ionicframework.com/docs/native/onesignal/

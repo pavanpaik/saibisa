@@ -15,3 +15,6 @@ export class Config {
 	public youtubeResults = 50;
 	public emailTo = 'saibisafamily@gmail.com';
 }
+
+export const sender_id = '889072797417';
+export const oneSignalAppId = '47f03f56-e532-4c48-b5fc-7f9e391430bc';

@@ -33,6 +33,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from './app.firebase.config';
 // import { FlamelinkService } from './shared/services/flamelink.service';
 
+import { OneSignal } from '@ionic-native/onesignal';
+
 @NgModule({
   declarations: [
     MyApp
@@ -71,6 +73,7 @@ import { firebaseConfig } from './app.firebase.config';
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    OneSignal,
     // FlamelinkService
   ]
 })

@@ -27,6 +27,11 @@ import { FirebaseHomeComponent } from '../pages/firebase/firebase-home/firebase-
 import * as firebase from 'firebase';
 import flamelink from 'flamelink';
 
+
+import { OneSignal, OSNotificationPayload } from '@ionic-native/onesignal';
+import { isCordovaAvailable } from '../common/is-cordova-available';
+import { oneSignalAppId, sender_id } from './app.config';
+
 @Component({
 	templateUrl: './app.html'
 })
@@ -47,7 +52,8 @@ export class MyApp {
 		private splashScreen: SplashScreen,
 		private config: Config,
 		private menuController: MenuController,
-		private events: Events
+		private events: Events,
+		private oneSignal: OneSignal
 	) {
 		this.initializeApp();
 
@@ -71,6 +77,23 @@ export class MyApp {
 			// { title: 'SETTINGS', component: SettingsComponent, icon: 'settings' }
 		];
 		this.wordpressMenusNavigation = config.wordpressMenusNavigation;
+		this.platform.ready().then(() => {
+			this.statusBar.styleDefault();
+			this.splashScreen.hide();
+		
+			// OneSignal Code start:
+			// Enable to debug issues:
+			// window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+		
+			var notificationOpenedCallback = function(jsonData) {
+			  console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+			};
+		
+			window["plugins"].OneSignal
+			  .startInit("47f03f56-e532-4c48-b5fc-7f9e391430bc", "889072797417")
+			  .handleNotificationOpened(notificationOpenedCallback)
+			  .endInit();
+		  });
 	}
 
 
@@ -97,7 +120,23 @@ export class MyApp {
 			// this.platform.setDir('rtl', true);
 			this.statusBar.styleDefault();
 			this.splashScreen.hide();
+
+			if (isCordovaAvailable()){
+				this.oneSignal.startInit(oneSignalAppId, sender_id);
+				this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+				this.oneSignal.handleNotificationReceived().subscribe(data => this.onPushReceived(data.payload));
+				this.oneSignal.handleNotificationOpened().subscribe(data => this.onPushOpened(data.notification.payload));
+				this.oneSignal.endInit();
+			}
 		});
+	}
+
+	private onPushReceived(payload: OSNotificationPayload) {
+		alert('Push recevied:' + payload.body);
+	}
+	
+	private onPushOpened(payload: OSNotificationPayload) {
+		alert('Push opened: ' + payload.body);
 	}
 
 	ngOnInit() {
