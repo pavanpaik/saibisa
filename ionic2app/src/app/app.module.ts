@@ -13,6 +13,7 @@ import { SettingsModule } from '../pages/settings/settings.module';
 import { FeedsModule } from '../pages/feeds/feeds.module';
 import { YoutubeModule } from '../pages/youtube/youtube.module';
 import { AboutModule } from '../pages/about/about.module';
+import { ActivityModule } from '../pages/activity/activity.module';
 import { DonateModule } from '../pages/donate/donate.module';
 import { HealingModule } from '../pages/healing/healing.module';
 import { ContactModule } from '../pages/contact/contact.module';
@@ -33,6 +34,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from './app.firebase.config';
 // import { FlamelinkService } from './shared/services/flamelink.service';
+import { WordpressService } from './shared/services/wordpress.service';
 
 import { OneSignal } from '@ionic-native/onesignal';
 
@@ -50,6 +52,7 @@ import { OneSignal } from '@ionic-native/onesignal';
     HealingModule,
     ContactModule,
     AboutModule,
+    ActivityModule,
     GoogleMapsModule,
     WordpressModule,
     SlidesModule,
@@ -76,6 +79,8 @@ import { OneSignal } from '@ionic-native/onesignal';
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OneSignal,
+    WordpressService
+    
     // FlamelinkService
   ]
 })

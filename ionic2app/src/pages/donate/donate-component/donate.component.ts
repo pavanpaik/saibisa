@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, LoadingController } from 'ionic-angular';
-import { WordpressService } from '../../wordpress/shared/services/wordpress.service';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
 
 @Component({
   selector: 'page-donate',
@@ -10,7 +10,6 @@ import { WordpressService } from '../../wordpress/shared/services/wordpress.serv
 })
 export class DonateComponent {
   page: any;
-  media: any;
   private wpPostId: Number = 1014;
 
   constructor(public navCtrl: NavController,
@@ -30,18 +29,10 @@ export class DonateComponent {
     this.wordpressService.getPost(id)
       .subscribe(result => {
         this.page = result;
-        if (result) {
-          this.getMedia(result.featured_media);
-        }
+        this.page.featImgSrc =result._embedded["wp:featuredmedia"][0].source_url;
+        
       },
         error => console.log(error),
         () => loader.dismiss());
-  }
-
-  getMedia(id) {
-    this.wordpressService.getMedia(id)
-      .subscribe(result => {
-        this.media = result;
-      });
   }
 }

@@ -3,7 +3,7 @@ import { NavParams, LoadingController } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
-import { WordpressService } from '../shared/services/wordpress.service';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
 
 @Component({
 	templateUrl: './wordpress-post.html',

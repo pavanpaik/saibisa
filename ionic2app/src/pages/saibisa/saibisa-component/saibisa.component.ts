@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
 import { NavController, LoadingController, Events, MenuController } from 'ionic-angular';
-import { WordpressService } from '../../wordpress/shared/services/wordpress.service';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
 import { AboutComponent } from '../../about/about-component/about.component';
 import { WordpressPost } from '../../wordpress/wordpress-post/wordpress-post.component'
+
 // import { FlamelinkService } from '../../../app/shared/services/flamelink.service';
 
 @Component({

@@ -1,36 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+
+import { NavController, NavParams, LoadingController, ToastController, Events, MenuController } from 'ionic-angular';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
+import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
+import { WordpressPosts } from '../../wordpress/wordpress-posts/wordpress-posts.component';
+import { WordpressPost } from '../../wordpress/wordpress-post/wordpress-post.component';
+import { WordpressFeatureMedia } from '../../wordpress/wordpress-feature-media/wordpress-feature-media.component';
+// import { FlamelinkService } from '../../../app/shared/services/flamelink.service';
+
+
 import { Storage } from '@ionic/storage';
 
-import { WordpressService } from '../../../app/shared/services/wordpress.service';
-import { WordpressPost } from '../wordpress-post/wordpress-post.component';
 
 @Component({
-	templateUrl: './wordpress-posts.html',
-	providers: [ WordpressService ]
+  selector: 'page-activity',
+  templateUrl: 'activity.html',
+  providers: [
+    WordpressService,
+    // FlamelinkService
+  ]
 })
-export class WordpressPosts implements OnInit {
+export class ActivityComponent {
+  page: any;
+  media: any;
+  postId: Number = 1152;
+  
+  activitiesPageComponent: any = WordpressPosts;
+  activitiesPageParam: any = { category: { name: 'Activities', id: 10 } };
 
-	posts: any;
+  
+  posts: any;
 	pageCount: number;
 	category: any;
 	tag: any;
 	author: any;
 	search: string;
 	hideSearchbar: boolean;
-	favoritePosts: any;
+  favoritePosts: any;
+  
 
-	constructor(
-		private navParams: NavParams,
+  constructor(public navController: NavController,
+    // private flamelinkService: FlamelinkService,
+    private loadingController: LoadingController,
+		private menuController: MenuController,
+    private events: Events,
+    
+    private navParams: NavParams,
 		private wordpressService: WordpressService,
-		private navController: NavController,
-		private loadingController: LoadingController,
 		private toastController: ToastController,
-		private storage: Storage) {}
+    private storage: Storage
+    
+    ) { }
 
-	ngOnInit() {
-		this.category = this.navParams.get('category');
-		this.tag = this.navParams.get('tag');
+  ngOnInit() {
+    this.getPage(this.postId);
+    this.category = this.activitiesPageParam.category;
+    this.tag = this.navParams.get('tag');
 		this.author = this.navParams.get('author');
 		this.hideSearchbar = true;
 		this.search = '';
@@ -42,7 +67,36 @@ export class WordpressPosts implements OnInit {
 	        }
 	    });
 		this.getPosts();
-	}
+  }
+
+  getPage(id) {
+    let loader = this.loadingController.create({
+      content: "Please wait"
+    });
+
+    loader.present();
+    this.wordpressService.getPost(id)
+      .subscribe(result => {
+        this.page = result;
+        if (result) {
+          this.getMedia(result.featured_media);
+        }
+      },
+        error => console.log(error),
+        () => loader.dismiss());
+  }
+
+  getMedia(id) {
+    this.wordpressService.getMedia(id)
+      .subscribe(result => {
+        this.media = result;
+      });
+  }
+
+
+
+
+
 
 	getPosts() {
 		this.pageCount = 1;
@@ -56,8 +110,17 @@ export class WordpressPosts implements OnInit {
 		loader.present();
 		this.wordpressService.getPosts(query)
 		.subscribe(result => {
-			this.posts = result;
-			loader.dismiss();
+      // this.posts = result;
+      let posts = result
+
+      for(var i=0; i < posts.length; i++) { 
+        try {
+          posts[i].featImgSrc = posts[i]._embedded["wp:featuredmedia"][0].source_url
+        } catch(e) {}
+      }
+      this.posts = posts;
+
+      loader.dismiss();
 		});
 	}
 
@@ -74,15 +137,11 @@ export class WordpressPosts implements OnInit {
 		this.pageCount++;
 
 		let query = this.createQuery();
-	  	let loader = this.loadingController.create({
-			content: "Please wait"
-		});
 		let toast = this.toastController.create({
 			message: "There are no more posts.",
 			duration: 2000
 		});
 
-		loader.present();
 		this.wordpressService.getPosts(query)
 		.subscribe(result => {
 				infiniteScroll.complete();
@@ -96,13 +155,13 @@ export class WordpressPosts implements OnInit {
 			error => {
 				infiniteScroll.enable(false);
 				toast.present();
-				loader.dismiss();
 				console.log(error)
 			},
-		() => loader.dismiss());
+		() => {
+    });
 	}
 
-	loadPost1(post) {
+	loadPost(post) {
 		this.navController.push(WordpressPost, {
 			post: post
 		});

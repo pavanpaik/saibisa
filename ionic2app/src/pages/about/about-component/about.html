@@ -9,7 +9,7 @@
 
 <ion-content>
 	<ion-card>
-		<img *ngIf="media" src="{{media.source_url}}" />
+		<img *ngIf="page" src="{{page.featImgSrc}}" />
 		<p padding *ngIf="page" padding [innerHTML]="page.content.rendered"></p>
 	</ion-card>
 </ion-content>

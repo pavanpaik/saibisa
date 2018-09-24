@@ -11,7 +11,7 @@
 <ion-content>
 	<ion-card>
 		<ion-card-content class="banner-container" text-wrap>
-			<img *ngIf="media" src="{{media.source_url}}" />
+			<img *ngIf="page" src="{{page.featImgSrc}}" />
 			<p padding *ngIf="page" padding [innerHTML]="page.content.rendered"></p>
 		</ion-card-content>
 	</ion-card>

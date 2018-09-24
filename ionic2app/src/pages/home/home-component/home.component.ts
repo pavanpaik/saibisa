@@ -47,6 +47,7 @@ export class HomeComponent {
 	];
 
 	ngOnInit() {
+		
 		// let payload = {
 		// 	title : 'Di Jaan Speaks',
 		// 	body: 'Baba Sai is the divinity within us, the goodness within us, the love within us. He is birth-less, death-less, time-less, space-less... He is the One Eternal Cosmic Soul... our Soul.'

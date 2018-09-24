@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 
-import { WordpressService } from '../shared/services/wordpress.service';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { WordpressPosts } from '../wordpress-posts/wordpress-posts.component';
 
 @Component({

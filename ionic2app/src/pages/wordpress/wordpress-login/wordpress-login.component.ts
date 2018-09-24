@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ToastController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { WordpressService } from '../shared/services/wordpress.service';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { WordpressHome } from '../wordpress-home/wordpress-home.component';
 
 @Component({

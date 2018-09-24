@@ -4,6 +4,7 @@ import { NavParams, NavController, Events, MenuController } from 'ionic-angular'
 import { HomeComponent } from '../../home/home-component/home.component';
 import { SaibisaComponent } from '../../saibisa/saibisa-component/saibisa.component';
 import { DonateComponent } from '../../donate/donate-component/donate.component';
+import { ActivityComponent } from '../../activity/activity-component/activity.component';
 import { HealingComponent } from '../../healing/healing-component/healing.component';
 import { YoutubeVideosComponent } from '../../youtube/youtube-videos/youtube-videos.component';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
@@ -26,7 +27,7 @@ export class TabsComponent {
   eventPageComponent: any = WordpressPosts;
   eventsPageParam: any = { category: { name: 'Events', id: 9 } };
   
-  activitiesPageComponent: any = WordpressPosts;
+  activitiesPageComponent: any = ActivityComponent;
   activitiesPageParam: any = { category: { name: 'Activities', id: 10 } };
 
 

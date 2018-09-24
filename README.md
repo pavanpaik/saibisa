@@ -34,7 +34,9 @@ ionic cordova emulate ios --list
 ./platforms/ios/cordova/lib/list-emulator-images
 
 //start the emulator with a specific OS
-ionic cordova emulate ios --target "iPhone-X"
+ionic cordova emulate ioc --emulator --livereload --consolelogs --target "iPhone-X"
+
+ionic cordova emulate android --emulator --livereload --consolelogs
 ```
 
 ## Release/Deployment

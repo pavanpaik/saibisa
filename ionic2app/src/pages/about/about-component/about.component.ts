@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, LoadingController, Events, MenuController } from 'ionic-angular';
-import { WordpressService } from '../../wordpress/shared/services/wordpress.service';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
 // import { FlamelinkService } from '../../../app/shared/services/flamelink.service';
 
@@ -35,7 +35,6 @@ export class AboutComponent {
   ngOnInit() {
     this.selectedPage = "read";
     this.getPage(this.wpAboutPostId);
-    this.getConnectPage(this.wpConnectPostId);
 
 
     // this.flamelinkService.getApp().content.get('home')
@@ -61,43 +60,9 @@ export class AboutComponent {
     this.wordpressService.getPost(id)
       .subscribe(result => {
         this.page = result;
-        if (result) {
-          this.getMedia(result.featured_media);
-        }
+        this.page.featImgSrc =result._embedded["wp:featuredmedia"][0].source_url;
       },
         error => console.log(error),
         () => loader.dismiss());
-  }
-
-  getMedia(id) {
-    this.wordpressService.getMedia(id)
-      .subscribe(result => {
-        this.media = result;
-      });
-  }
-
-
-  getConnectPage(id) {
-    let loader = this.loadingController.create({
-      content: "Please wait"
-    });
-
-    loader.present();
-    this.wordpressService.getPost(id)
-      .subscribe(result => {
-        this.connectPage = result;
-        if (result) {
-          this.getConnectMedia(result.featured_media);
-        }
-      },
-        error => console.log(error),
-        () => loader.dismiss());
-  }
-
-  getConnectMedia(id) {
-    this.wordpressService.getMedia(id)
-      .subscribe(result => {
-        this.connectMedia = result;
-      });
   }
 }

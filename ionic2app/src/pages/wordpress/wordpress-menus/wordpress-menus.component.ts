@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { WordpressService } from '../shared/services/wordpress.service';
+import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { WordpressMenu } from '../wordpress-menu/wordpress-menu.component';
 
 @Component({
