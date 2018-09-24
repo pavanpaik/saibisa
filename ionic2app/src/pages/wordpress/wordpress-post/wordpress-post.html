@@ -18,7 +18,7 @@
         <!-- <ion-item *ngIf="island == false">
             <h1 [innerHTML]="post.title.rendered"></h1>
         </ion-item> -->
-        <wordpress-feature-media *ngIf="post.featured_media" [id]="post.featured_media"></wordpress-feature-media>
+        <img *ngIf="post" src="{{post.featImgSrc}}" />
         <p padding [innerHtml]="post.content.rendered" *ngIf="post.content.rendered"></p>
     </ion-card>
   </ion-list>

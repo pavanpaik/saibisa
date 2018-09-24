@@ -47,6 +47,8 @@ export class WordpressPost {
 		this.wordpressService.getPost(id)
 		.subscribe(result => {
 			this.post = result;
+			this.post.featImgSrc =result._embedded["wp:featuredmedia"][0].source_url;
+
 			this.authorData = this.post["_embedded"].author[0];
 			if(this.post["_embedded"].replies) {
 			 	this.comments = this.post["_embedded"].replies[0];
