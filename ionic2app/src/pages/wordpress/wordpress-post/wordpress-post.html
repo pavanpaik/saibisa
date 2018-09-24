@@ -3,7 +3,7 @@
 		<button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title *ngIf="post">{{post.title.rendered}}</ion-title>
+		<ion-title *ngIf="post"><span [innerHTML]="post.title.rendered"></span></ion-title>
 		<!-- <ion-buttons end>
 	      <button (tap)="sharePost()" ion-button icon-only>
 	        <ion-icon name="share"></ion-icon>
@@ -15,9 +15,9 @@
 <ion-content class="post">
   <ion-list *ngIf="post">
     <ion-card text-wrap>
-        <ion-item *ngIf="island == false">
+        <!-- <ion-item *ngIf="island == false">
             <h1 [innerHTML]="post.title.rendered"></h1>
-        </ion-item>
+        </ion-item> -->
         <wordpress-feature-media *ngIf="post.featured_media" [id]="post.featured_media"></wordpress-feature-media>
         <p padding [innerHtml]="post.content.rendered" *ngIf="post.content.rendered"></p>
     </ion-card>
