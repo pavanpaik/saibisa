@@ -26,13 +26,20 @@ export class YoutubeChannelComponent {
 	}
 
 	getChannel() {
+		let loader = this.loadingController.create({
+			content: "Please wait"
+		});
+
+		loader.present();
+
 		this.youtubeService.getChannel()
 		.subscribe(result => {
 			this.videos = result.items;
 			this.loader.dismiss();	
 		}, error => {
 			this.loader.dismiss();
-		});
+		},
+		() => loader.dismiss());
 	}
 
 	loadVideo(video) {
