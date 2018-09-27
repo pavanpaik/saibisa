@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NavParams, Platform } from 'ionic-angular';
+import { NavParams, Platform, Events } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Config } from '../../../app/app.config';
 
@@ -17,26 +17,31 @@ export class YoutubeChannelVideoComponent {
 		private sanitizer: DomSanitizer,
 		private socialSharing: SocialSharing,
 		private config: Config,
+		private events: Events,
 		platform: Platform) {
 		this.video = navParams.get('video');
 		this.youtubeUrl = config.youtubeUrl;
 		this.prepareResource();
 
 		platform.ready().then(() => {
-			console.log('Platform is ready. ');
-
 			platform.pause.subscribe((result) => {
-				console.log("Platform Pause Event. ");
 				this.onPause();
 			});
-
 			platform.resume.subscribe((result) => {
-				console.log("Platform Resume Event.");
 				this.onResume()
 			});
 		});
 	}
 
+	ngOnInit() {
+		this.events.subscribe('navigationEvent',(object) => {
+			this.onPause();
+		});
+
+		this.events.subscribe('tabinationEvent',(object) => {
+			this.onPause();
+		});
+	}
 	onPause() {
 		this.callPlayer("youtubeChannelPlayer", "pauseVideo");
 		//this.window.callPlayer("youtubeChannelPlayer", "stopVideo");

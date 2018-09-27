@@ -28,6 +28,7 @@ import { LoginModule } from '../pages/login/login.module';
 import { ChartsModule } from '../pages/charts/charts.module';
 import { FirebaseModule } from '../pages/firebase/firebase.module';
 import { AudioPageModule } from '../pages/audio/audio.module';
+import { ArticleModule } from '../pages/article/article.module';
 
 // Module Example: Use the PlaceholderModule for any new App Module
 import { PlaceholderModule } from '../pages/placeholder/placeholder.module';
@@ -87,7 +88,8 @@ import { mediaStateReducer } from '../providers/store/store';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AudioPageModule
+    AudioPageModule,
+    ArticleModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

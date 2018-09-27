@@ -4,6 +4,9 @@ import { NavController, LoadingController, Events, MenuController } from 'ionic-
 import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
 import { AboutComponent } from '../../about/about-component/about.component';
+import { ArticleComponent } from '../../article/article-component/article.component';
+import { AudioPage } from '../../audio/audio-component/audio.component';
+
 import { WordpressPost } from '../../wordpress/wordpress-post/wordpress-post.component'
 
 // import { FlamelinkService } from '../../../app/shared/services/flamelink.service';
@@ -13,13 +16,16 @@ import { WordpressPost } from '../../wordpress/wordpress-post/wordpress-post.com
   templateUrl: 'saibisa.html'
 })
 export class SaibisaComponent {
-  selectedPage: string = "read";
-  aboutPage = AboutComponent
-  watchPage = YoutubeChannelComponent
-  contactPage = WordpressPost
-  contactPageParam = { id : '1006', island: true}
+	selectedPage: string = "tab1";
   
-  constructor(public navController: NavController,
-		private menuController: MenuController,
-		private events: Events) { }
+  map: any = {
+    'tab1': { title: 'Read', icon: 'fa-book', component: ArticleComponent, params: {postId: 993} },
+    'tab2': { title: 'Watch', icon: 'fa-video-camera', component: YoutubeChannelComponent },
+    'tab3': { title: 'tab3', icon: 'fa-music', component: AudioPage },
+  };
+
+  constructor(public navCtrl: NavController) { }
+  
+  ngOnInit() { }
 }
+

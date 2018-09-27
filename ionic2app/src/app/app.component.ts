@@ -22,8 +22,9 @@ import { YoutubeVideosComponent } from '../pages/youtube/youtube-videos/youtube-
 import { YoutubeChannelComponent } from '../pages/youtube/youtube-channel/youtube-channel.component';
 import { WordpressPosts } from '../pages/wordpress/wordpress-posts/wordpress-posts.component';
 import { WordpressPost } from '../pages/wordpress/wordpress-post/wordpress-post.component';
-
+import { DonateComponent } from '../pages/donate/donate-component/donate.component';
 import { FirebaseHomeComponent } from '../pages/firebase/firebase-home/firebase-home.component';
+import { ArticleComponent } from '../pages/article/article-component/article.component';
 
 import * as firebase from 'firebase';
 import flamelink from 'flamelink';
@@ -68,9 +69,9 @@ export class MyApp {
 		});
 
 		this.pages = [
-			{ title: 'Saibisa - Activities', component: WordpressPosts, icon: 'fa-th-list', params: { category: { name: 'Activities', id: 10} } },
-			{ title: 'Watch Di Jaan', component: YoutubeChannelComponent, icon: 'fa-video-camera' },
-			{ title: 'Connect with us', component: WordpressPost, icon: 'fa-address-card-o', params: { id: 1006 } },
+			{ title: 'Di\'s Books', component: ArticleComponent, icon: 'fa-book', params: { postId: 1180} },
+			{ title: 'Donate', component: DonateComponent, icon: 'fa-heart' },
+			{ title: 'Connect', component: ArticleComponent, icon: 'fa-address-card-o', params: { postId: 1006 } },
 			// { title: 'EXPERIMENT', component: FirebaseHomeComponent, icon: 'aperture' }
 		];
 		this.wordpressMenusNavigation = config.wordpressMenusNavigation;

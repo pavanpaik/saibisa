@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {trigger, state, style, animate, transition } from '@angular/animations';
-import {NavController, NavParams, Navbar, Content, LoadingController} from 'ionic-angular';
+import {NavController, NavParams, Navbar, Content, LoadingController, Events, Platform} from 'ionic-angular';
 import {AudioProvider} from '../../../providers/audio/audio';
 import {FormControl} from '@angular/forms';
 import {CANPLAY, LOADEDMETADATA, PLAYING, TIMEUPDATE, LOADSTART, RESET} from '../../../providers/store/store';
@@ -31,6 +31,7 @@ import {pluck, filter, map, distinctUntilChanged} from 'rxjs/operators';
   ]
 })
 export class AudioPage {
+  title: any = "Chords of Consciousness"
   files: any = [];
   seekbar: FormControl = new FormControl("seekbar");
   state: any = {};
@@ -47,9 +48,33 @@ export class AudioPage {
     public audioProvider: AudioProvider,
     public loadingCtrl: LoadingController,
     public cloudProvider: CloudProvider,
+    platform: Platform,
+    private events: Events,
     private store: Store<any>
   ) {
+    if (this.navParams.get('title')) {
+			this.title = this.navParams.get('title');
+		}
     this.getDocuments();
+
+    platform.ready().then(() => {
+			platform.pause.subscribe((result) => {
+				this.pauseSilent();
+			});
+			platform.resume.subscribe((result) => {
+				this.playSilent();
+			});
+		});
+  }
+
+  ngOnInit() {
+    this.events.subscribe('navigationEvent',(object) => {
+      this.pauseSilent();
+    });
+
+    this.events.subscribe('tabinationEvent',(object) => {
+      this.pauseSilent();
+    });
   }
 
   getDocuments() {
@@ -159,8 +184,20 @@ export class AudioPage {
     this.audioProvider.pause();
   }
 
+  pauseSilent() {
+    try {
+      this.audioProvider.pause();
+    } catch (e) {}
+  }
+
   play() {
     this.audioProvider.play();
+  }
+
+  playSilent() {
+    try {
+      this.audioProvider.play();
+    } catch (e) {}
   }
 
   stop() {

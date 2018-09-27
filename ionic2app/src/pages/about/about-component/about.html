@@ -5,11 +5,27 @@
 		</button>
 		<ion-title>{{'ABOUT' | translate}}</ion-title>
 	</ion-navbar>
-</ion-header>
-
-<ion-content>
-	<ion-card>
-		<img *ngIf="page" src="{{page.featImgSrc}}" />
-		<p padding *ngIf="page" padding [innerHTML]="page.content.rendered"></p>
-	</ion-card>
-</ion-content>
+	<ion-segment [(ngModel)]="selectedPage">
+			<ion-segment-button value="tab1">
+				<i class="fa {{map['tab1'].icon}}"></i>
+				{{map['tab1'].title | translate}}
+			</ion-segment-button>
+			<ion-segment-button value="tab2">
+				<i class="fa {{map['tab2'].icon}}"></i>
+				{{map['tab2'].title | translate}}
+			</ion-segment-button>
+		</ion-segment>
+	</ion-header>
+	
+	<ion-content [ngSwitch]="selectedPage">
+		<ion-card *ngSwitchCase="'tab1'">
+			<ion-card-content class="inner-island-page">
+				<ion-nav [root]="map['tab1'].component" [rootParams]="map['tab1'].params"></ion-nav>
+			</ion-card-content>
+		</ion-card>
+		<ion-card *ngSwitchCase="'tab2'">
+			<ion-card-content class="inner-island-page">
+				<ion-nav [root]="map['tab2'].component" [rootParams]="map['tab2'].params"></ion-nav>
+			</ion-card-content>
+		</ion-card>
+	</ion-content>

@@ -3,42 +3,29 @@
 		<button ion-button menuToggle icon-only>
 			<ion-icon name='menu'></ion-icon>
 		</button>
-		<ion-title>{{'ABOUT' | translate}}</ion-title>
+		<ion-title>Di Jaan Jaya Wahi</ion-title>
 	</ion-navbar>
 	<ion-segment [(ngModel)]="selectedPage">
-		<ion-segment-button value="read">
-			<i class="fa fa-book"></i>
-			Read
+		<ion-segment-button value="tab1">
+			<i class="fa {{map['tab1'].icon}}"></i>
+			{{map['tab1'].title | translate}}
 		</ion-segment-button>
-		<ion-segment-button value="watch">
-			<i class="fa fa-video-camera"></i>
-			Watch
-		</ion-segment-button>
-		<!-- <ion-segment-button value="listen">
-			<i class="fa fa-headphones"></i>
-			Listen
-		</ion-segment-button> -->
-		<ion-segment-button value="connect">
-			<i class="fa fa-address-card-o"></i>
-			Connect
+		<ion-segment-button value="tab2">
+			<i class="fa {{map['tab2'].icon}}"></i>
+			{{map['tab2'].title | translate}}
 		</ion-segment-button>
 	</ion-segment>
 </ion-header>
 
 <ion-content [ngSwitch]="selectedPage">
-	<ion-card *ngSwitchCase="'read'">
+	<ion-card *ngSwitchCase="'tab1'">
 		<ion-card-content class="inner-island-page">
-			<ion-nav [root]="aboutPage"></ion-nav>
+			<ion-nav [root]="map['tab1'].component" [rootParams]="map['tab1'].params"></ion-nav>
 		</ion-card-content>
 	</ion-card>
-	<ion-card *ngSwitchCase="'watch'">
+	<ion-card *ngSwitchCase="'tab2'">
 		<ion-card-content class="inner-page">
-			<ion-nav [root]="watchPage"></ion-nav>
-		</ion-card-content>
-	</ion-card>
-	<ion-card *ngSwitchCase="'connect'" >
-		<ion-card-content class="inner-island-page">
-			<ion-nav [root]="contactPage" [rootParams]="contactPageParam"></ion-nav>
+			<ion-nav [root]="map['tab2'].component" [rootParams]="map['tab2'].params"></ion-nav>
 		</ion-card-content>
 	</ion-card>
 </ion-content>

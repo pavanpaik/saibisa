@@ -3,66 +3,24 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, Events, MenuController } from 'ionic-angular';
 import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-channel.component';
+import { AudioPage } from '../../audio/audio-component/audio.component';
+import { ArticleComponent } from '../../article/article-component/article.component';
 // import { FlamelinkService } from '../../../app/shared/services/flamelink.service';
 
 @Component({
   selector: 'page-about',
-  templateUrl: 'about.html',
-  providers: [
-    WordpressService,
-    // FlamelinkService
-  ]
+  templateUrl: 'about.html'
 })
 export class AboutComponent {
-  page: any;
-  media: any;
-  selectedPage: string = "read";
-  private wpAboutPostId: Number = 993;
-
-  watchPage = YoutubeChannelComponent
-
-  connectPage: any;
-  connectMedia: any;
-  private wpConnectPostId: Number = 1006;
+	selectedPage: string = "tab1";
   
-  constructor(public navController: NavController,
-    private wordpressService: WordpressService,
-    // private flamelinkService: FlamelinkService,
-    private loadingController: LoadingController,
-		private menuController: MenuController,
-		private events: Events) { }
+  map: any = {
+    'tab1': { title: 'tab1', icon: 'fa-book', component: ArticleComponent, params: {postId: 993}, postListId: 0 },
+    'tab2': { title: 'tab2', icon: 'fa-video-camera', component: YoutubeChannelComponent },
+    'tab3': { title: 'tab3', icon: 'fa-music', component: AudioPage },
+  };
 
-  ngOnInit() {
-    this.selectedPage = "read";
-    this.getPage(this.wpAboutPostId);
-
-
-    // this.flamelinkService.getApp().content.get('home')
-		// .then(homeContent => {
-		// 	const data:any = homeContent;
-		// 	console.log('homeContent', data);
-		// 	data.imageDeck.forEach(function(val) {
-		// 		console.log(val)
-		// 		this.flamelinkService.getApp().storage.getURL(val.image[0])
-		// 		.then(url => console.log('File URL:', url))
-		// 		.catch(error => console.error('Something went wrong while retrieving the file URL. Details:', error));
-		// 	})
-		// })
-		// .catch(error => console.log(error))
-  }
-
-  getPage(id) {
-    let loader = this.loadingController.create({
-      content: "Please wait"
-    });
-
-    loader.present();
-    this.wordpressService.getPost(id)
-      .subscribe(result => {
-        this.page = result;
-        this.page.featImgSrc =result._embedded["wp:featuredmedia"][0].source_url;
-      },
-        error => console.log(error),
-        () => loader.dismiss());
-  }
+  constructor(public navCtrl: NavController) { }
+  
+  ngOnInit() { }
 }

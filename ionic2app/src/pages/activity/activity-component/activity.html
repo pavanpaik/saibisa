@@ -1,27 +1,53 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle icon-only>
-			<ion-icon name='menu'></ion-icon>
-		</button>
-		<ion-title>{{'ACTIVITIES' | translate}}</ion-title>
-	</ion-navbar>
-</ion-header>
-
-<ion-content>
-	<ion-card>
-		<img *ngIf="media" src="{{media.source_url}}" />
-		<p padding *ngIf="page" padding [innerHTML]="page.content.rendered"></p>
-	</ion-card>
-	<ion-list>
-		<ion-item *ngFor="let post of posts" (click)="loadPost(post)">
-			<ion-thumbnail item-left >
-					<img *ngIf="post.featImgSrc" src="{{post.featImgSrc}}" />
-			</ion-thumbnail>
-			<h2 [innerHTML]="post.title.rendered"></h2>
-			<p [innerHTML]="post.content.rendered | truncate: 150"></p>
-		</ion-item>
-	</ion-list>
-	<ion-infinite-scroll (ionInfinite)="loadMore($event)">
-		<ion-infinite-scroll-content></ion-infinite-scroll-content>
-	</ion-infinite-scroll>
-</ion-content>
+		<ion-navbar>
+			<button ion-button menuToggle icon-only>
+				<ion-icon name='menu'></ion-icon>
+			</button>
+			<ion-title>{{'ACTIVITIES' | translate}}</ion-title>
+		</ion-navbar>
+		<ion-segment [(ngModel)]="selectedPage">
+			<ion-segment-button value="tab1">
+				{{map['tab1'].title | translate}}
+			</ion-segment-button>
+			<ion-segment-button value="tab2">
+				{{map['tab2'].title | translate}}
+			</ion-segment-button>
+			<ion-segment-button value="tab3">
+				{{map['tab3'].title | translate}}
+			</ion-segment-button>
+			<ion-segment-button value="tab4">
+				{{map['tab4'].title | translate}}
+			</ion-segment-button>
+			<ion-segment-button value="tab5">
+				{{map['tab5'].title | translate}}
+			</ion-segment-button>
+		</ion-segment>
+	</ion-header>
+	
+	<ion-content [ngSwitch]="selectedPage">
+		<ion-card *ngSwitchCase="'tab1'">
+			<ion-card-content class="inner-island-page">
+				<ion-nav [root]="map['tab1'].component" [rootParams]="map['tab1'].params"></ion-nav>
+			</ion-card-content>
+		</ion-card>
+		<ion-card *ngSwitchCase="'tab2'">
+			<ion-card-content class="inner-island-page">
+				<ion-nav [root]="map['tab2'].component" [rootParams]="map['tab2'].params"></ion-nav>
+			</ion-card-content>
+		</ion-card>
+		<ion-card *ngSwitchCase="'tab3'">
+			<ion-card-content class="inner-island-page">
+				<ion-nav [root]="map['tab3'].component" [rootParams]="map['tab3'].params"></ion-nav>
+			</ion-card-content>
+		</ion-card>
+		<ion-card *ngSwitchCase="'tab4'">
+			<ion-card-content class="inner-island-page">
+				<ion-nav [root]="map['tab4'].component" [rootParams]="map['tab4'].params"></ion-nav>
+			</ion-card-content>
+		</ion-card>
+		<ion-card *ngSwitchCase="'tab5'">
+			<ion-card-content class="inner-island-page">
+				<ion-nav [root]="map['tab5'].component" [rootParams]="map['tab5'].params"></ion-nav>
+			</ion-card-content>
+		</ion-card>
+	</ion-content>

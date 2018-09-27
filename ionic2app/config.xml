@@ -4,7 +4,7 @@
     <description>
     </description>
     <author email="pavanpaik1984@gmail.com" href="https://codecanyon.net/user/gtsopour/portfolio">Pavan Pai</author>
-    <content original-src="index.html" src="http://192.168.1.167:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />

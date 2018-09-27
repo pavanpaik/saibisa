@@ -83,7 +83,7 @@ ion-app{
     }
     ion-content {}
   }
-  
+
   
   ion-header {
     ion-navbar {
@@ -91,6 +91,9 @@ ion-app{
         background-image: url(../assets/img/header_bg_plain.jpg) !important;
       }
       ion-title {
+        div.toolbar-title {
+          color: #8a1f12;
+        }
         img {
           height: 41px;
         }
@@ -99,6 +102,10 @@ ion-app{
   }
 
   ion-content {
+    .card-ios, .card-md, .card-wp, {
+      margin: 0px 0px 10px;
+      width: 100%;
+    }
     ion-card {
       ion-card-content.inner-page {
         .fixed-content, .scroll-content {

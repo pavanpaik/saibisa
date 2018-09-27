@@ -51,6 +51,13 @@ page-tabs {
     .ion-ios-fa-about-outline::before,
     .ion-md-fa-about::before {
         @extend .fa-icons-general;
-        content: "\f075";
+        content: "\f005 ";
+    }
+
+    .ion-ios-fa-music::before,
+    .ion-ios-fa-music-outline::before,
+    .ion-md-fa-music::before {
+        @extend .fa-icons-general;
+        content: "\f001";
     }
 }
