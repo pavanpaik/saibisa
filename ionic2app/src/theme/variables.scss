@@ -1,40 +1,20 @@
-// Ionic Variables and Theming.
-// For more info, please see: http://ionicframework.com/docs/theming/
-
-// Font path is used to include ionicons, roboto, and noto sans fonts
-$font-path: "../assets/fonts";  // node_modules/ionic-angular/fonts
-// @import url(https://fonts.googleapis.com/css?family=Arima+Madurai|Lato|Pacifico);
-
-// // $font-family-base: "Lato", sans-serif !default;
-// // $font-family-base: "Arima Madurai", cursive !default;
-// $font-family-base: "Pacifico", cursive !default;
-
-@font-face {
-  font-family: AppFont;
-  src: url("…/assets/fonts/Lato-Light.ttf");
-  }
-  
-  body, span, button, h1, h2, h3, h4, h5, h6 {
-  font-family: ‘AppFont’ !important;
-  }
-
-
-// The app direction is used to include rtl styles in your app.
-// For more info, please see: http://ionicframework.com/docs/theming/rtl-support/
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
 $app-direction: ltr;
+@import "ionic.globals";
 
-@import "ionic.globals";  // /node_modules/ionic-angular/themes/ionic.globals.scss
+@import './gradient-mixins';
 
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-// uigradients
-// For more info, please see: https://github.com/subinsebastian/uigradients-scss
-@import './gradient-mixins';
+
+
 
 // Named Color Variables
 // --------------------------------------------------
@@ -45,63 +25,38 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:         #488aff,
-  primary-lite:    #d4d5d6,
+  primary:    #958074,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
+  light:      #46c6f3,//#f4f4f4,//
   dark:       #222
 );
 
-/*
-
-$colors: (
-  primary:    #408AF8,
-  secondary:  #3ECF8E,
-  danger:     #f53d3d,
-  light:      #F6F9FC,
-  dark:       #6772E5
-);
-
-*/
-
-// Shared Variables
-// --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass variables found in Ionic's source scss files.
-// To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-//$text-color:         white !default;
-$link-color:         color($colors, light) !default;
-$toolbar-background: transparent !default;
-$tabs-background:	transparent !default;
-$tabs-ios-tab-color-inactive: #424242;
-$tabs-md-tab-color-inactive: #424242;
-//$text-color: #000099;
-
+$tabs-tab-color-active: #8e2014;
+$tab-background: #f0f0f0;
+$toolbar-background: color($colors, primary);
+$background-color: #f7f7f7;
+$text-color: #5d5d5d;
+$text-input-highlight-color-valid: #5fcfdb;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-// .ios {
-// }
+
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-// .md {
-// }
+
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-// .wp {
-// }
+
 
 
 // App Theme
@@ -111,17 +66,67 @@ $tabs-md-tab-color-inactive: #424242;
 // so that the above variables are used and Ionic's
 // default are overridden.
 
-@import "ionic.theme.default";  // /node_modules/ionic-angular/themes/ionic.theme.default.scss
+@import "ionic.theme.default";
+ion-app{
+  ion-menu {
+    ion-header {
+      ion-toolbar {
+        div.toolbar-background {
+          background-image: url(../assets/img/header_bg_plain.jpg) !important;
+        }
+      }
+      ion-title {
+        img {
+          height: 41px;
+        }}
+    }
+    ion-content {}
+  }
+  
+  
+  ion-header {
+    ion-navbar {
+      div.toolbar-background {
+        background-image: url(../assets/img/header_bg_plain.jpg) !important;
+      }
+      ion-title {
+        img {
+          height: 41px;
+        }
+      }
+    }
+  }
 
-@import "./green-and-blue-theme";
-@import "./facebook-messenger-theme";
+  ion-content {
+    ion-card {
+      ion-card-content.inner-page {
+        .fixed-content, .scroll-content {
+            margin-bottom: 0px !important;
+        }
+        .bar-button-menutoggle {
+            display: none;    
+        }
+      }
+      ion-card-content.inner-island-page {
+        .fixed-content, .scroll-content {
+            margin: 0px !important;
+        }
+        ion-header {
+            display: none;    
+        }
+      }
+    }
+  }
+}
+
 
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
-// http://ionicframework.com/docs/ionicons/
+// http://ionicframework.com/docs/v2/ionicons/
 
-@import "ionic.ionicons";  // /node_modules/ionicons
+@import "ionic.ionicons";
+
 
 // Fonts
 // --------------------------------------------------
