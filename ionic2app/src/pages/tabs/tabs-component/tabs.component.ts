@@ -11,6 +11,7 @@ import { YoutubeChannelComponent } from '../../youtube/youtube-channel/youtube-c
 import { WordpressPosts } from '../../wordpress/wordpress-posts/wordpress-posts.component';
 import { WordpressPost } from '../../wordpress/wordpress-post/wordpress-post.component';
 import { PlaceholderComponent } from '../../placeholder/placeholder-component/placeholder.component';
+import { AudioPage } from '../../audio/audio-component/audio.component';
 
 @Component({
   selector: 'page-tabs',
@@ -19,7 +20,7 @@ import { PlaceholderComponent } from '../../placeholder/placeholder-component/pl
 export class TabsComponent {
   home: any = HomeComponent;
   about: any = SaibisaComponent;
-  donate: any = DonateComponent;
+  donate: any = AudioPage;//DonateComponent;
   videos: any = YoutubeChannelComponent;
   healing: any = HealingComponent;
   mySelectedIndex: number = 0;
