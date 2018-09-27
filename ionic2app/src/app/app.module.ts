@@ -1,5 +1,8 @@
 import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { SharedModule } from './shared/shared.module'
 import { HomeModule } from '../pages/home/home.module';
@@ -24,6 +27,8 @@ import { FacebookConnectModule } from '../pages/facebook-connect/facebook-connec
 import { LoginModule } from '../pages/login/login.module';
 import { ChartsModule } from '../pages/charts/charts.module';
 import { FirebaseModule } from '../pages/firebase/firebase.module';
+import { AudioPageModule } from '../pages/audio/audio.module';
+
 // Module Example: Use the PlaceholderModule for any new App Module
 import { PlaceholderModule } from '../pages/placeholder/placeholder.module';
 
@@ -37,12 +42,23 @@ import { firebaseConfig } from './app.firebase.config';
 import { WordpressService } from './shared/services/wordpress.service';
 
 import { OneSignal } from '@ionic-native/onesignal';
+import { AudioProvider } from '../providers/audio/audio';
+import { CloudProvider } from '../providers/cloud/cloud';
+import { IonicStorageModule } from '@ionic/storage';
+import { StoreModule } from '@ngrx/store';
+import { mediaStateReducer } from '../providers/store/store';
 
 @NgModule({
   declarations: [
     MyApp
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    StoreModule.forRoot({
+      appState: mediaStateReducer
+    }),
     IonicModule.forRoot(MyApp),
     SharedModule,
     HomeModule,
@@ -70,7 +86,8 @@ import { OneSignal } from '@ionic-native/onesignal';
     PlaceholderModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AudioPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -79,7 +96,9 @@ import { OneSignal } from '@ionic-native/onesignal';
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     OneSignal,
-    WordpressService
+    WordpressService,
+    AudioProvider,
+    CloudProvider
     
     // FlamelinkService
   ]

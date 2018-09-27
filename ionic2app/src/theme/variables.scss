@@ -28,7 +28,7 @@ $colors: (
   primary:    #958074,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #46c6f3,//#f4f4f4,//
+  light:      #f1eeec,//#f4f4f4,//
   dark:       #222
 );
 
@@ -78,7 +78,8 @@ ion-app{
       ion-title {
         img {
           height: 41px;
-        }}
+        }
+      }
     }
     ion-content {}
   }
