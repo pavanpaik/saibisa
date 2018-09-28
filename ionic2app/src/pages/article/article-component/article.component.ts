@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ToastController, Events, MenuController } from 'ionic-angular';
+import { IonicApp, NavController, NavParams, LoadingController, ToastController, Events, MenuController, ModalController} from 'ionic-angular';
 import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { WordpressPost } from '../../wordpress/wordpress-post/wordpress-post.component';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
@@ -8,7 +8,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
   selector: 'page-article',
   templateUrl: 'article.html',
   providers: [
-    WordpressService
+		WordpressService
   ]
 })
 export class ArticleComponent {
@@ -27,8 +27,9 @@ export class ArticleComponent {
     private navParams: NavParams,
 		private wordpressService: WordpressService,
 		private toastController: ToastController,
-		private photoViewer: PhotoViewer) { }
-
+		private photoViewer: PhotoViewer,
+		app: IonicApp,public modalCtrl : ModalController
+		) { }
   ngOnInit() {
 		
 		if (this.navParams.get('postId')) {
@@ -50,6 +51,10 @@ export class ArticleComponent {
 	
 	openImage(imgUrl) {
 		this.photoViewer.show(imgUrl);
+	}
+
+	hasGallery() {
+		return this.gallery && (this.gallery.length > 0)
 	}
 
   getPageGalleryImages(id) {
@@ -112,7 +117,11 @@ export class ArticleComponent {
 	}
 
 	getEmbeddedFeatureImage(post) {
-		return post._embedded["wp:featuredmedia"][0].source_url
+		var imgSrc;
+		try {
+			imgSrc = post._embedded["wp:featuredmedia"][0].source_url
+		} catch(e) {}
+		return imgSrc;
 	}
 	loadMore(infiniteScroll) {
 		this.pageCount++;
@@ -147,6 +156,12 @@ export class ArticleComponent {
 			id: post.id
 		});
 	}
+
+	openModal(post){
+		this.modalCtrl.create(WordpressPost, {
+			id: post.id
+		}).present();
+	} 
 
 	createQuery() {
 		let query = {};

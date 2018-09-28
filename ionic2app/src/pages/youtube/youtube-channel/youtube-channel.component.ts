@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 
 import { YoutubeService } from '../shared/services/youtube.service';
 import { YoutubeChannelVideoComponent } from '../youtube-channel-video/youtube-channel-video.component';
@@ -16,6 +16,7 @@ export class YoutubeChannelComponent {
 	constructor(
 		private youtubeService: YoutubeService,
 		private navController: NavController,
+		private modalCtrl : ModalController,
 		private loadingController: LoadingController) {}
 
 	ngOnInit() {
@@ -43,9 +44,12 @@ export class YoutubeChannelComponent {
 	}
 
 	loadVideo(video) {
-		this.navController.push(YoutubeChannelVideoComponent, {
+		// this.navController.push(YoutubeChannelVideoComponent, {
+		// 	video: video
+		// });
+		this.modalCtrl.create(YoutubeChannelVideoComponent, {
 			video: video
-		});
+		}).present();
 	}
 
 }

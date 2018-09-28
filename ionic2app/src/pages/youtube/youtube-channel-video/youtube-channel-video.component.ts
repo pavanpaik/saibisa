@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NavParams, Platform, Events } from 'ionic-angular';
+import { NavParams, NavController, Platform, Events } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Config } from '../../../app/app.config';
 
@@ -14,6 +14,7 @@ export class YoutubeChannelVideoComponent {
 	
 	constructor(
 		private navParams: NavParams,
+		public navCtrl: NavController,
 		private sanitizer: DomSanitizer,
 		private socialSharing: SocialSharing,
 		private config: Config,
@@ -31,6 +32,10 @@ export class YoutubeChannelVideoComponent {
 				this.onResume()
 			});
 		});
+	}
+
+	closeModal() {
+        this.navCtrl.pop();
 	}
 
 	ngOnInit() {

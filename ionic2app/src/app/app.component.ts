@@ -25,6 +25,7 @@ import { WordpressPost } from '../pages/wordpress/wordpress-post/wordpress-post.
 import { DonateComponent } from '../pages/donate/donate-component/donate.component';
 import { FirebaseHomeComponent } from '../pages/firebase/firebase-home/firebase-home.component';
 import { ArticleComponent } from '../pages/article/article-component/article.component';
+import { SaibisaComponent } from '../pages/saibisa/saibisa-component/saibisa.component';
 
 import * as firebase from 'firebase';
 import flamelink from 'flamelink';
@@ -67,9 +68,11 @@ export class MyApp {
 				storage.set('language', 'en');
 			}
 		});
-
+		
 		this.pages = [
+			{ title: 'About Di Jaan', icon: 'fa-star', component: SaibisaComponent },
 			{ title: 'Di\'s Books', component: ArticleComponent, icon: 'fa-book', params: { postId: 1180} },
+			{ title: 'Events', component: ArticleComponent, icon: 'fa-bullhorn', params: {postId: 1211, postListId: 9} },
 			{ title: 'Donate', component: DonateComponent, icon: 'fa-heart' },
 			{ title: 'Connect', component: ArticleComponent, icon: 'fa-address-card-o', params: { postId: 1006 } },
 			// { title: 'EXPERIMENT', component: FirebaseHomeComponent, icon: 'aperture' }

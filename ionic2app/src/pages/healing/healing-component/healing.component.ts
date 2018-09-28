@@ -12,12 +12,18 @@ import { ArticleComponent } from '../../article/article-component/article.compon
 export class HealingComponent {
   selectedPage: string = "tab1";
   
-  map: any = {
-    'tab1': { title: 'Who are We', icon: 'fa-book', component: ArticleComponent, params: {postId: 1185} },
+  /* 
+  'tab1': { title: 'Who are We', icon: 'fa-book', component: ArticleComponent, params: {postId: 1185} },
     'tab2': { title: 'What we do', icon: 'fa-book', component: ArticleComponent, params: {postId: 1187} },
     'tab3': { title: 'Become a Healer', icon: 'fa-book', component: ArticleComponent, params: {postId: 1189} },
     'tab4': { title: 'Testimonial', icon: 'fa-book', component: ArticleComponent, params: {postId: 1213} },
+  */ 
+  map: any = {
+    'tab1': { title: 'We Heal', icon: 'fa-book', component: ArticleComponent, params: {postId: 1182, postListId: 14} },
+    'tab2': { title: 'Watch Healing', icon: 'fa-video-camera', component: YoutubeChannelComponent },
+    'tab3': { title: 'Testimonial', icon: 'fa-book', component: ArticleComponent, params: {postId: 1213} },
   };
+
 
   constructor(public navCtrl: NavController) { }
   

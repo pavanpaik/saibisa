@@ -41,9 +41,9 @@ export class HomeComponent {
 		{
 			image: "assets/img/banners/baba_100.jpg",
 		},
-		{
-			image: "assets/img/banners/walkathon_1.jpg",
-		}
+		// {
+		// 	image: "assets/img/banners/walkathon_1.jpg",
+		// }
 	];
 
 	ngOnInit() {

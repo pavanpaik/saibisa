@@ -7,12 +7,12 @@
 		</ion-navbar>
 		<ion-segment [(ngModel)]="selectedPage">
 			<ion-segment-button value="tab1">
-				{{map['tab1'].title | translate}}
+				{{map['tab1'].title }}
 			</ion-segment-button>
 			<ion-segment-button value="tab2">
-				{{map['tab2'].title | translate}}
+				{{map['tab2'].title }}
 			</ion-segment-button>
-			<ion-segment-button value="tab3">
+			<!-- <ion-segment-button value="tab3">
 				{{map['tab3'].title | translate}}
 			</ion-segment-button>
 			<ion-segment-button value="tab4">
@@ -20,7 +20,7 @@
 			</ion-segment-button>
 			<ion-segment-button value="tab5">
 				{{map['tab5'].title | translate}}
-			</ion-segment-button>
+			</ion-segment-button> -->
 		</ion-segment>
 	</ion-header>
 	
@@ -35,7 +35,7 @@
 				<ion-nav [root]="map['tab2'].component" [rootParams]="map['tab2'].params"></ion-nav>
 			</ion-card-content>
 		</ion-card>
-		<ion-card *ngSwitchCase="'tab3'">
+		<!-- <ion-card *ngSwitchCase="'tab3'">
 			<ion-card-content class="inner-island-page">
 				<ion-nav [root]="map['tab3'].component" [rootParams]="map['tab3'].params"></ion-nav>
 			</ion-card-content>
@@ -49,5 +49,5 @@
 			<ion-card-content class="inner-island-page">
 				<ion-nav [root]="map['tab5'].component" [rootParams]="map['tab5'].params"></ion-nav>
 			</ion-card-content>
-		</ion-card>
+		</ion-card> -->
 	</ion-content>

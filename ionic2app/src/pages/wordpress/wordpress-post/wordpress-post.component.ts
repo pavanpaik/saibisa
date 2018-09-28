@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, LoadingController } from 'ionic-angular';
+import { NavParams, NavController, LoadingController } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
@@ -14,9 +14,10 @@ export class WordpressPost {
     authorData: any;
 	comments = [];
 	island: boolean = false;
-
+	
 	constructor(
 			private navParams: NavParams,
+			public navCtrl: NavController,
 			private wordpressService: WordpressService,
 			private loadingController: LoadingController,
 			private iab: InAppBrowser,
@@ -38,6 +39,10 @@ export class WordpressPost {
 		}
 	}
 
+	closeModal() {
+        this.navCtrl.pop();
+	}
+	
 	getPost(id) {
 		let loader = this.loadingController.create({
 			content: "Please wait"
@@ -47,7 +52,7 @@ export class WordpressPost {
 		this.wordpressService.getPost(id)
 		.subscribe(result => {
 			this.post = result;
-			this.post.featImgSrc =result._embedded["wp:featuredmedia"][0].source_url;
+			this.post.featImgSrc =this.getEmbeddedFeatureImage(result);
 
 			this.authorData = this.post["_embedded"].author[0];
 			if(this.post["_embedded"].replies) {
@@ -56,6 +61,14 @@ export class WordpressPost {
 		},
 		error => console.log(error),
     () => loader.dismiss());
+	}
+
+	getEmbeddedFeatureImage(post) {
+		var imgSrc;
+		try {
+			imgSrc = post._embedded["wp:featuredmedia"][0].source_url
+		} catch(e) {}
+		return imgSrc;
 	}
 
 	previewPost() {

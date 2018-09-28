@@ -92,7 +92,7 @@ ion-app{
       }
       ion-title {
         div.toolbar-title {
-          color: #8a1f12;
+          color: #8e2014;
         }
         img {
           height: 41px;
@@ -103,7 +103,8 @@ ion-app{
 
   ion-content {
     .card-ios, .card-md, .card-wp, {
-      margin: 0px 0px 10px;
+      // margin: 0px 0px 10px;
+      margin: 0px;
       width: 100%;
     }
     ion-card {
@@ -124,6 +125,15 @@ ion-app{
         }
       }
     }
+  }
+}
+
+div.modal-wrapper {
+  button.menu {
+    display: none;
+  }
+  button.close {
+    color: #8e2014;
   }
 }
 
