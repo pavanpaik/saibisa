@@ -32,6 +32,13 @@ export class WordpressService {
 		});
 	}
 
+	public getPostGallery(id) {
+		return this.http.get(this.config.wordpressApiUrl + `/wp/v2/comments?post=${id}`)
+	  	.map(result => {
+			return result.json();
+		});
+	}
+
 	public getMedia(id) {
 		return this.http.get(this.config.wordpressApiUrl + `/wp/v2/media/${id}`)
 	  	.map(result => {

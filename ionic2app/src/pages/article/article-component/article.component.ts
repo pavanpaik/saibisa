@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, Events, MenuController } from 'ionic-angular';
 import { WordpressService } from '../../../app/shared/services/wordpress.service';
 import { WordpressPost } from '../../wordpress/wordpress-post/wordpress-post.component';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 @Component({
   selector: 'page-article',
@@ -25,7 +26,8 @@ export class ArticleComponent {
     private events: Events,
     private navParams: NavParams,
 		private wordpressService: WordpressService,
-		private toastController: ToastController) { }
+		private toastController: ToastController,
+		private photoViewer: PhotoViewer) { }
 
   ngOnInit() {
 		
@@ -44,7 +46,11 @@ export class ArticleComponent {
 		} else {
 			this.posts = null;
 		}
-  }
+	}
+	
+	openImage(imgUrl) {
+		this.photoViewer.show(imgUrl);
+	}
 
   getPageGalleryImages(id) {
 		this.wordpressService.getPostGallery(id)
@@ -62,10 +68,11 @@ export class ArticleComponent {
     loader.present();
     this.wordpressService.getPost(id)
       .subscribe(result => {
-        this.page = result;
-        if (result) {
-          this.getMedia(result.featured_media);
-        }
+				this.page = result;
+				this.page.featImgSrc = this.getEmbeddedFeatureImage(this.page);
+        // if (result) {
+        //   this.getMedia(result.featured_media);
+        // }
       },
         error => console.log(error),
         () => loader.dismiss());
@@ -95,7 +102,7 @@ export class ArticleComponent {
 
       for(var i=0; i < posts.length; i++) { 
         try {
-          posts[i].featImgSrc = posts[i]._embedded["wp:featuredmedia"][0].source_url
+          posts[i].featImgSrc = this.getEmbeddedFeatureImage(posts[i]);
         } catch(e) {}
       }
       this.posts = posts;
@@ -104,6 +111,9 @@ export class ArticleComponent {
 		});
 	}
 
+	getEmbeddedFeatureImage(post) {
+		return post._embedded["wp:featuredmedia"][0].source_url
+	}
 	loadMore(infiniteScroll) {
 		this.pageCount++;
 
