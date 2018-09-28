@@ -14,6 +14,7 @@ export class ArticleComponent {
 	postId: Number;
 	category: any;
 	page: any;
+	gallery: any;
 	media: any;
 	posts: any;
 	pageCount: number;
@@ -31,6 +32,7 @@ export class ArticleComponent {
 		if (this.navParams.get('postId')) {
 			this.postId = this.navParams.get('postId');
 			this.getPage(this.postId);
+			this.getPageGalleryImages(this.postId);
 		} else {
 			this.page = null;
 			this.media = null;
@@ -43,6 +45,14 @@ export class ArticleComponent {
 			this.posts = null;
 		}
   }
+
+  getPageGalleryImages(id) {
+		this.wordpressService.getPostGallery(id)
+      .subscribe(result => {
+        this.gallery = result;
+      },
+        error => console.log(error));
+	}
 
   getPage(id) {
     let loader = this.loadingController.create({
