@@ -19,6 +19,7 @@ export class ArticleComponent {
 	media: any;
 	posts: any;
 	pageCount: number;
+	modal: boolean;
 	
   constructor(public navController: NavController,
     private loadingController: LoadingController,
@@ -30,6 +31,12 @@ export class ArticleComponent {
 		private photoViewer: PhotoViewer,
 		app: IonicApp,public modalCtrl : ModalController
 		) { }
+
+
+	closeModal() {
+		this.navController.pop();
+	}
+
   ngOnInit() {
 		
 		if (this.navParams.get('postId')) {
@@ -41,6 +48,12 @@ export class ArticleComponent {
 			this.media = null;
 		}
 		
+		if (this.navParams.get('modal')) {
+			this.modal = true;
+		} else {
+			this.modal = false;
+		}
+
 		if (this.navParams.get('postListId')) {
 			this.category = this.navParams.get('postListId');
 			this.getPosts();
@@ -157,9 +170,13 @@ export class ArticleComponent {
 		});
 	}
 
-	openModal(post){
-		this.modalCtrl.create(WordpressPost, {
-			id: post.id
+	openModal1(post){
+		// this.modalCtrl.create(WordpressPost, {
+		// 	id: post.id
+		// }).present();
+		this.modalCtrl.create(ArticleComponent, {
+			postId: post.id,
+			modal: true
 		}).present();
 	} 
 

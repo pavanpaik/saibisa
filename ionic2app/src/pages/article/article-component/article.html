@@ -1,9 +1,14 @@
 <ion-header>
 	<ion-navbar>
-		<button ion-button menuToggle icon-only>
+		<button ion-button menuToggle icon-only *ngIf="!modal">
 			<ion-icon name='menu'></ion-icon>
 		</button>
 		<ion-title *ngIf="page"><span [innerHTML]="page.title.rendered"></span></ion-title>
+		<ion-buttons end *ngIf="modal">
+				<button ion-button icon-only (click)="closeModal()" class="close">
+						<ion-icon item-right name="ios-close-outline"></ion-icon>
+				</button>
+		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 
@@ -26,7 +31,7 @@
 	</ion-card>
 	
 	<ion-list>
-		<ion-item *ngFor="let post of posts" (click)="openModal(post)">
+		<ion-item *ngFor="let post of posts" (click)="openModal1(post)">
 			<ion-thumbnail item-left *ngIf="post.featImgSrc">
 					<img src="{{post.featImgSrc}}" />
 			</ion-thumbnail>
