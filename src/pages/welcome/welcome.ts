@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
 import { FlamelinkService } from '../../app/shared/services/flamelink.service';
-
+import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
+ 
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -19,9 +20,10 @@ export class WelcomePage {
 
   content: any;
 
-  constructor(public navCtrl: NavController, private _fl: FlamelinkService) { }
+  constructor(public navCtrl: NavController, private _fl: FlamelinkService,public logger: EventLoggerProvider) { }
 
   ngOnInit() {
+    this.logger.logButton('ngOnInit',{ pram: "paramValue" })
     this._fl.getApp().content.subscribe('home', { populate: ['banner']}, (error, data) => {
       if (error) {
         console.error(error);

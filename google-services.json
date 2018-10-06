@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "889072797417",
+    "firebase_url": "https://saibisa-3f765.firebaseio.com",
+    "project_id": "saibisa-3f765",
+    "storage_bucket": "saibisa-3f765.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889072797417:android:8aa365e1a65c5fdb",
+        "android_client_info": {
+          "package_name": "com.dijaanjayawahi.saibisa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889072797417-63u5qfqktpeilvraa5pv8h3dvb2gbc6k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyvXCoRWVqJA9IuD0BIiBG_KpUbxH_eMM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

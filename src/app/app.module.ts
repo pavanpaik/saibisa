@@ -20,6 +20,9 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from './app.firebase.config';
 
+import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
+import { EventLoggerProvider } from '../providers/event-logger/event-logger';
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -75,7 +78,9 @@ export function provideSettings(storage: Storage) {
     WordpressService,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    FirebaseAnalytics,
+    EventLoggerProvider
   ]
 })
 export class AppModule { }
