@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
+import { FlamelinkService } from '../../app/shared/services/flamelink.service';
+
+
 /**
  * The Welcome Page is a splash page that quickly describes the app,
  * and then directs the user to create an account or log in.
@@ -14,7 +17,20 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController) { }
+  content: any;
+
+  constructor(public navCtrl: NavController, private _fl: FlamelinkService) { }
+
+  ngOnInit() {
+    this._fl.getApp().content.subscribe('home', { populate: ['banner']}, (error, data) => {
+      if (error) {
+        console.error(error);
+      }
+
+      this.content = data;
+    });
+
+  }
 
   login() {
     this.navCtrl.push('LoginPage');
