@@ -7,13 +7,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content scroll="false">
-    <div class="splash-bg" [ngStyle]="{ 'background-image': 'url(' + splashBg + ')'}"></div>
+  <div class="splash-bg" background-image="{{ splashBg }}">
+  </div>
     <div class="splash-info">
-      <div class="splash-logo" [ngStyle]="{ 'background-image': 'url(' + splashLogo + ')'}"></div>
+      <div class="splash-logo" background-image="{{ splashLogo }}"></div>
       <div class="splash-intro" [textContent]="msgTitle"></div>
-      <div>
-        <p class="mb-message" [textContent]="msgContent"></p>
-      </div>
+      <div class="message" [innerHTML]="msgContent"></div>
     </div>
 </ion-content>
   

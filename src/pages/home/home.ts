@@ -16,7 +16,7 @@ export class HomePage {
   msgContent: string = '';
   slides: any;
   splashBg: string = '../assets/img/static-app-banner.png';
-  splashLogo: string = '../assets/img/dii.png';
+  splashLogo: string = '../assets/img/splash-logo-loading.png';
 
   constructor(
     public navCtrl: NavController,

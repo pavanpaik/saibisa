@@ -5,17 +5,17 @@ page-home {
     .splash-bg {
         position: relative;
         // background: url('../assets/img/static-app-banner.jpg') no-repeat transparent;
-        background-size: cover;
-        height: 45%;
+        background-size: contain;
+        height: 35%;
         z-index: 1;
         background-repeat: repeat-x;
-        animation: animatedBackground 40s linear infinite;
+        // animation: animatedBackground 40s linear infinite;
       }
     
-      @keyframes animatedBackground {
-        from { background-position: 0 0; }
-        to { background-position: 100% 0; }
-      }
+      // @keyframes animatedBackground {
+      //   from { background-position: 0 0; }
+      //   to { background-position: 100% 0; }
+      // }
     
       .splash-info {
         position: relative;
@@ -37,9 +37,12 @@ page-home {
         margin: auto;
       }
 
-    .mb-message{
-        font-size: 16px;
-        color: #1b1c1d;
-        text-shadow: 0 1px 1px rgba(255,255,255,0.1);
-    }
+      div.message {
+        padding: 0px 10px 0px 10px;
+        p.message{
+            font-size: 16px;
+            color: #1b1c1d;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.1);
+        }
+      }
 }
