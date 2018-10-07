@@ -11,7 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'home.html',
 })
 export class HomePage {
-  title: string = 'Home Page';
+  title: string = 'Home';
   msgTitle: string = '';
   msgContent: string = '';
   slides: any;
@@ -33,6 +33,7 @@ export class HomePage {
 
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
+    
     this._fl.getApp().content.subscribe('homePage', { populate: true }, (error, data) => {
       if (error) {
         console.error(error);

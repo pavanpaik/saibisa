@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content class="banner-container" text-wrap>
+      <img *ngIf="heroImage" src="{{heroImage}}" />
+      <p padding *ngIf="content" padding [innerHTML]="content"></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
