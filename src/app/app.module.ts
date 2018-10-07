@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Camera } from '@ionic-native/camera';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,6 +23,10 @@ import { firebaseConfig } from './app.firebase.config';
 
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 import { EventLoggerProvider } from '../providers/event-logger/event-logger';
+
+import { AudioProvider } from '../providers/audio/audio';
+import { StoreModule } from '@ngrx/store';
+import { mediaStateReducer } from '../providers/store/store';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -50,6 +55,7 @@ export function provideSettings(storage: Storage) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -57,6 +63,9 @@ export function provideSettings(storage: Storage) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
+    }),
+    StoreModule.forRoot({
+      appState: mediaStateReducer
     }),
     IonicModule.forRoot(MyApp),
     SharedModule,
@@ -80,7 +89,8 @@ export function provideSettings(storage: Storage) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     FirebaseAnalytics,
-    EventLoggerProvider
+    EventLoggerProvider,
+    AudioProvider
   ]
 })
 export class AppModule { }

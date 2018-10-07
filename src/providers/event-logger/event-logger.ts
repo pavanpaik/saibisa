@@ -7,20 +7,40 @@ import { isCordovaAvailable } from '../../common/is-cordova-available';
 @Injectable()
 export class EventLoggerProvider {
 
-  constructor(public http: HttpClient,public firebaseAnalytics: FirebaseAnalytics) {
+  constructor(public http: HttpClient, public firebaseAnalytics: FirebaseAnalytics) {
     console.log('Hello EventLoggerProvider Provider');
-    if(isCordovaAvailable()) {
+    if (isCordovaAvailable()) {
       firebaseAnalytics.setEnabled(true)
-      .then((res: any) => console.log("Success, setEnabled",res))
-      .catch((error: any) => console.error(error));
+        .then((res: any) => console.log("Success, setEnabled", res))
+        .catch((error: any) => console.error(error));
     }
   }
 
-  logButton(name:string,value:any){
-    if(isCordovaAvailable()) {
-      this.firebaseAnalytics.logEvent('page_view', {page: "dashboard"})
-      .then((res: any) => console.log("Success, page_view",res))
-      .catch((error: any) => console.error(error));
+  logButton(name: string, value: any) {
+    if (isCordovaAvailable()) {
+      this.firebaseAnalytics.logEvent('page_view', { page: "dashboard" })
+        .then((res: any) => console.log("Success, page_view", res))
+        .catch((error: any) => console.error(error));
+    }
+  }
+
+  logActivityEvent(value: any) {
+    this.logEvent('activity', value);
+  }
+
+  logEvent(name: string, value: any) {
+    if (isCordovaAvailable()) {
+      this.firebaseAnalytics.logEvent(name, value)
+        .then((res: any) => console.log("Success, logEvent", res))
+        .catch((error: any) => console.error(error));
+    }
+  }
+
+  setCurrentScreen(name: string) {
+    if (isCordovaAvailable()) {
+      this.firebaseAnalytics.setCurrentScreen(name)
+        .then((res: any) => console.log("Success, setCurrentScreen", res))
+        .catch((error: any) => console.error(error));
     }
   }
 }
