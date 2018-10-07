@@ -12,7 +12,8 @@ import { OneSignal, OSNotificationPayload } from '@ionic-native/onesignal';
 import { oneSignalAppId, sender_id } from './app.config';
 
 @Component({
-  template: `<ion-menu [content]="content">
+  template: `<ion-split-pane>
+    <ion-menu [content]="content">
       <ion-header>
         <ion-toolbar>
           <ion-title>Pages</ion-title>
@@ -28,7 +29,8 @@ import { oneSignalAppId, sender_id } from './app.config';
       </ion-content>
 
     </ion-menu>
-    <ion-nav #content [root]="rootPage"></ion-nav>`
+    <ion-nav main #content [root]="rootPage"></ion-nav>
+    </ion-split-pane>`
 })
 export class MyApp {
   rootPage = MainPage;
