@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, Events, LoadingController, MenuController } from 'ionic-angular';
 
 import { FlamelinkService } from '../../app/shared/services/flamelink.service';
 import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
@@ -22,6 +22,9 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
+    private menuController: MenuController,
+    private app: App,
+    private events: Events,
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
     public splashScreen: SplashScreen,
@@ -55,6 +58,14 @@ export class HomePage {
       }
 
       this.splashScreen.hide();
+    });
+
+    this.events.subscribe('navigationEvent',(object) => {
+        this.menuController.close();
+        if (object.component) {
+          this.app.getRootNav().getActiveChildNav().select(0);
+          this.navCtrl.push(object.component, object.params);
+        }
     });
   }
 }
