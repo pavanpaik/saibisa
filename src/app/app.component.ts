@@ -1,13 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform } from 'ionic-angular';
+import { Config, Nav, Platform, ToastController } from 'ionic-angular';
 
 import { MainPage } from '../pages';
-import { Settings } from '../providers';
 
 import { isCordovaAvailable } from '../common/is-cordova-available';
+
+import { OneSignal, OSNotificationPayload } from '@ionic-native/onesignal';
+import { oneSignalAppId, sender_id } from './app.config';
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -47,7 +49,17 @@ export class MyApp {
     { title: 'Search', component: 'SearchPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(
+    private translate: TranslateService,
+    private platform: Platform,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private oneSignal: OneSignal,
+    private toastController: ToastController,
+    private cdRef: ChangeDetectorRef
+  ) {
+
     platform.ready().then(() => {
       this.initializeApp();
     });
@@ -55,21 +67,45 @@ export class MyApp {
   }
 
   initializeApp() {
-			if (isCordovaAvailable()){
+    if (isCordovaAvailable()) {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      // this.splashScreen.hide();
 
-				//Handle Push Notification
-				// this.oneSignal.startInit(oneSignalAppId, sender_id);
-				// this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
-				// this.oneSignal.handleNotificationReceived().subscribe(data => this.onPushReceived(data.payload));
-				// this.oneSignal.handleNotificationOpened().subscribe(data => this.onPushOpened(data.notification.payload));
-				// this.oneSignal.endInit();
-			}
+      //Handle Push Notification
+      this.oneSignal.startInit(oneSignalAppId, sender_id);
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+      this.oneSignal.handleNotificationReceived().subscribe(data => this.onPushReceived(data.payload));
+      this.oneSignal.handleNotificationOpened().subscribe(data => this.onPushOpened(data.notification.payload));
+      this.oneSignal.endInit();
+    }
   }
-  
+
+  onPushReceived(payload: OSNotificationPayload) {
+    this.showToastMessage(payload);
+    this.handlePushNotification(payload);
+  }
+
+  onPushOpened(payload: OSNotificationPayload) {
+    this.handlePushNotification(payload);
+  }
+
+
+  showToastMessage(payload: OSNotificationPayload) {
+    let toast = this.toastController.create({
+      message: `${payload.title} : ${payload.body}`,
+      duration: 6000,
+      position: 'top',
+      showCloseButton: true
+    });
+    toast.present();
+  }
+
+  handlePushNotification(payload: OSNotificationPayload) {
+    this.cdRef.detectChanges();
+  }
+
   initTranslate() {
     // Set the default language for translation strings, and the current language.
     this.translate.setDefaultLang('en');

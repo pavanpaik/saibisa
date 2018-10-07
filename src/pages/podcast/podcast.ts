@@ -74,7 +74,7 @@ export class PodcastPage {
 
 
   ngOnInit() {
-    this.logger.setCurrentScreen('Chords Of Consciousness');
+    this.logger.setCurrentScreen(this.title);
     let loader = this.presentLoading();
     this._fl.getApp().content.subscribe('chordsOfConsciousness', { populate: true }, (error, data) => {
       if (error) {
@@ -138,6 +138,7 @@ export class PodcastPage {
   }
 
   openFile(file, index) {
+    this.logger.logActivityEvent({ page: this.title, action: 'openFile', file: file, index: index });
     this.currentFile = { index, file };
     this.playStream(file.url);
   }
@@ -148,6 +149,7 @@ export class PodcastPage {
   }
 
   playStream(url) {
+    this.logger.logActivityEvent({ page: this.title, action: 'playStream', url: url });
     this.resetState();
     this.audioProvider.playStream(url).subscribe(event => {
       const audioObj = event.target;
@@ -197,36 +199,43 @@ export class PodcastPage {
   }
 
   pause() {
+    this.logger.logActivityEvent({ page: this.title, action: 'pause' });
     this.audioProvider.pause();
   }
 
   pauseSilent() {
     try {
+      this.logger.logActivityEvent({ page: this.title, action: 'pauseSilent' });
       this.audioProvider.pause();
     } catch (e) { }
   }
 
   play() {
+    this.logger.logActivityEvent({ page: this.title, action: 'play' });
     this.audioProvider.play();
   }
 
   playSilent() {
     try {
+      this.logger.logActivityEvent({ page: this.title, action: 'playSilent' });
       this.audioProvider.play();
     } catch (e) { }
   }
 
   stop() {
+    this.logger.logActivityEvent({ page: this.title, action: 'stop' });
     this.audioProvider.stop();
   }
 
   next() {
+    this.logger.logActivityEvent({ page: this.title, action: 'next' });
     let index = this.currentFile.index + 1;
     let file = this.files[index];
     this.openFile(file, index);
   }
 
   previous() {
+    this.logger.logActivityEvent({ page: this.title, action: 'previous' });
     let index = this.currentFile.index - 1;
     let file = this.files[index];
     this.openFile(file, index);
