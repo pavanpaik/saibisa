@@ -23,6 +23,7 @@ import { oneSignalAppId, sender_id } from './app.config';
       <ion-content>
         <ion-list>
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+            <ion-icon name="{{p.icon}}"></ion-icon>
             {{p.title}}
           </button>
         </ion-list>
@@ -38,11 +39,11 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'About Di Jaan', component: 'TutorialPage' },
-    { title: 'Di Jaans Books', component: 'TutorialPage' },
-    { title: 'Events', component: 'TutorialPage' },
-    { title: 'Donate', component: 'DonatePage' },
-    { title: 'Contact Us', component: 'ContactPage' }
+    { title: 'About Di Jaan', icon: 'star', component: 'TutorialPage' },
+    { title: 'Di Jaans Books', icon: 'book',  component: 'TutorialPage' },
+    { title: 'Events', icon: 'calendar',  component: 'TutorialPage' },
+    { title: 'Donate', icon: 'heart',  component: 'DonatePage' },
+    { title: 'Contact Us', icon: 'mail',  component: 'ContactPage' }
 
     // { title: 'Tutorial', component: 'TutorialPage' },
     // { title: 'Welcome', component: 'WelcomePage' },
