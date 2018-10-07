@@ -35,7 +35,7 @@ import { pluck, filter, map, distinctUntilChanged } from 'rxjs/operators';
 })
 export class PodcastPage {
 
-  title: string = "Chords of Consciousness"
+  title: string = 'Chords of Consciousness';
   files: any = [];
   seekbar: FormControl = new FormControl("seekbar");
   state: any = {};
@@ -80,14 +80,14 @@ export class PodcastPage {
       if (error) {
         console.error(error);
       }
-      console.log('podcast, content', this.content);
+      console.log('podcast, content', data);
       this.title = data.pageTitle;
       data.songs.forEach((ele) => {
         console.log(ele.song[0].file);
         this.files.push({
           url: ele.song[0].url,
           name: ele.title
-        })
+        });
       });
       loader.dismiss();
     });

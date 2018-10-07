@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png"/></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content scroll="false">
+    <div class="splash-bg" [ngStyle]="{ 'background-image': 'url(' + splashBg + ')'}"></div>
+    <div class="splash-info">
+      <div class="splash-logo" [ngStyle]="{ 'background-image': 'url(' + splashLogo + ')'}"></div>
+      <div class="splash-intro" [textContent]="msgTitle"></div>
+      <div>
+        <p class="mb-message" [textContent]="msgContent"></p>
+      </div>
+    </div>
+</ion-content>
+  
