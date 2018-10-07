@@ -15,17 +15,21 @@ export class TabsPage {
   tab3Root: any = Tab3Root;
   tab4Root: any = Tab4Root;
 
-  tab1Title = " ";
-  tab2Title = " ";
-  tab3Title = " ";
-  tab4Title = " ";
+  tab1Title = "Home";
+  tab2Title = "Chords of Consciousness";
+  tab3Title = "SAIBISA Initiatives";
+  tab4Title = "We Heal";
 
   constructor(public navCtrl: NavController, public translateService: TranslateService) {
     translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE', 'TAB4_TITLE']).subscribe(values => {
-      this.tab1Title = values['TAB1_TITLE'];
-      this.tab2Title = values['TAB2_TITLE'];
-      this.tab3Title = values['TAB3_TITLE'];
-      this.tab4Title = values['TAB4_TITLE'];
+      this.tab1Title = this.withDefault(values, 'TAB1_TITLE', this.tab1Title);
+      this.tab2Title = this.withDefault(values, 'TAB2_TITLE', this.tab2Title);
+      this.tab3Title = this.withDefault(values, 'TAB3_TITLE', this.tab3Title);
+      this.tab4Title = this.withDefault(values, 'TAB4_TITLE', this.tab4Title);
     });
+  }
+
+  withDefault(values:any, key:string, def: string) {
+    return (key == values[key]) ? def : values[key];
   }
 }
