@@ -1,8 +1,8 @@
 {
-  "name": "saibisa_v2",
+  "name": "saibisa",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Pavan Pai",
+  "homepage": "https://github.com/pavanpaik",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -55,7 +55,7 @@
     "@ionic/app-scripts": "3.2.0",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "SAIBISA - Sai Baba is Still Alive",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
