@@ -40,7 +40,8 @@ export class MyApp {
 
   pages: any[] = [
     { title: 'About Di Jaan', icon: 'star', component: 'TutorialPage' },
-    { title: 'Di Jaans Books', icon: 'book',  component: 'TutorialPage' },
+    { title: 'Di Jaan - Videos', icon: 'video',  component: 'YoutubePage' },
+    { title: 'Di Jaan - Books', icon: 'book',  component: 'TutorialPage' },
     { title: 'Events', icon: 'calendar',  component: 'TutorialPage' },
     { title: 'Donate', icon: 'heart',  component: 'DonatePage' },
     { title: 'Contact Us', icon: 'mail',  component: 'ContactPage' }

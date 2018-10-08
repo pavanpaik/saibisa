@@ -40,50 +40,41 @@ export class InitiativesPage {
         },
         {
           field: 'initiatives',
-          subFields: ['initiativeThumnail', 'initiativeArticle'],
-          populate: ['initiativeArticle']
+          subFields: ['initiativeThumnail', 'initiativeArticle']
         }
       ]
     };
     this._fl.getApp().content.get('initiativesPage', options)
       .then(data => {
         console.log('initiativesPage, content', data);
-
-        //////
-
         this.heroImage = data.heroImage[0].url;
         this.title = data.pageTitle; //title
         this.content = data.content
-        
         let temp:any = [];
         data.initiatives.forEach((element) => {
           temp.push({
-            thumbnail: element.initiativeThumnail[0].url,
+            id: element.initiativeArticle[0].id,
+            thumbnail: this.popValue(element.initiativeThumnail,'url', null),
             title: element.initiativeArticle[0].title,
             excerpt: element.initiativeArticle[0].excerpt
           });
         })
         this.initiatives = temp;
-        ///////
       })
       .catch(error => {
         console.log('initiativesPage, error', error);
       })
-
-    // this._fl.getApp().content.subscribe('initiativesPage', { populate: true }, (error, data) => {
-    //   if (error) {
-    //     console.error(error);
-    //   }
-    //   console.log('initiativesPage, content', data);
-    //   try {
-    //     this.title = data.pageTitle;
-    //     this.content = data.content;
-    //     if(data.heroImage && data.heroImage.length > 0) {
-    //       this.heroImage = data.heroImage[0].url;
-    //     }
-    //   } catch (e) {
-    //     console.log('initiativesPage, error', e);
-    //   }
-    // });
   }
+
+  popValue(ary:any, key:string, defult:any) {
+    return (ary[0] && ary[0][key]) ?ary[0][key] : defult;
+  }
+
+  openModal(article){
+		console.log('Opening article',article)
+		// this.modalCtrl.create(ArticleComponent, {
+		// 	postId: post.id,
+		// 	modal: true
+		// }).present();
+	} 
 }

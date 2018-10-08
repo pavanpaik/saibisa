@@ -72,15 +72,36 @@ export class PodcastPage {
     console.log('ionViewDidLoad PodcastPage');
   }
 
-
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
     let loader = this.presentLoading();
-    this._fl.getApp().content.subscribe('chordsOfConsciousness', { populate: true }, (error, data) => {
-      if (error) {
-        console.error(error);
-      }
-      console.log('podcast, content', data);
+
+    this._fl.getApp().content.get('chordsOfConsciousness', { populate: true })
+      .then(data => {
+        console.log('chordsOfConsciousness, content', data);
+        this.processResponse(data);
+        loader.dismiss();
+      })
+      .catch(error => {
+        console.error('chordsOfConsciousness, error', error);
+      })
+      
+    this.events.subscribe('pauseAudio', (object) => {
+      console.log(object);
+      this.pauseSilent();
+    });
+
+    // this.events.subscribe('navigationEvent', (object) => {
+    //   this.pauseSilent();
+    // });
+
+    // this.events.subscribe('tabinationEvent', (object) => {
+    //   this.pauseSilent();
+    // });
+  }
+
+  processResponse(data: object) {
+    try {
       this.title = data.pageTitle;
       data.songs.forEach((ele) => {
         console.log(ele.song[0].file);
@@ -89,16 +110,9 @@ export class PodcastPage {
           name: ele.title
         });
       });
-      loader.dismiss();
-    });
-
-    this.events.subscribe('navigationEvent', (object) => {
-      this.pauseSilent();
-    });
-
-    this.events.subscribe('tabinationEvent', (object) => {
-      this.pauseSilent();
-    });
+    } catch (error) {
+      console.error('chordsOfConsciousness, error', error);
+    }
   }
 
   presentLoading() {

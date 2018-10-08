@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
 
 import { FlamelinkService } from '../../app/shared/services/flamelink.service';
 import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
@@ -26,6 +26,7 @@ export class YoutubePage {
     public youtubeService: YoutubeService,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
+    public events: Events,
     public navParams: NavParams,
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
@@ -34,6 +35,7 @@ export class YoutubePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad YoutubePage');
+    this.events.publish('pauseAudio', {reason:'entering videos page'});
   }
 
   ngOnInit() {

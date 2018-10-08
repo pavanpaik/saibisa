@@ -10,17 +10,17 @@
   <ion-content>
     <ion-card>
       <ion-card-content class="banner-container" text-wrap>
-        <img *ngIf="heroImage" src="{{heroImage}}" />
+        <img *ngIf="heroImage" [src]="heroImage" />
         <p padding *ngIf="content" padding [innerHTML]="content"></p>
       </ion-card-content>
     </ion-card>
 
     <ion-list>
-      <ion-item *ngFor="let post of initiatives">
+      <ion-item text-wrap *ngFor="let post of initiatives" (click)="openModal(post)">
         <ion-thumbnail item-left *ngIf="post.thumbnail">
-            <img src="{{post.thumbnail}}" />
+            <img [src]="post.thumbnail" />
         </ion-thumbnail>
-        <h2 [innerHTML]="post.title"></h2>
+        <h2 [textContent]="post.title"></h2>
         <p [innerHTML]="post.excerpt"></p>
       </ion-item>
     </ion-list>

@@ -11,7 +11,7 @@
     <ng-template >
       <div padding id="app-section" text-center>
         <ion-icon color="primary" name="musical-notes"></ion-icon>
-        <h2 id="app-title">Chords of Consciousness</h2>
+        <h2 id="app-title" [textContent]="title">Chords of Consciousness</h2>
         <button outline ion-button block color="primary" *ngIf="!loggedIn" (click)="login()">Log In</button>
       </div>
     </ng-template>
