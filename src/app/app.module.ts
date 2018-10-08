@@ -30,6 +30,8 @@ import { mediaStateReducer } from '../providers/store/store';
 
 import { OneSignal } from '@ionic-native/onesignal';
 
+import { AppVersion } from '@ionic-native/app-version';
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -93,7 +95,8 @@ export function provideSettings(storage: Storage) {
     FirebaseAnalytics,
     EventLoggerProvider,
     AudioProvider,
-    OneSignal
+    OneSignal,
+    AppVersion
   ]
 })
 export class AppModule { }

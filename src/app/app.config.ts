@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Config {
 	//public wordpressApiUrl = 'http://mobile-apps.today/products/ionic/woocommerce-api/wp-json';
+	public versionCheckUrl = 'https://us-central1-saibisa-3f765.cloudfunctions.net/versionCheck'
 	public wordpressApiUrl = 'https://dijaanjayawahi.com/wp-json'
 	public wordpressMenusNavigation = false;
 	public feedsUrl = './assets/data/feeds.json';

@@ -85,7 +85,7 @@ export class PodcastPage {
       .catch(error => {
         console.error('chordsOfConsciousness, error', error);
       })
-      
+
     this.events.subscribe('pauseAudio', (object) => {
       console.log(object);
       this.pauseSilent();
@@ -100,7 +100,7 @@ export class PodcastPage {
     // });
   }
 
-  processResponse(data: object) {
+  processResponse(data: any) {
     try {
       this.title = data.pageTitle;
       data.songs.forEach((ele) => {
