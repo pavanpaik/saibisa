@@ -59,15 +59,14 @@ export class MyApp {
   ]
 
   constructor(
-    private translate: TranslateService,
-    private platform: Platform,
-    private config: Config,
-    private statusBar: StatusBar,
-    private splashScreen: SplashScreen,
-    private events: Events,
-    private oneSignal: OneSignal,
-    private toastController: ToastController,
-    private cdRef: ChangeDetectorRef
+    public translate: TranslateService,
+    public platform: Platform,
+    public config: Config,
+    public statusBar: StatusBar,
+    public events: Events,
+    public oneSignal: OneSignal,
+    public toastController: ToastController,
+    public cdRef: ChangeDetectorRef
   ) {
 
     platform.ready().then(() => {

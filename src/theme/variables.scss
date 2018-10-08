@@ -110,6 +110,9 @@ ion-app{
       width: 100%;
     }
     ion-card {
+      ion-card-content.banner-container {
+        padding: 0px;
+      }
       ion-card-content.inner-page {
         .fixed-content, .scroll-content {
             margin-bottom: 0px !important;

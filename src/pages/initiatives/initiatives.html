@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+      <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card>
+      <ion-card-content class="banner-container" text-wrap>
+        <img *ngIf="heroImage" src="{{heroImage}}" />
+        <p padding *ngIf="content" padding [innerHTML]="content"></p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+      <ion-item *ngFor="let post of initiatives">
+        <ion-thumbnail item-left *ngIf="post.thumbnail">
+            <img src="{{post.thumbnail}}" />
+        </ion-thumbnail>
+        <h2 [innerHTML]="post.title"></h2>
+        <p [innerHTML]="post.excerpt"></p>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
