@@ -40,20 +40,17 @@ export class MyApp {
 
   pages: any[] = [
     { title: 'About Di Jaan', icon: 'star', component: 'TutorialPage' },
-    { title: 'Di Jaan - Videos', icon: 'video',  component: 'YoutubePage' },
+    { title: 'Di Jaan - Videos', icon: 'videocam',  component: 'YoutubePage' },
     { title: 'Di Jaan - Books', icon: 'book',  component: 'TutorialPage' },
     { title: 'Events', icon: 'calendar',  component: 'TutorialPage' },
     { title: 'Donate', icon: 'heart',  component: 'DonatePage' },
-    { title: 'Contact Us', icon: 'mail',  component: 'ContactPage' }
+    { title: 'Contact Us', icon: 'mail',  component: 'ContactPage' },
 
-    // { title: 'Tutorial', component: 'TutorialPage' },
     // { title: 'Welcome', component: 'WelcomePage' },
-    // { title: 'Tabs', component: 'TabsPage' },
-    // { title: 'Cards', component: 'CardsPage' },
-    // { title: 'Content', component: 'ContentPage' },
     // { title: 'Login', component: 'LoginPage' },
     // { title: 'Signup', component: 'SignupPage' },
-    // { title: 'Master Detail', component: 'ListMasterPage' },
+    { title: 'Cards', component: 'CardsPage' },
+    { title: 'Master Detail', component: 'ListMasterPage' },
     // { title: 'Menu', component: 'MenuPage' },
     // { title: 'Settings', component: 'SettingsPage' },
     // { title: 'Search', component: 'SearchPage' }
