@@ -40,18 +40,18 @@ export class MyApp {
 
   pages: any[] = [
     { title: 'About Di Jaan', icon: 'star', component: 'DijaanPage' },
-    { title: 'Di Jaan - Videos', icon: 'videocam',  component: 'YoutubePage' },
-    { title: 'Di Jaan - Books', icon: 'book',  component: 'DijaanPage' },
-    { title: 'Events', icon: 'calendar',  component: 'DijaanPage' },
-    { title: 'Donate', icon: 'heart',  component: 'DonatePage' },
-    { title: 'Contact Us', icon: 'mail',  component: 'ContactPage' },
+    { title: 'Di Jaan - Videos', icon: 'videocam', component: 'YoutubePage', params: { playlistId: 'PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH' } },
+    { title: 'Di Jaan - Books', icon: 'book', component: 'DijaanPage' },
+    { title: 'Events', icon: 'calendar', component: 'DijaanPage' },
+    { title: 'Donate', icon: 'heart', component: 'DonatePage' },
+    { title: 'Contact Us', icon: 'mail', component: 'ContactPage' },
 
     // { title: 'Welcome', component: 'WelcomePage' },
     // { title: 'Login', component: 'LoginPage' },
     // { title: 'Signup', component: 'SignupPage' },
-    
+
     // { title: 'Cards', component: 'CardsPage' },
-    // { title: 'Master Detail', component: 'ListMasterPage' },
+    { title: 'Master Detail', component: 'ListMasterPage' },
 
     // { title: 'Menu', component: 'MenuPage' },
     // { title: 'Settings', component: 'SettingsPage' },

@@ -6,7 +6,6 @@ import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { YoutubeService } from './services/youtube.service';
-import { ModalContentPage } from './modal/modal';
 
 @IonicPage()
 @Component({
@@ -19,23 +18,28 @@ export class YoutubePage {
   heroImage: string;
   content: string;
 
+  playlistId: string;
+
   videos: any;
   loader: any;
 
   constructor(
     public youtubeService: YoutubeService,
+    public navParams: NavParams,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     public events: Events,
-    public navParams: NavParams,
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
     public splashScreen: SplashScreen,
-  ) { }
+  ) { 
+    
+    this.playlistId = navParams.get('playlistId');
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad YoutubePage');
-    this.events.publish('pauseAudio', {reason:'entering videos page'});
+    // this.events.publish('pauseAudio', {reason:'entering videos page'});
   }
 
   ngOnInit() {
@@ -61,7 +65,8 @@ export class YoutubePage {
   }
 
   getChannel() {
-    this.youtubeService.getChannel()
+    // this.youtubeService.getChannel()
+    this.youtubeService.getVideos(this.playlistId)
       .subscribe(result => {
         this.videos = result.items;
       }, error => {
@@ -71,8 +76,8 @@ export class YoutubePage {
   }
 
   loadVideo(video) {
-    this.modalCtrl.create(ModalContentPage, {
+    this.navCtrl.push('YoutubeVideoPage', {
       video: video
-    }).present();
+    });
   }
 }

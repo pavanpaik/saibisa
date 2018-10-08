@@ -86,8 +86,12 @@ export class PodcastPage {
         console.error('chordsOfConsciousness, error', error);
       })
 
-    this.events.subscribe('pauseAudio', (object) => {
-      console.log(object);
+    // this.events.subscribe('pauseAudio', (object) => {
+    //   console.log(object);
+    //   this.pauseSilent();
+    // });
+
+    this.events.subscribe('freeAudio', (object) => {
       this.pauseSilent();
     });
 
