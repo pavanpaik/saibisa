@@ -58,12 +58,12 @@ export class YoutubeVideoPage {
 	}
 
 	onPause() {
-		this.logger.logActivityEvent({ page: 'YoutubeVideo', video: this.title, action: 'pause' });
+		this.logger.logActivityEvent({ page: 'YoutubeVideo', action: 'pause' });
 		this.callPlayer("youtubeChannelPlayer", "pauseVideo");
 	}
 
 	onResume() {
-		this.logger.logActivityEvent({ page: 'YoutubeVideo', video: this.title, action: 'resume' });
+		this.logger.logActivityEvent({ page: 'YoutubeVideo', action: 'resume' });
 		this.callPlayer("youtubeChannelPlayer", "playVideo");
 	}
 	prepareResource() {
@@ -72,7 +72,7 @@ export class YoutubeVideoPage {
 	}
 
 	callPlayer(frame_id, func) {
-		this.logger.logActivityEvent({ page: 'YoutubeVideo', video: this.title, action: 'callPlayer' });
+		this.logger.logActivityEvent({ page: 'YoutubeVideo', action: 'callPlayer' });
 		var iframe: any = document.getElementById(frame_id);
 		if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
 			iframe = iframe.getElementsByTagName('iframe')[0];

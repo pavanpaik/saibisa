@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 
 import { FlamelinkService } from '../../app/shared/services/flamelink.service';
 import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
-import { SplashScreen } from '@ionic-native/splash-screen';
 
 @IonicPage()
 @Component({
@@ -21,7 +20,6 @@ export class DonatePage {
     public loadingCtrl: LoadingController,
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
-    public splashScreen: SplashScreen,
   ) {}
 
   ionViewDidLoad() {

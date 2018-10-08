@@ -79,9 +79,8 @@ export class InitiativesPage {
   }
   openModal(article) {
     console.log('Opening article', article)
-    // this.modalCtrl.create(ArticleComponent, {
-    // 	postId: post.id,
-    // 	modal: true
-    // }).present();
+    this.navCtrl.push('ArticlePage', {
+      articleId: article.id
+    });
   }
 }
