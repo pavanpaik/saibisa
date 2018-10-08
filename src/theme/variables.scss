@@ -25,13 +25,14 @@ $text-color: #5d5d5d;
 
 $colors: (
   primary:    #958074,
-  secondary:  #32db64,
+  secondary:  #8e2014,
   danger:     #f53d3d,
   light:      #f1eeec,//#f4f4f4,//
   dark:       #222
 );
 
-$tabs-tab-color-active: #8e2014;
+$tabs-tab-color-active: color($colors, secondary);
+$theme-color: color($colors, secondary);
 $tab-background: #f0f0f0;
 $toolbar-background: color($colors, primary);
 $text-input-highlight-color-valid: #5fcfdb;
@@ -89,12 +90,15 @@ ion-app{
   
   ion-header {
     ion-navbar {
+      .menu-button, .back-button {
+        color:color($colors, secondary);
+      }
       div.toolbar-background {
         background-image: url(../assets/img/header_bg_plain.jpg) !important;
       }
       ion-title {
         div.toolbar-title {
-          color: #8e2014;
+          color: color($colors, secondary);
         }
         img {
           height: 41px;
@@ -138,7 +142,7 @@ div.modal-wrapper {
     display: none;
   }
   button.close {
-    color: #8e2014;
+    color: color($colors, secondary);
   }
 }
 
