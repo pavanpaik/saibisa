@@ -27,7 +27,7 @@ export class DonatePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonatePage');
   }
-
+  
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
     
@@ -36,15 +36,19 @@ export class DonatePage {
         console.error(error);
       }
       console.log('donatePage, content', data);
-      try {
-        this.title = data.pageTitle;
-        this.content = data.content;
-        if(data.heroImage && data.heroImage.length > 0) {
-          this.heroImage = data.heroImage[0].url;
-        }
-      } catch (e) {
-        console.log('donatePage, error', e);
-      }
+      this.handleResponse(data);
     });
+  }
+
+  handleResponse(data) {
+    try {
+      this.title = data.pageTitle;
+      this.content = data.content;
+      if(data.heroImage && data.heroImage.length > 0) {
+        this.heroImage = data.heroImage[0].url;
+      }
+    } catch (error) {
+      console.log('donatePage, error', error);
+    }
   }
 }

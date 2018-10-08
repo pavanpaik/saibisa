@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+
+<ion-segment [(ngModel)]="selectedPage">
+  <ion-segment-button value="tab1">
+    <i class="fa read"></i>
+    {{healingTab1Title}}
+  </ion-segment-button>
+  <ion-segment-button value="tab2">
+    <i class="fa video"></i>
+    {{healingTab2Title}}
+  </ion-segment-button>
+</ion-segment>
+</ion-header>
+
+<ion-content [ngSwitch]="selectedPage">
+<ion-card *ngSwitchCase="'tab1'">
+  <ion-card-content class="inner-island-page">
+
+    <ion-card *ngIf="healingChild1">
+      <img [src]="healingChild1.thumbnail">
+      <ion-card-content>
+          {{healingChild1.title}}
+          {{healingChild1.excerpt}}
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="healingChild2">
+      <img [src]="healingChild2.thumbnail">
+      <ion-card-content>
+          {{healingChild2.title}}
+          {{healingChild2.excerpt}}
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="healingChild3">
+      <img [src]="healingChild3.thumbnail">
+      <ion-card-content>
+          {{healingChild3.title}}
+          {{healingChild3.excerpt}}
+        </ion-card-content>
+    </ion-card>
+
+      <ion-card *ngIf="healingChild4">
+        <img [src]="healingChild4.thumbnail">
+        <ion-card-content>
+            {{healingChild4.title}}
+            {{healingChild4.excerpt}}
+          </ion-card-content>
+      </ion-card>
+    
+  </ion-card-content>
+</ion-card>
+<ion-card *ngSwitchCase="'tab2'">
+  <ion-card-content class="inner-island-page">
+    <!-- <ion-nav [root]="map['tab2'].component" [rootParams]="map['tab2'].params"></ion-nav> -->
+    {{healingPlaylistId}}
+  </ion-card-content>
+</ion-card>
+</ion-content>

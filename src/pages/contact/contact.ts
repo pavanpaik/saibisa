@@ -34,7 +34,7 @@ export class ContactPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
   }
-
+  
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
     
@@ -43,15 +43,19 @@ export class ContactPage {
         console.error(error);
       }
       console.log('contactPage, content', data);
-      try {
-        this.title = data.pageTitle;
-        this.content = data.content;
-        if(data.heroImage && data.heroImage.length > 0) {
-          this.heroImage = data.heroImage[0].url;
-        }
-      } catch (e) {
-        console.log('contactPage, error', e);
-      }
+      this.handleResponse(data);
     });
+  }
+
+  handleResponse(data) {
+    try {
+      this.title = data.pageTitle;
+      this.content = data.content;
+      if(data.heroImage && data.heroImage.length > 0) {
+        this.heroImage = data.heroImage[0].url;
+      }
+    } catch (error) {
+      console.log('contactPage, error', error);
+    }
   }
 }
