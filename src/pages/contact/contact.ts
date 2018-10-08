@@ -43,10 +43,14 @@ export class ContactPage {
         console.error(error);
       }
       console.log('contactPage, content', data);
-      this.title = data.pageTitle;
-      this.content = data.content;
-      if(data.heroImage && data.heroImage.length > 0) {
-        this.heroImage = data.heroImage[0].url;
+      try {
+        this.title = data.pageTitle;
+        this.content = data.content;
+        if(data.heroImage && data.heroImage.length > 0) {
+          this.heroImage = data.heroImage[0].url;
+        }
+      } catch (e) {
+        console.log('contactPage, error', e);
       }
     });
   }

@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Profile
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                Close
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="{{character.image}}">
+            </ion-avatar>
+            <h2>{{character.name}}</h2>
+            <p>{{character.text}}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>
