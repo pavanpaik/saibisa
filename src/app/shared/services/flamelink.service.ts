@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import * as flamelink from 'flamelink';
 import { FirebaseApp } from 'angularfire2';
 
