@@ -55,7 +55,6 @@ export class HomePage {
     this._fl.getApp().content.subscribe('homePage', { populate: true }, (error, data) => {
       if (error) {
         console.error('homePage, error', error);
-
       }
       console.log('homePage, content', data);
       this.processResponse(data);
@@ -77,7 +76,7 @@ export class HomePage {
     .subscribe(data => {
       try {
         if(data.json().forceUpdate) {
-          this.logger.logActivityEvent(data.json());
+          this.logger.logForceUpdateEvent(data.json());
           this.openForceUpdatePage();
         }
       } catch(error) {

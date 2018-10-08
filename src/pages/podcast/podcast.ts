@@ -74,13 +74,13 @@ export class PodcastPage {
 
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
-    let loader = this.presentLoading();
+    // let loader = this.presentLoading();
 
     this._fl.getApp().content.get('chordsOfConsciousness', { populate: true })
       .then(data => {
         console.log('chordsOfConsciousness, content', data);
         this.processResponse(data);
-        loader.dismiss();
+        // loader.dismiss();
       })
       .catch(error => {
         console.error('chordsOfConsciousness, error', error);

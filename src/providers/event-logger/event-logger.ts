@@ -8,7 +8,6 @@ import { isCordovaAvailable } from '../../common/is-cordova-available';
 export class EventLoggerProvider {
 
   constructor(public http: HttpClient, public firebaseAnalytics: FirebaseAnalytics) {
-    console.log('Hello EventLoggerProvider Provider');
     if (isCordovaAvailable()) {
       firebaseAnalytics.setEnabled(true)
         .then((res: any) => console.log("Success, setEnabled", res))
@@ -26,6 +25,10 @@ export class EventLoggerProvider {
 
   logActivityEvent(value: any) {
     this.logEvent('activity', value);
+  }
+
+  logForceUpdateEvent(value: any) {
+    this.logEvent('force-update', value);
   }
 
   logEvent(name: string, value: any) {
