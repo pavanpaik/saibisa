@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FlamelinkService } from '../../app/shared/services/flamelink.service';
 import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
 
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 @IonicPage()
 @Component({
   selector: 'page-article',
@@ -24,7 +26,8 @@ export class ArticlePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public _fl: FlamelinkService,
-    public logger: EventLoggerProvider) {
+    public logger: EventLoggerProvider,
+    private photoViewer: PhotoViewer) {
 
     this.articleId = navParams.get('articleId');
   }
@@ -109,4 +112,8 @@ export class ArticlePage {
       articleId: post.articleId
     });
   }
+
+  openImage(imgUrl) {
+		this.photoViewer.show(imgUrl);
+	}
 }

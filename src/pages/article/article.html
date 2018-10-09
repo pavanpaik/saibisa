@@ -36,7 +36,7 @@
         <ion-grid>
           <ion-row>
             <ion-col col-6 col-md-4 col-xl-3 *ngFor="let imageElement of imageDeck">
-            <div class="image-container" (click)="openImage(imageElement)">
+            <div class="image-container" (click)="openImage(imageElement.image)">
               <img [src]="imageElement.image">
               <p [innerHTML]="imageElement.title"></p>
               <p [innerHTML]="imageElement.description"></p>
@@ -46,16 +46,4 @@
           </ion-grid>
       </ion-card>
 
-      <script id="image-modal.html" type="text/ng-template">
-        <div class="modal image-modal transparent" 
-             ng-click="closeModal()">
-          <ion-slide-box on-slide-changed="slideChanged(index)" 
-                         show-pager="false">
-            <ion-slide ng-repeat="oImage in aImages">
-              <img ng-src="{{oImage.src}}" class="fullscreen-image" />
-              <p class="info">{{oImage.msg}}</p>
-            </ion-slide>
-          </ion-slide-box>
-        </div>
-    </script>
   </ion-content>
