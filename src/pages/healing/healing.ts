@@ -26,13 +26,18 @@ export class HealingPage {
   healingChild2: any;
   healingChild3: any;
   healingChild4: any;
-  
+
+  map: any = {
+    'tab1': { title: 'We Heal', icon: 'fa-book', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
+    'tab2': { title: 'Watch Healing', icon: 'fa-video-camera', component: 'YoutubePage', params: {playlistId: 'PLPzS0mASgDd5jMOYUclVhHOytoQPZWZv8'}  },
+    'tab3': { title: 'Testimonial', icon: 'fa-book', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
+  };
   // map: any = {
   //   'tab1': { title: 'tab1', icon: 'fa-book', component: ArticleComponent, params: {postId: 993}, postListId: 0 },
   //   'tab2': { title: 'tab2', icon: 'fa-video-camera', component: YoutubeChannelComponent },
   //   'tab3': { title: 'tab3', icon: 'fa-music', component: AudioPage },
   // };
-  
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -40,7 +45,7 @@ export class HealingPage {
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
     public splashScreen: SplashScreen,
-  ) {}
+  ) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HealingPage');
@@ -95,10 +100,10 @@ export class HealingPage {
 
       this.healingPlaylistId = data.healingPlaylistId;
 
-      this.healingChild1 = this.getHealingItemDetails(data,'healing1Article', 'healing1Thumbnail');
-      this.healingChild2 = this.getHealingItemDetails(data,'healing2Article', 'healing2Thumbnail');
-      this.healingChild3 = this.getHealingItemDetails(data,'healing3Article', 'healing3Thumbnail');
-      this.healingChild4 = this.getHealingItemDetails(data,'healing4Article', 'healing4Thumbnail');
+      this.healingChild1 = this.getHealingItemDetails(data, 'healing1Article', 'healing1Thumbnail');
+      this.healingChild2 = this.getHealingItemDetails(data, 'healing2Article', 'healing2Thumbnail');
+      this.healingChild3 = this.getHealingItemDetails(data, 'healing3Article', 'healing3Thumbnail');
+      this.healingChild4 = this.getHealingItemDetails(data, 'healing4Article', 'healing4Thumbnail');
     } catch (error) {
       console.log('healingPage, error', error);
     }

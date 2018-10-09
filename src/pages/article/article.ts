@@ -77,7 +77,7 @@ export class ArticlePage {
         let temp: any = [];
         data.imageDeck.forEach((element) => {
           temp.push({
-            image: this.popValue(element.image, 'url', 'default-thumbnail'),
+            image: this.popValue(element.image, 'url', 'assets/imgs/default.png'),
             title: element.title,
             description: element.description,
           });
@@ -90,7 +90,7 @@ export class ArticlePage {
         let temp1: any = [];
         data.posts.forEach((element) => {
           temp1.push({
-            thumbnail: this.popValue(element.thumbnail, 'url', 'default-thumbnail'),
+            thumbnail: this.popValue(element.thumbnail, 'url', 'assets/imgs/default.png'),
             articleId: element.article,
             description: element.excerpt
           });
