@@ -20,7 +20,7 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-list>
+    <ion-list *ngIf="posts">
       <ion-item text-wrap *ngFor="let post of posts" (click)="loadPost(post)">
         <ion-thumbnail item-left *ngIf="post.thumbnail">
             <img [src]="post.thumbnail" />
@@ -37,7 +37,8 @@
       </ion-card-content>
     </ion-card> -->
 
-    <ion-card>
+    <ion-card *ngIf="imageDeck">
+      
         <ion-grid>
           <ion-row>
             <ion-col col-6 col-md-4 col-xl-3 *ngFor="let imageElement of imageDeck">

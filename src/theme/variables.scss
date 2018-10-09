@@ -137,12 +137,13 @@ ion-app{
   }
 }
 
-div.modal-wrapper {
-  button.menu {
-    display: none;
-  }
+ion-modal {
   button.close {
     color: color($colors, secondary);
+
+    ion-icon {
+      font-weight: bold;
+    }
   }
 }
 

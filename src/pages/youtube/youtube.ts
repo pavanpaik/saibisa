@@ -35,6 +35,7 @@ export class YoutubePage {
   ) { 
     
     this.playlistId = navParams.get('playlistId');
+    this.title = navParams.get('title');
   }
 
   ionViewDidLoad() {
@@ -43,29 +44,8 @@ export class YoutubePage {
   }
 
   ngOnInit() {
-    this.logger.setCurrentScreen(this.title);
-
-    this._fl.getApp().content.subscribe('youtubePage', { populate: true }, (error, data) => {
-      if (error) {
-        console.error(error);
-      }
-      console.log('youtubePage, content', data);
-      try {
-        this.getChannel();
-        this.title = data.pageTitle;
-        this.content = data.content;
-        if (data.heroImage && data.heroImage.length > 0) {
-          this.heroImage = data.heroImage[0].url;
-        }
-      } catch (e) {
-        console.log('youtubePage, error', e);
-      }
-    });
-
-  }
-
-  getChannel() {
-    // this.youtubeService.getChannel()
+    this.logger.setCurrentScreen('Youtube');
+    
     this.youtubeService.getVideos(this.playlistId)
       .subscribe(result => {
         this.videos = result.items;
