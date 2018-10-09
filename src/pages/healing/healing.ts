@@ -12,31 +12,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 })
 export class HealingPage {
   title: string = 'Healing';
-  heroImage: string;
 
   selectedPage: string = "tab1";
 
-  healingTab1Title: string = "Tab 1";
-  healingTab2Title: string = "Tab 2";
-
-  healingPlaylistId: string = "play";
-
-
-  healingChild1: any;
-  healingChild2: any;
-  healingChild3: any;
-  healingChild4: any;
+  healingArticleId: string = "1539051108322";
+  healingPlaylistId: string = "PLPzS0mASgDd5jMOYUclVhHOytoQPZWZv8";
+  testimonialsArticleId: string = "1539050202083";
+  testimonialsEnabled: boolean = false;
 
   map: any = {
-    'tab1': { title: 'We Heal', icon: 'fa-book', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
-    'tab2': { title: 'Watch Healing', icon: 'fa-video-camera', component: 'YoutubePage', params: {playlistId: 'PLPzS0mASgDd5jMOYUclVhHOytoQPZWZv8'}  },
-    'tab3': { title: 'Testimonial', icon: 'fa-book', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
+    'tab1': { title: 'We Heal', icon: 'fa-book', component: 'ArticlePage', params: { articleId: this.healingArticleId }  },
+    'tab2': { title: 'Watch Healing', icon: 'fa-video-camera', component: 'YoutubePage', params: {playlistId: this.healingPlaylistId}  },
+    'tab3': { title: 'Testimonial', icon: 'fa-book', component: 'ArticlePage', params: { articleId: this.testimonialsArticleId }  },
   };
-  // map: any = {
-  //   'tab1': { title: 'tab1', icon: 'fa-book', component: ArticleComponent, params: {postId: 993}, postListId: 0 },
-  //   'tab2': { title: 'tab2', icon: 'fa-video-camera', component: YoutubeChannelComponent },
-  //   'tab3': { title: 'tab3', icon: 'fa-music', component: AudioPage },
-  // };
 
   constructor(
     public navCtrl: NavController,
@@ -53,34 +41,7 @@ export class HealingPage {
 
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
-    let options = {
-      populate: [
-        {
-          field: 'healing1Article'
-        },
-        {
-          field: 'healing2Article'
-        },
-        {
-          field: 'healing3Article'
-        },
-        {
-          field: 'healing4Article'
-        },
-        {
-          field: 'healing1Thumbnail'
-        },
-        {
-          field: 'healing2Thumbnail'
-        },
-        {
-          field: 'healing3Thumbnail'
-        },
-        {
-          field: 'healing4Thumbnail'
-        }
-      ]
-    };
+    let options = {};
     this._fl.getApp().content.get('healingPage', options)
       .then(data => {
         console.log('healingPage, content', data);
@@ -95,15 +56,19 @@ export class HealingPage {
     try {
       this.title = data.pageTitle;
 
-      this.healingTab1Title = data.tab1Title;
-      this.healingTab2Title = data.tab2Title;
+      /*
+      healing: 1539051108322
+      healingVideoPlaylist: "PLPzS0mASgDd5jMOYUclVhHOytoQPZWZv8"
+      id: "healingPage"
+      testimonials: 1539050202083
+      testimonialsEnabled: true
+      */
 
-      this.healingPlaylistId = data.healingPlaylistId;
+     this.healingArticleId = data.healing;
+     this.healingPlaylistId = data.healingVideoPlaylist;
+     this.testimonialsArticleId = data.testimonials;
+     this.testimonialsEnabled = data.testimonialsEnabled;
 
-      this.healingChild1 = this.getHealingItemDetails(data, 'healing1Article', 'healing1Thumbnail');
-      this.healingChild2 = this.getHealingItemDetails(data, 'healing2Article', 'healing2Thumbnail');
-      this.healingChild3 = this.getHealingItemDetails(data, 'healing3Article', 'healing3Thumbnail');
-      this.healingChild4 = this.getHealingItemDetails(data, 'healing4Article', 'healing4Thumbnail');
     } catch (error) {
       console.log('healingPage, error', error);
     }

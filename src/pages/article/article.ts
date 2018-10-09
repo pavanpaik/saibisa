@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { FlamelinkService } from '../../app/shared/services/flamelink.service';
 import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
@@ -20,6 +20,8 @@ export class ArticlePage {
   imageDeck: any;
   posts: any;
   
+  modal: boolean;
+
   articleId: string;
 
   constructor(
@@ -27,9 +29,16 @@ export class ArticlePage {
     public navParams: NavParams,
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
-    private photoViewer: PhotoViewer) {
+    private photoViewer: PhotoViewer,
+    public modalCtrl : ModalController) {
 
     this.articleId = navParams.get('articleId');
+
+		if (this.navParams.get('modal')) {
+			this.modal = true;
+		} else {
+			this.modal = false;
+		}
   }
 
   ionViewDidLoad() {
@@ -81,7 +90,7 @@ export class ArticlePage {
             title: element.title,
             description: element.description,
           });
-          console.log('articlePage, temp', temp);
+          // console.log('articlePage, temp', temp);
         })
         this.imageDeck = temp;
       }
@@ -96,7 +105,7 @@ export class ArticlePage {
           });
         })
         this.posts = temp1;
-        console.log('articlePage, temp1', temp1);
+        // console.log('articlePage, temp1', temp1);
       }
     } catch (error) {
       console.log('articlePage, error', error);
@@ -108,11 +117,20 @@ export class ArticlePage {
   }
 
   loadPost(post) {
-    this.navCtrl.push('ArticlePage', {
-      articleId: post.articleId
-    });
+    // this.navCtrl.push('ArticlePage', {
+    //   articleId: post.articleId
+    // });
+
+    this.modalCtrl.create('ArticlePage', {
+      articleId: post.articleId,
+      modal: true
+		}).present();
   }
 
+	closeModal() {
+		this.navCtrl.pop();
+  }
+  
   openImage(imgUrl) {
 		this.photoViewer.show(imgUrl);
 	}

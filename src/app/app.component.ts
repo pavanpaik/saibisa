@@ -39,11 +39,11 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    // { title: 'About Di Jaan', icon: 'star', component: 'DijaanPage' },
-    { title: 'About Di Jaan', icon: 'star', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
+    { title: 'Di Jaan Jaya Wahi', icon: 'star', component: 'DijaanPage' },
+    // { title: 'About Di Jaan', icon: 'star', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
     { title: 'Di Jaan - Videos', icon: 'videocam', component: 'YoutubePage', params: { playlistId: 'PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH' } },
-    { title: 'Di Jaan - Books', icon: 'book', component: 'DijaanPage' },
-    { title: 'Events', icon: 'calendar', component: 'DijaanPage' },
+    { title: 'Di Jaan - Books', icon: 'book', component: 'ArticlePage', params: { articleId: '1538935188821' }  },
+    { title: 'Events', icon: 'calendar', component: 'ArticlePage', params: { articleId: '1538935661036' }  },
     { title: 'Donate', icon: 'heart', component: 'DonatePage' },
     { title: 'Contact Us', icon: 'mail', component: 'ContactPage' },
 
@@ -52,7 +52,7 @@ export class MyApp {
     // { title: 'Signup', component: 'SignupPage' },
 
     // { title: 'Cards', component: 'CardsPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
+    // { title: 'Master Detail', component: 'ListMasterPage' },
 
     // { title: 'Menu', component: 'MenuPage' },
     // { title: 'Settings', component: 'SettingsPage' },

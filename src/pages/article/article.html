@@ -1,9 +1,14 @@
 <ion-header>
     <ion-navbar>
-      <button ion-button menuToggle icon-only class="menu-button">
+      <button ion-button menuToggle icon-only class="menu-button" *ngIf="!modal">
         <ion-icon name='menu'></ion-icon>
       </button>
       <ion-title>{{title}}</ion-title>
+      <ion-buttons end *ngIf="modal">
+          <button ion-button icon-only (click)="closeModal()" class="close">
+              <ion-icon item-right name="ios-close-outline"></ion-icon>
+          </button>
+      </ion-buttons>
     </ion-navbar>
   </ion-header>
   

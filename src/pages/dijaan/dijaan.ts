@@ -11,9 +11,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'dijaan.html',
 })
 export class DijaanPage {
-  title: string = 'Dijaan';
-  heroImage: string;
-  content: string;
+  title: string = 'Di Jaan Jaya Wahi';
+
+  selectedPage: string = "tab1";
+
+  diJaanArticleId: string = "1538910075447";
+  diJaanPlaylistId: string = "PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH";
+
+  map: any = {
+    'tab1': { title: 'Read', icon: 'fa-book', component: 'ArticlePage', params: { articleId: this.diJaanArticleId }  },
+    'tab2': { title: 'Watch', icon: 'fa-video-camera', component: 'YoutubePage', params: {playlistId: this.diJaanPlaylistId}  },
+  };
 
   constructor(
     public navCtrl: NavController,
@@ -22,33 +30,34 @@ export class DijaanPage {
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
     public splashScreen: SplashScreen,
-  ) {}
+  ) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DijaanPage');
   }
 
   ngOnInit() {
-    this.logger.setCurrentScreen(this.title);
-    
-    this._fl.getApp().content.subscribe('diJaanPage', { populate: true }, (error, data) => {
-      if (error) {
-        console.error(error);
-      }
-      console.log('dijaanPage, content', data);
-      this.handleResponse(data);
-    });
+    this.logger.setCurrentScreen('DiJaanPage');
+    let options = {};
+    this._fl.getApp().content.get('dijaanPage', options)
+      .then(data => {
+        console.log('dijaanPage, content', data);
+        this.handleResponse(data);
+      })
+      .catch(error => {
+        console.log('dijaanPage, error', error);
+      })
   }
 
   handleResponse(data) {
     try {
       this.title = data.pageTitle;
-      this.content = data.content;
-      if(data.heroImage && data.heroImage.length > 0) {
-        this.heroImage = data.heroImage[0].url;
-      }
     } catch (error) {
       console.log('dijaanPage, error', error);
     }
+  }
+
+  popValue(ary: any, key: string, defult: any) {
+    return (ary[0] && ary[0][key]) ? ary[0][key] : defult;
   }
 }

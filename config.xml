@@ -98,7 +98,7 @@
     </plugin>
     <allow-navigation href="http://192.168.1.167:8100" />
     <plugin name="onesignal-cordova-plugin" spec="^2.4.4" />
-    <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.18" />
+    <engine name="android" spec="7.0.0" />
 </widget>
