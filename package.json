@@ -35,6 +35,7 @@
     "angularfire2": "^5.0.2",
     "com-sarriaroman-photoviewer": "^1.1.18",
     "cordova-android": "7.0.0",
+    "cordova-ios": "4.5.5",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-firebase-analytics": "^1.0.1",
@@ -78,7 +79,8 @@
       "com-sarriaroman-photoviewer": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

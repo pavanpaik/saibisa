@@ -19,7 +19,7 @@ export class DijaanPage {
   diJaanPlaylistId: string = "PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH";
 
   map: any = {
-    'tab1': { title: 'Read', icon: 'fa-book', component: 'ArticlePage', params: { articleId: this.diJaanArticleId }  },
+    'tab1': { title: 'About Di Jaan', icon: 'fa-book', component: 'ArticlePage', params: { articleId: this.diJaanArticleId }  },
     'tab2': { title: 'Watch', icon: 'fa-video-camera', component: 'YoutubePage', params: {playlistId: this.diJaanPlaylistId}  },
   };
 

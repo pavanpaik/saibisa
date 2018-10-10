@@ -39,13 +39,13 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Di Jaan Jaya Wahi', icon: 'star', component: 'DijaanPage' },
-    // { title: 'About Di Jaan', icon: 'star', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
-    { title: 'Di Jaan - Videos', icon: 'videocam', component: 'YoutubePage', params: { playlistId: 'PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH', title: 'Di Jaan Videos' } },
-    { title: 'Di Jaan - Books', icon: 'book', component: 'ArticlePage', params: { articleId: '1538935188821' }  },
-    { title: 'Events', icon: 'calendar', component: 'ArticlePage', params: { articleId: '1538935661036' }  },
-    { title: 'Donate', icon: 'heart', component: 'DonatePage' },
-    { title: 'Contact Us', icon: 'mail', component: 'ContactPage' },
+    { title: 'Di Jaan Jaya Wahi', icon: 'fa-fal-dijaan', component: 'DijaanPage' },
+    // { title: 'About Di Jaan', icon: 'fa-fal-dijaan', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
+    { title: 'Di Jaan - Videos', icon: 'fa-fal-video', component: 'YoutubePage', params: { playlistId: 'PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH', title: 'Di Jaan Videos' } },
+    { title: 'Di Jaan - Books', icon: 'fa-fal-books', component: 'ArticlePage', params: { articleId: '1538935188821' }  },
+    { title: 'Events', icon: 'fa-fal-events', component: 'ArticlePage', params: { articleId: '1538935661036' }  },
+    { title: 'Donate', icon: 'fa-fal-donate', component: 'DonatePage' },
+    { title: 'Contact Us', icon: 'fa-fal-contact', component: 'ContactPage' },
 
     // { title: 'Welcome', component: 'WelcomePage' },
     // { title: 'Login', component: 'LoginPage' },

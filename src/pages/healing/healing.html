@@ -8,12 +8,15 @@
 
   <ion-segment [(ngModel)]="selectedPage">
       <ion-segment-button value="tab1">
-        {{map['tab1'].title}}
+        <ion-icon name="fa-fal-weheal"></ion-icon>
+        <span class="text">{{map['tab1'].title}}</span>
       </ion-segment-button>
       <ion-segment-button value="tab2">
+        <ion-icon name="fa-fal-video"></ion-icon>
         {{map['tab2'].title }}
       </ion-segment-button>
       <ion-segment-button value="tab3">
+          <ion-icon name="fa-fal-testimonial"></ion-icon>
         {{map['tab3'].title }}
       </ion-segment-button>
       <!-- <ion-segment-button value="tab4">
