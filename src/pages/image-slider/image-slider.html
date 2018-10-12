@@ -1,0 +1,16 @@
+
+<ion-content fullscreen="true" class="no-padding-top">
+    <div class="close">
+        <button ion-button icon-only (click)="closeModal()" class="close">
+            <ion-icon item-right name="ios-close-outline"></ion-icon>
+        </button>
+      </div>
+    <ion-slides #slider pager="true" centered-slides="true" initialSlide="{{index}}" zoom="true">
+      <ion-slide *ngFor="let imageElement of items" class="slide-background">
+        
+          <div class="swiper-zoom-container">
+            <img [src]="imageElement.image">
+          </div>
+      </ion-slide>
+    </ion-slides>
+</ion-content>

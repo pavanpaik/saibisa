@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, Slides } from 'ionic-angular';
 
 import { FlamelinkService } from '../../app/shared/services/flamelink.service';
 import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
 
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+
+import { ImagesProvider } from '../../providers/images/images';
 
 @IonicPage()
 @Component({
@@ -24,11 +26,14 @@ export class ArticlePage {
 
   articleId: string;
 
+  @ViewChild('slides') slides: Slides;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public _fl: FlamelinkService,
     public logger: EventLoggerProvider,
+    public images: ImagesProvider,
     private photoViewer: PhotoViewer,
     public modalCtrl : ModalController) {
 
@@ -94,6 +99,7 @@ export class ArticlePage {
         })
         this.imageDeck = temp;
       }
+      this.images.set(this.imageDeck);
 
       if (data.posts && data.posts.length > 0) {
         let temp1: any = [];
@@ -117,6 +123,7 @@ export class ArticlePage {
   }
 
   loadPost(post) {
+    this.logger.logActivityEvent({ page: 'YoutubeVideo', action: 'loadPost', articleId: post.articleId });
     // this.navCtrl.push('ArticlePage', {
     //   articleId: post.articleId
     // });
@@ -133,5 +140,12 @@ export class ArticlePage {
   
   openImage(imgUrl) {
 		this.photoViewer.show(imgUrl);
-	}
+  }
+
+  openImageSlider(index) {
+    this.logger.logActivityEvent({ page: 'YoutubeVideo', action: 'openImageSlider', index: index });
+    this.modalCtrl.create('ImageSliderPage', {
+      index: index
+		}).present();
+  }
 }

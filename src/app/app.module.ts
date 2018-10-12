@@ -31,6 +31,7 @@ import { mediaStateReducer } from '../providers/store/store';
 import { OneSignal } from '@ionic-native/onesignal';
 
 import { AppVersion } from '@ionic-native/app-version';
+import { ImagesProvider } from '../providers/images/images';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -52,7 +53,6 @@ export function provideSettings(storage: Storage) {
     option4: 'Hello'
   });
 }
-
 @NgModule({
   declarations: [
     MyApp
@@ -96,7 +96,8 @@ export function provideSettings(storage: Storage) {
     EventLoggerProvider,
     AudioProvider,
     OneSignal,
-    AppVersion
+    AppVersion,
+    ImagesProvider,
   ]
 })
 export class AppModule { }
