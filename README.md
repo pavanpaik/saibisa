@@ -1,6 +1,8 @@
 # saibisa
 
-This is a Hybrid application built using ionic framework as front end and wordpress as backend.
+This is a hybrid mobile application (android and ios) built using ionic framework as front end and firebase as backend (using flame UI).
+
+[Demo Link](https://saibisa-v2-1.firebaseapp.com)
 
 ## Setup Instructions
 
@@ -53,9 +55,11 @@ keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg R
 ```
 
 #### Build apk
-Note - Currently `--prod` flag needs to be rempved for this step to work.
+Note - Using `--prod` flag hangs the build because of a [known issue](https://github.com/ionic-team/ionic-app-scripts/issues/1426).
+
+Until we get a permanent fix use the first command to generate prod build.
 ```
-ionic cordova build android --prod
+ionic cordova build android --aot --minifyjs --minifycss --release
 ionic cordova build android --release --prod
 ```
 

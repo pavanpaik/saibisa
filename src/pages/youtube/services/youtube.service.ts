@@ -14,7 +14,7 @@ export class YoutubeService {
 	channelId: string;
 	results: number;
 
-	constructor(private http: Http, private config: Config) {
+	constructor(public http: Http, public config: Config) {
 		this.youtubeKey = config.youtubeKey;
 	    this.apiUrl = config.youtubeApiUrl;
 	   	this.username = config.youtubeUsername;

@@ -61,6 +61,7 @@ export class HomePage {
       this.splashScreen.hide();
     });
 
+    this.events.unsubscribe('navigationEvent');
     this.events.subscribe('navigationEvent', (object) => {
       this.menuController.close();
       if (object.component) {
