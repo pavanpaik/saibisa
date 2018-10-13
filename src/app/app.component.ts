@@ -11,6 +11,14 @@ import { isCordovaAvailable } from '../common/is-cordova-available';
 import { OneSignal, OSNotificationPayload } from '@ionic-native/onesignal';
 import { oneSignalAppId, sender_id } from './app.config';
 
+interface PageItem {
+  title: string
+  icon: string;
+  component: string;
+  params?: any
+}
+type PageList = PageItem[]
+
 @Component({
   template: `<ion-split-pane>
     <ion-menu [content]="content">
@@ -30,7 +38,7 @@ import { oneSignalAppId, sender_id } from './app.config';
       </ion-content>
 
     </ion-menu>
-    <ion-nav main #content [root]="rootPage"></ion-nav>
+    <ion-nav main #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
     </ion-split-pane>`
 })
 export class MyApp {
@@ -38,26 +46,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  pages: any[] = [
-    // { title: 'Di Jaan Jaya Wahi', icon: 'fa-fal-dijaan', component: 'DijaanPage' },
-    { title: 'Di Jaan Jaya Wahi', icon: 'fa-fal-dijaan', component: 'ArticlePage', params: { articleId: '1538910075447' }  },
-    { title: 'Di Jaan - Videos', icon: 'fa-fal-video', component: 'YoutubePage', params: { playlistId: 'PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH', title: 'Di Jaan Videos' } },
-    { title: 'Di Jaan - Books', icon: 'fa-fal-books', component: 'ArticlePage', params: { articleId: '1538935188821' }  },
-    { title: 'Events', icon: 'fa-fal-events', component: 'ArticlePage', params: { articleId: '1538935661036' }  },
-    { title: 'Donate', icon: 'fa-fal-donate', component: 'DonatePage' },
-    { title: 'Contact Us', icon: 'fa-fal-contact', component: 'ContactPage' },
-
-    // { title: 'Welcome', component: 'WelcomePage' },
-    // { title: 'Login', component: 'LoginPage' },
-    // { title: 'Signup', component: 'SignupPage' },
-
-    // { title: 'Cards', component: 'CardsPage' },
-    // { title: 'Master Detail', component: 'ListMasterPage' },
-
-    // { title: 'Menu', component: 'MenuPage' },
-    // { title: 'Settings', component: 'SettingsPage' },
-    // { title: 'Search', component: 'SearchPage' }
-  ]
+  pages: PageList;
 
   constructor(
     public translate: TranslateService,
@@ -70,6 +59,67 @@ export class MyApp {
     public cdRef: ChangeDetectorRef
   ) {
 
+
+    this.pages = [
+
+      {
+        title: 'Di Jaan Jaya Wahi',
+        icon: 'fa-fal-dijaan',
+        component: 'ArticlePage',
+        params: {
+          articleId: '1538910075447'
+        }
+      },
+
+      {
+        title: 'Di Jaan - Videos',
+        icon: 'fa-fal-video',
+        component: 'YoutubePage',
+        params: {
+          playlistId: 'PLPzS0mASgDd42z1HM_HKXkSvKZT7L5SDH',
+          title: 'Di Jaan Videos'
+        }
+      },
+      {
+        title: 'Di Jaan - Books',
+        icon: 'fa-fal-books',
+        component: 'ArticlePage',
+        params: {
+          articleId: '1538935188821'
+        }
+      },
+      {
+        title: 'Events',
+        icon: 'fa-fal-events',
+        component: 'ArticlePage',
+        params: {
+          articleId: '1538935661036'
+        }
+      },
+      {
+        title: 'Donate',
+        icon: 'fa-fal-donate',
+        component: 'DonatePage'
+      },
+      {
+        title: 'Contact Us',
+        icon: 'fa-fal-contact',
+        component: 'ContactPage'
+      },
+
+      // { title: 'Di Jaan Jaya Wahi', icon: 'fa-fal-dijaan', component: 'DijaanPage' },
+      // { title: 'Welcome', component: 'WelcomePage' },
+      // { title: 'Login', component: 'LoginPage' },
+      // { title: 'Signup', component: 'SignupPage' },
+
+      // { title: 'Cards', component: 'CardsPage' },
+      // { title: 'Master Detail', component: 'ListMasterPage' },
+
+      // { title: 'Menu', component: 'MenuPage' },
+      // { title: 'Settings', component: 'SettingsPage' },
+      // { title: 'Search', component: 'SearchPage' }
+    ]
+
     platform.ready().then(() => {
       this.initializeApp();
     });
@@ -78,8 +128,6 @@ export class MyApp {
 
   initializeApp() {
     if (isCordovaAvailable()) {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       // this.splashScreen.hide();
 
@@ -101,7 +149,6 @@ export class MyApp {
     this.handlePushNotification(payload);
   }
 
-
   showToastMessage(payload: OSNotificationPayload) {
     let toast = this.toastController.create({
       message: `${payload.title} : ${payload.body}`,
@@ -119,33 +166,12 @@ export class MyApp {
   initTranslate() {
     // Set the default language for translation strings, and the current language.
     this.translate.setDefaultLang('en');
-    const browserLang = this.translate.getBrowserLang();
-
-    if (browserLang) {
-      if (browserLang === 'zh') {
-        const browserCultureLang = this.translate.getBrowserCultureLang();
-
-        if (browserCultureLang.match(/-CN|CHS|Hans/i)) {
-          this.translate.use('zh-cmn-Hans');
-        } else if (browserCultureLang.match(/-TW|CHT|Hant/i)) {
-          this.translate.use('zh-cmn-Hant');
-        }
-      } else {
-        this.translate.use(this.translate.getBrowserLang());
-      }
-    } else {
-      this.translate.use('en'); // Set your language here
-    }
-
     this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
       this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    // this.nav.setRoot(page.component);
+  openPage(page: PageItem) {
     this.events.publish('navigationEvent', page);
   }
 }
