@@ -95,13 +95,13 @@ export class PodcastPage {
       this.pauseSilent();
     });
 
-    // this.events.subscribe('navigationEvent', (object) => {
-    //   this.pauseSilent();
-    // });
+    this.events.subscribe('navigationEvent', (object) => {
+      this.pauseSilent();
+    });
 
-    // this.events.subscribe('tabinationEvent', (object) => {
-    //   this.pauseSilent();
-    // });
+    this.events.subscribe('tab-switch', (object) => {
+      this.pauseSilent();
+    });
   }
 
   processResponse(data: any) {
