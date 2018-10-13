@@ -20,6 +20,8 @@ export class ArticlePage {
   content: string;
 
   imageDeck: any;
+  currentIndex:number = 0;
+
   posts: any;
   
   modal: boolean;
@@ -147,5 +149,18 @@ export class ArticlePage {
     this.modalCtrl.create('ImageSliderPage', {
       index: index
 		}).present();
+  }
+
+  onSlideChanged() {
+    this.currentIndex = this.slides.getActiveIndex();
+    console.log('Slide changed! Current index is', this.currentIndex);
+  }
+
+  nextSlide() {
+    this.slides.slideNext();
+  }
+  
+  previousSlide() {
+    this.slides.slidePrev();
   }
 }

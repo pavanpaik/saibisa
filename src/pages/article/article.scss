@@ -1,8 +1,18 @@
 page-article {
     ion-slides {
         height: auto;
+        min-height: 300px !important;
         img {
             max-height: 300px !important;
         }
+        div.image-slider-arrow-left {
+            top: 150px;
+            margin-left: 10px;
+        }
+        div.image-slider-arrow-right {
+            top: 150px;
+            margin-right: 10px;
+        }
     }
+
 }
