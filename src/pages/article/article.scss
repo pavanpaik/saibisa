@@ -5,13 +5,27 @@ page-article {
         img {
             max-height: 300px !important;
         }
-        div.image-slider-arrow-left {
-            top: 150px;
-            margin-left: 10px;
-        }
-        div.image-slider-arrow-right {
+
+        div.image-slider-arrow-left, div.image-slider-arrow-right {
+            //filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
             top: 150px;
             margin-right: 10px;
+            margin-left: 10px;
+            filter: brightness(0.5) sepia(1) hue-rotate(0deg) saturate(10);
+        }
+        // div.image-slider-arrow-left {
+        //     background-image: url('data:image/svg+xml;utf8,<svg height="512" width="512" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve"><style type="text/css">	.st0{fill:#231F20;}</style><g>	<g>		<path class="st0" d="M18,23.5c-0.1,0-0.3,0-0.4-0.1l-8-8c-0.2-0.2-0.2-0.5,0-0.7l8-8c0.2-0.2,0.5-0.2,0.7,0s0.2,0.5,0,0.7L10.7,15			l7.6,7.6c0.2,0.2,0.2,0.5,0,0.7C18.3,23.5,18.1,23.5,18,23.5z"/>	</g>	<g>		<path class="st0" d="M15,29.5C7,29.5,0.5,23,0.5,15S7,0.5,15,0.5S29.5,7,29.5,15S23,29.5,15,29.5z M15,1.5C7.6,1.5,1.5,7.6,1.5,15			S7.6,28.5,15,28.5S28.5,22.4,28.5,15S22.4,1.5,15,1.5z"/>	</g></g></svg>');
+        // }
+        // div.image-slider-arrow-right {
+        //     background-image: url('data:image/svg+xml;utf8,<svg height="512" width="512" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><g>	<g>		<path d="M12,23.505C5.656,23.505,0.495,18.344,0.495,12S5.656,0.495,12,0.495S23.505,5.656,23.505,12S18.344,23.505,12,23.505z			 M12,1.495C6.208,1.495,1.495,6.208,1.495,12S6.208,22.505,12,22.505S22.505,17.792,22.505,12S17.792,1.495,12,1.495z"/>	</g>	<g>		<path d="M10.005,18.505c-0.128,0-0.256-0.049-0.354-0.146c-0.195-0.195-0.195-0.512,0-0.707l5.646-5.646L9.652,6.359			c-0.195-0.195-0.195-0.512,0-0.707s0.512-0.195,0.707,0l6,6c0.195,0.195,0.195,0.512,0,0.707l-6,6			C10.261,18.457,10.133,18.505,10.005,18.505z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>');
+            
+        // }
+        .swiper-slide {
+            opacity: 1 !important;
+            &:not(.swiper-slide-active){ opacity: 0 !important; }
         }
     }
 

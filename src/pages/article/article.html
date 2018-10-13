@@ -51,20 +51,21 @@
           </ion-row>
           </ion-grid>
       </ion-card> -->
-      <ion-slides class="image-slider" effect="fade"  *ngIf="imageDeck" #slides (ionSlideWillChange)="onSlideChanged()">
+      <ion-slides 
+        class="image-slider" 
+        effect="fade"
+        *ngIf="imageDeck" #slides (ionSlideWillChange)="onSlideChanged()">
         <ion-slide *ngFor="let imageElement of imageDeck; index as i" 
           parallax="true" 
           (click)="openImageSlider(i)"
-          
           padding>
-            <img *ngIf="currentIndex == i" [src]="imageElement.image">
+            <img [src]="imageElement.image">
         </ion-slide>
-        
          <div *ngIf="currentIndex > 0"
-              class="swiper-button-prev swiper-button-white image-slider-arrow-left"
+              class="swiper-button-prev image-slider-arrow-left"
               (click)="previousSlide()"></div>
          <div *ngIf="currentIndex < imageDeck.length-1"
-              class="swiper-button-next swiper-button-white image-slider-arrow-right"
+              class="swiper-button-next image-slider-arrow-right"
               (click)="nextSlide()"></div>
 
       </ion-slides>
