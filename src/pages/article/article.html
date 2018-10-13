@@ -51,9 +51,8 @@
           </ion-row>
           </ion-grid>
       </ion-card> -->
-      <ion-slides class="image-slider" *ngIf="imageDeck" #slides>
+      <ion-slides class="image-slider" *ngIf="imageDeck" #slides pager="true">
         <ion-slide *ngFor="let imageElement of imageDeck; index as i" 
-          pager="true" 
           parallax="true" 
           (click)="openImageSlider(i)"
           padding>

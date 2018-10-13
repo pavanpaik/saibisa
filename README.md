@@ -48,6 +48,8 @@ firebase deploy
 
 ### Mobile
 
+#### Generate Icons and Splash screen
+
 #### Generate Key
 This is a one time process. The same key has to be used to sign the app before submitting to playstore.
 ```
