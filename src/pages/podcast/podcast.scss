@@ -15,4 +15,10 @@ page-podcast {
             }
         }
     }
+
+    ion-toolbar {
+        ion-range.range-md {
+            padding: 0px;
+        }
+    }
 }

@@ -36,6 +36,7 @@ import { pluck, filter, map, distinctUntilChanged } from 'rxjs/operators';
 export class PodcastPage {
 
   title: string = 'Chords of Consciousness';
+  subTitle: string = 'Let\'s Chant Sai Sai Sai';
   files: any = [];
   seekbar: FormControl = new FormControl("seekbar");
   state: any = {};
@@ -107,6 +108,7 @@ export class PodcastPage {
   processResponse(data: any) {
     try {
       this.title = data.pageTitle;
+      this.subTitle = data.subTitle;
       data.songs.forEach((ele) => {
         console.log(ele.song[0].file);
         this.files.push({

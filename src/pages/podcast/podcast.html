@@ -5,6 +5,9 @@
       </button>
       <ion-title>{{title}}</ion-title>
     </ion-navbar>
+    <ion-toolbar>
+        <ion-title>{{subTitle}}</ion-title>
+      </ion-toolbar>
   </ion-header>
   
   <ion-content padding>
@@ -37,7 +40,7 @@
             <ion-label color="light" range-right>{{ state.duration }}</ion-label>
           </ion-range>
         </ion-toolbar>
-        <ion-toolbar color="primary" padding>
+        <ion-toolbar color="primary">
             <ion-grid>
               <ion-row align-items-center id="media-controls">
                 <button clear ion-col ion-button [disabled]="isFirstPlaying()" (tap)="previous()">

@@ -22,7 +22,7 @@ export class HealingPage {
 
   map: any = {
     'tab1': { title: 'We Heal', icon: 'fa-book', component: 'ArticlePage', params: { articleId: this.healingArticleId }  },
-    'tab2': { title: 'Watch Healing', icon: 'fa-video-camera', component: 'YoutubePage', params: {playlistId: this.healingPlaylistId}  },
+    'tab2': { title: 'Watch', icon: 'fa-video-camera', component: 'YoutubePage', params: {playlistId: this.healingPlaylistId}  },
     'tab3': { title: 'Testimonial', icon: 'fa-book', component: 'ArticlePage', params: { articleId: this.testimonialsArticleId }  },
   };
 
