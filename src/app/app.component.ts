@@ -30,7 +30,7 @@ type PageList = PageItem[]
 
       <ion-content>
         <ion-list>
-          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <button menuClose ion-item *ngFor="let p of pages" (tap)="openPage(p)">
             <ion-icon name="{{p.icon}}"></ion-icon>
             {{p.title}}
           </button>

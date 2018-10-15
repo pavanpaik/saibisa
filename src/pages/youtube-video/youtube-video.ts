@@ -39,7 +39,7 @@ export class YoutubeVideoPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad YoutubeVideoPage');
-		this.events.publish('freeAudio', { reason: 'entering videos page' });
+		// this.events.publish('freeAudio', { reason: 'entering videos page' });
 	}
 
 	closeModal() {

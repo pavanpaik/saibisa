@@ -56,8 +56,11 @@ export class YoutubePage {
   }
 
   loadVideo(video) {
-    this.navCtrl.push('YoutubeVideoPage', {
+    // this.navCtrl.push('YoutubeVideoPage', {
+    //   video: video
+    // });
+    this.modalCtrl.create('YoutubeVideoPage', {
       video: video
-    });
+		}).present();
   }
 }

@@ -16,7 +16,7 @@
     </ion-card>
 
     <ion-list>
-      <ion-item text-wrap *ngFor="let post of initiatives" (click)="openModal(post)">
+      <ion-item text-wrap *ngFor="let post of initiatives" (tap)="openModal(post)">
         <ion-thumbnail item-left *ngIf="post.thumbnail">
             <img [src]="post.thumbnail" />
         </ion-thumbnail>

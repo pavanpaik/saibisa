@@ -91,9 +91,9 @@ export class PodcastPage {
     //   this.pauseSilent();
     // });
 
-    this.events.subscribe('freeAudio', (object) => {
-      this.pauseSilent();
-    });
+    // this.events.subscribe('freeAudio', (object) => {
+    //   this.pauseSilent();
+    // });
 
     this.events.subscribe('navigationEvent', (object) => {
       this.pauseSilent();

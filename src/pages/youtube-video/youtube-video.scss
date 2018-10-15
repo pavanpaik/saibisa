@@ -3,4 +3,11 @@ page-youtube-video {
         height: 215px;
         width: 100%;
     }
+
+    .close-modal {
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        color: color($colors, secondary);
+    }
 }

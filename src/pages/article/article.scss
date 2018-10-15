@@ -28,5 +28,9 @@ page-article {
             &:not(.swiper-slide-active){ opacity: 0 !important; }
         }
     }
-
+    .close-modal {
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+    }
 }
