@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dijaanjayawahi.saibisa" version="2.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.dijaanjayawahi.saibisa" version="2.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SAIBISA</name>
     <description />
     <author email="pavanpaik1984@gmail.com" href="https://github.com/pavanpaik">Pavan Pai</author>
@@ -102,5 +102,4 @@
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.18" />
     <engine name="android" spec="7.0.0" />
-    <engine name="ios" spec="4.3.1" />
 </widget>
