@@ -61,18 +61,23 @@ export class PodcastPage {
   ) {
     platform.ready().then(() => {
       platform.pause.subscribe((result) => {
-        this.pauseSilent();
+        //this.pauseSilent();
       });
       platform.resume.subscribe((result) => {
-        this.playSilent();
+        //this.playSilent();
       });
     });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PodcastPage');
+    // this.pauseSilent();
   }
 
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave PodcastPage');
+    this.pauseSilent();
+  }
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
     // let loader = this.presentLoading();
@@ -96,13 +101,13 @@ export class PodcastPage {
     //   this.pauseSilent();
     // });
 
-    this.events.subscribe('navigationEvent', (object) => {
-      this.pauseSilent();
-    });
+    // this.events.subscribe('navigationEvent', (object) => {
+    //   this.pauseSilent();
+    // });
 
-    this.events.subscribe('tab-switch', (object) => {
-      this.pauseSilent();
-    });
+    // this.events.subscribe('tab-switch', (object) => {
+    //   this.pauseSilent();
+    // });
   }
 
   processResponse(data: any) {
