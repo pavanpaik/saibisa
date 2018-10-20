@@ -21,4 +21,79 @@ page-podcast {
             padding: 0px;
         }
     }
+
+    ion-item.new {
+        background-color: antiquewhite;
+        animation: colorchange 4s; 
+        -webkit-animation: colorchange 4s;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+
+
+    @keyframes colorchange
+    {
+        0%   {background: #fbefdf;}
+        25%  {background: #ebd7fa;}
+        50%  {background: #faebd7;}
+        75%  {background: #f8fad7;}
+        100% {background: #fadad7;}
+    }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+        0%   {background: #fbefdf;}
+        25%  {background: #ebd7fa;}
+        50%  {background: #faebd7;}
+        75%  {background: #f8fad7;}
+        100% {background: #fadad7;}
+    }
+
+    .music_launch {
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    .track_title {
+        font-weight: bold;
+    }
+
+
+    .box {
+        &:first-child {
+        //   position: relative;
+          background-color: #f5f5f5;
+          padding: 0;
+  
+          .corner-ribbon {
+            width: 200px;
+            background: color($colors, secondary);
+            position: absolute;
+            top: 30px;
+            left: -60px;
+            text-align: center;
+            line-height: 22px;
+            letter-spacing: 1px;
+            color: white;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            z-index: 15;
+            font-style: italic;
+            font-weight: bold;
+          }
+  
+          img {
+            display: block;
+            height: 100%;
+            width: 100%;
+          }
+        }
+    }
+
+    // div.box {
+    //     div.item-inner {
+    //         margin-left: 27px;
+    //     }
+    // }
+    
 }

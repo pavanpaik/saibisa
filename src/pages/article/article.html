@@ -69,4 +69,12 @@
               (tap)="nextSlide()"></div>
 
       </ion-slides>
+
+      <ion-card *ngIf="disclaimer">
+          <ion-card-content>
+              <p>
+                  {{disclaimerText}}
+              </p>
+          </ion-card-content>
+        </ion-card>
   </ion-content>

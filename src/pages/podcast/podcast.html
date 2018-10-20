@@ -21,18 +21,28 @@
   
     <ion-list *ngIf="files.length">
         <!-- <ion-scroll> -->
-          <ng-container *ngFor="let file of files; let i = index">
-            <ion-item text-wrap (tap)="openFile(file, i)">
-              <ion-icon color="primary" item-start name="musical-note"></ion-icon>{{ file.name }}
-              <p item-end *ngIf="currentFile.index === i">SELECTED</p>
-              <ion-icon item-end name="play" *ngIf="currentFile.index !== i"></ion-icon>
-            </ion-item>
+          <ng-container *ngFor="let file of files; let i = index; let first = first">
+            <div class="box">
+              <div *ngIf="first && file.newLaunchFlag" class="corner-ribbon">New Release</div>
+
+                <ion-item text-wrap (tap)="openFile(file, i)" [ngClass]="{'new' : file.newLaunchFlag}">
+                <ion-icon color="primary" item-start name="musical-note"></ion-icon>
+                
+                <p class="music_launch">{{ file.launchMessage }}</p>
+                <h2 class="track_title">{{ file.name }}</h2>
+                <p *ngIf="file.artist">Singer: {{ file.artist }}</p>
+                <p *ngIf="file.composer">Composer: {{ file.composer }}</p>
+                <p *ngIf="file.lyricist">Lyricist: {{ file.lyricist }}</p>
+                <p item-end *ngIf="currentFile.index === i">SELECTED</p>
+                <ion-icon item-end name="play" *ngIf="currentFile.index !== i"></ion-icon>
+              </ion-item>
+            </div>
           </ng-container>
         <!-- </ion-scroll> -->
     </ion-list>
   </ion-content>
 
-  <ion-footer [@showHide]="displayFooter">
+  <ion-footer>
       <ion-toolbar color="primary">
           <ion-range min="0" color="light" [max]="state.durationSec" [formControl]="seekbar" (ionFocus)="onSeekStart()" (ionBlur)="onSeekEnd($event)"
             name="seekbar">

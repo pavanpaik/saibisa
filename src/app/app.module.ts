@@ -33,6 +33,8 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { AppVersion } from '@ionic-native/app-version';
 import { ImagesProvider } from '../providers/images/images';
 
+import { MusicControls } from '@ionic-native/music-controls';
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -98,6 +100,7 @@ export function provideSettings(storage: Storage) {
     OneSignal,
     AppVersion,
     ImagesProvider,
+    MusicControls
   ]
 })
 export class AppModule { }

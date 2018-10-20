@@ -10,6 +10,10 @@ import { AudioProvider } from '../../providers/audio/audio';
 import { CANPLAY, LOADEDMETADATA, PLAYING, TIMEUPDATE, LOADSTART, RESET } from '../../providers/store/store';
 import { pluck, filter, map, distinctUntilChanged } from 'rxjs/operators';
 
+import { MusicControls } from '@ionic-native/music-controls';
+import { isCordovaAvailable } from '../../common/is-cordova-available';
+import { BindingFlags } from '@angular/compiler/src/core';
+
 @IonicPage()
 @Component({
   selector: 'page-podcast',
@@ -30,13 +34,22 @@ import { pluck, filter, map, distinctUntilChanged } from 'rxjs/operators';
       ),
       transition('inactive => active', animate('250ms ease-in')),
       transition('active => inactive', animate('250ms ease-out'))
+    ]),
+    trigger('animateState', [
+      state('active', style({
+        backgroundColor: 'red'
+      })),
+      state('inactive', style({
+        backgroundColor: 'yellow'
+      })),
+      transition('* => *', animate(2000))
     ])
   ]
 })
 export class PodcastPage {
 
   title: string = 'Chords of Consciousness';
-  subTitle: string = 'Let\'s Chant Sai Sai Sai';
+  subTitle: string = 'Let us Chant Sai Sai Sai';
   files: any = [];
   seekbar: FormControl = new FormControl("seekbar");
   state: any = {};
@@ -57,7 +70,8 @@ export class PodcastPage {
     public events: Events,
     public store: Store<any>,
     public _fl: FlamelinkService,
-    public logger: EventLoggerProvider
+    public logger: EventLoggerProvider,
+    private musicControls: MusicControls
   ) {
     platform.ready().then(() => {
       platform.pause.subscribe((result) => {
@@ -76,7 +90,7 @@ export class PodcastPage {
 
   ionViewWillLeave() {
     console.log('ionViewWillLeave PodcastPage');
-    this.pauseSilent();
+    //this.pauseSilent();
   }
   ngOnInit() {
     this.logger.setCurrentScreen(this.title);
@@ -118,7 +132,14 @@ export class PodcastPage {
         console.log(ele.song[0].file);
         this.files.push({
           url: ele.song[0].url,
-          name: ele.title
+          name: ele.title,
+          title: ele.title,
+          artist: ele.artist,
+          composer: ele.composer,
+          lyricist: ele.lyricist,
+          newLaunchFlag: !!ele.launchMessage,
+          launchMessage: ele.launchMessage,
+
         });
       });
     } catch (error) {
@@ -166,6 +187,9 @@ export class PodcastPage {
     this.logger.logActivityEvent({ page: this.title, action: 'openFile', file: file, index: index });
     this.currentFile = { index, file };
     this.playStream(file.url);
+    if (isCordovaAvailable()) {
+      this.createLoclScreenControls(file);
+    }
   }
 
   resetState() {
@@ -226,6 +250,10 @@ export class PodcastPage {
   pause() {
     this.logger.logActivityEvent({ page: this.title, action: 'pause' });
     this.audioProvider.pause();
+    if (isCordovaAvailable()) {
+      this.musicControls.listen();
+      this.musicControls.updateIsPlaying(false);
+    }
   }
 
   pauseSilent() {
@@ -236,8 +264,16 @@ export class PodcastPage {
   }
 
   play() {
+    if(!this.currentFile.index) {
+      this.openFile(this.files[0], 0);
+      return;
+    }
     this.logger.logActivityEvent({ page: this.title, action: 'play' });
     this.audioProvider.play();
+    if (isCordovaAvailable()) {
+      this.musicControls.listen();
+      this.musicControls.updateIsPlaying(true);
+    }
   }
 
   playSilent() {
@@ -294,5 +330,91 @@ export class PodcastPage {
     this.resetState();
     this.currentFile = {};
     this.displayFooter = "inactive";
+  }
+
+  createLoclScreenControls(track) {
+    this.musicControls.create({
+      track: track.name,
+      artist: track.artist,
+      cover: 'assets/imgs/default.png',
+      isPlaying: true,
+      dismissable: true,
+      hasPrev: !this.isFirstPlaying(),
+      hasNext: !this.isLastPlaying(),
+
+      // iOS only, optional
+      album: 'Absolution',     // optional, default: ''
+      duration: 60, // optional, default: 0
+      elapsed: 10, // optional, default: 0
+      hasSkipForward: false,  // show skip forward button, optional, default: false
+      hasSkipBackward: false, // show skip backward button, optional, default: false
+      skipForwardInterval: 15, // display number for skip forward, optional, default: 0
+      skipBackwardInterval: 15, // display number for skip backward, optional, default: 0
+      hasScrubbing: false, // enable scrubbing from control center and lockscreen progress bar, optional
+
+      // Android only, optional
+      ticker: `Now playing "${track.name}"`,
+      playIcon: 'media_play',
+      pauseIcon: 'media_pause',
+      prevIcon: 'media_prev',
+      nextIcon: 'media_next',
+      closeIcon: 'media_close',
+      notificationIcon: 'notification'
+    });
+
+    this.musicControls.subscribe().subscribe((action) => {
+      console.log('action', action);
+      const message = JSON.parse(action).message;
+      console.log('message', message);
+      switch (message) {
+        case 'music-controls-next':
+          this.next();
+          break;
+        case 'music-controls-previous':
+          this.previous();
+          break;
+        case 'music-controls-pause':
+          // Do something
+          console.log('music pause');
+          this.pause();
+          break;
+        case 'music-controls-play':
+          // Do something
+          console.log('music play');
+          this.play();
+          break;
+        case 'music-controls-destroy':
+          this.reset();
+          break;
+        // External controls (iOS only)
+        case 'music-controls-toggle-play-pause':
+          // Do something
+          break;
+        case 'music-controls-seek-to':
+          // Do something
+          break;
+        case 'music-controls-skip-forward':
+          // Do something
+          break;
+        case 'music-controls-skip-backward':
+          // Do something
+          break;
+
+        // Headset events (Android only)
+        // All media button events are listed below
+        case 'music-controls-media-button':
+          // Do something
+          break;
+        case 'music-controls-headset-unplugged':
+          break;
+        case 'music-controls-headset-plugged':
+          // Do something
+          break;
+        default:
+          break;
+      }
+    });
+    this.musicControls.listen(); // activates the observable above
+    this.musicControls.updateIsPlaying(true);
   }
 }

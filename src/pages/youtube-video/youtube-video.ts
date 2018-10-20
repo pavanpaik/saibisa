@@ -42,6 +42,10 @@ export class YoutubeVideoPage {
 		// this.events.publish('freeAudio', { reason: 'entering videos page' });
 	}
 
+	ionViewWillLeave() {
+		console.log('ionViewWillLeave YoutubeVideoPage');
+		//this.pauseSilent();
+	}
 	closeModal() {
 		this.navCtrl.pop();
 	}

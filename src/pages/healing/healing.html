@@ -26,18 +26,18 @@
 </ion-header>
 
 
-<ion-content [ngSwitch]="selectedPage">
-    <ion-card *ngSwitchCase="'tab1'">
+<ion-content>
+    <ion-card *ngIf="selectedPage == 'tab1'">
       <ion-card-content class="inner-island-page">
         <ion-nav [root]="map['tab1'].component" [rootParams]="map['tab1'].params"></ion-nav>
       </ion-card-content>
     </ion-card>
-    <ion-card *ngSwitchCase="'tab2'">
+    <ion-card *ngIf="selectedPage == 'tab2'">
       <ion-card-content class="inner-island-page">
         <ion-nav [root]="map['tab2'].component" [rootParams]="map['tab2'].params"></ion-nav>
       </ion-card-content>
     </ion-card>
-    <ion-card *ngSwitchCase="'tab3'">
+    <ion-card *ngIf="selectedPage == 'tab3'">
       <ion-card-content class="inner-island-page">
         <ion-nav [root]="map['tab3'].component" [rootParams]="map['tab3'].params"></ion-nav>
       </ion-card-content>

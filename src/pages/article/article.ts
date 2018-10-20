@@ -18,6 +18,8 @@ export class ArticlePage {
   title: string = 'Article';
   heroImage: string;
   content: string;
+  disclaimer: boolean;
+  disclaimerText: string;
 
   imageDeck: any;
   currentIndex:number = 0;
@@ -114,6 +116,14 @@ export class ArticlePage {
         })
         this.posts = temp1;
         // console.log('articlePage, temp1', temp1);
+      }
+
+      if(data.disclaimerText) {
+        this.disclaimer = true;
+        this.disclaimerText = data.disclaimerText;
+      } else {
+        this.disclaimer = false;
+        this.disclaimerText = '';
       }
     } catch (error) {
       console.log('articlePage, error', error);

@@ -28,13 +28,15 @@ page-home {
         height: 128px;
       }
       .splash-intro {
-        font-size: 18px;
+        font-size: large;
+        font-style: italic;
         font-weight: bold;
         max-width: 80%;
         margin: auto;
       }
 
       div.message {
+        font-size: large;
         padding: 0px 10px 0px 10px;
         p.message{
             font-size: 16px;
