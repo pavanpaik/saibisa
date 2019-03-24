@@ -43,6 +43,8 @@ ionic cordova emulate android --emulator --livereload --consolelogs
 
 ### Web
 ```
+npm upgrade -g firebase-tools
+
 firebase deploy
 ```
 

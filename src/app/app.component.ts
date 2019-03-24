@@ -59,18 +59,17 @@ export class MyApp {
     public cdRef: ChangeDetectorRef
   ) {
 
+    // {
+    //   title: 'Di Jaan Jaya Wahi',
+    //   icon: 'fa-fal-dijaan',
+    //   component: 'ArticlePage',
+    //   params: {
+    //     articleId: '1538910075447'
+    //   }
+    // },
+
 
     this.pages = [
-
-      {
-        title: 'Di Jaan Jaya Wahi',
-        icon: 'fa-fal-dijaan',
-        component: 'ArticlePage',
-        params: {
-          articleId: '1538910075447'
-        }
-      },
-
       {
         title: 'Di Jaan - Videos',
         icon: 'fa-fal-video',
