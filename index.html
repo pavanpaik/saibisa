@@ -13,9 +13,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <head>
     <meta charset="utf-8">
     <title>My app</title>
-    <meta name="generator" content="PWA Starter Kit">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="My App description">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#00AA8D">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,700">
 
     <!--
       The `<base>` tag below is present to support two advanced deployment options:
@@ -79,38 +81,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // https://github.com/reactjs/redux/issues/2907
       window.process = { env: { NODE_ENV: 'production' } };
     </script>
+    <script type="module">
+      import '@polymer/iron-ajax/iron-ajax.js';
+      // import 'src/components/recipe-app.js';
+    </script>
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
-      @font-face {
-        font-family: 'Pacifico';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v12/Q_Z9mv4hySLTMoMjnk_rCXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
-        /* The browser draws the text immediately in the fallback font if the font
-           isn't loaded, then swaps it with the webfont when it eventually loads
-           See: https://developers.google.com/web/updates/2016/02/font-display
-        */
-        font-display: swap;
-      }
       body {
         margin: 0;
-        /* This is a font-stack that tries to use the system-default sans-serifs first */
-        font-family: Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-        line-height: 1.5;
-        min-height: 100vh;
-        -webkit-font-smoothing: antialiased;
+        font-family: Raleway, sans-serif;
+        background-color: #f5f5f5;
       }
     </style>
   </head>
-  <body>
-    <my-app appTitle="my app"></my-app>
+  <body unresolved>
+    <!-- <my-app appTitle="my app"></my-app> -->
+    <iron-ajax url="data/recipes.json" auto last-response="{{recipes}}"></iron-ajax>
+    <recipe-app appTitle="my app" recipes="[[recipes]]"></recipe-app>
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <!-- Import Web Animations polyfill -->
+  <script src="https://unpkg.com/web-animations-js@^2.0.0/web-animations-next-lite.min.js"></script>
+
     <!-- Built with love using PWA Starter Kit -->
-    <script type="module" src="src/components/my-app.js"></script>
+    <!-- <script type="module" src="src/components/my-app.js"></script> -->
+    <script type="module" src="src/components/recipe-app.js"></script>
   </body>
 </html>
