@@ -8,6 +8,8 @@ This is a hybrid mobile application (android and ios) built using ionic framewor
 
 ### Install framework components
 ```
+npm install -g firebase-tools
+
 npm install -g ionic@latest
 npm i -D -E @ionic/lab
 
@@ -17,6 +19,7 @@ pod setup
 
 ### Install general application dependencies
 ```
+nvm use v9.11.1
 npm install
 ```
 
@@ -45,7 +48,8 @@ ionic cordova emulate android --emulator --livereload --consolelogs
 ```
 npm upgrade -g firebase-tools
 
-firebase deploy
+firebase use saibisa-101 # create project using firebase ui
+firebase deploy # --only hosting
 ```
 
 ### Mobile
