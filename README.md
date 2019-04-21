@@ -2,7 +2,7 @@
 
 This is a hybrid mobile application (android and ios) built using ionic framework as front end and firebase as backend (using flame UI).
 
-[Demo Link](https://saibisa-101.firebaseapp.com)
+[Demo Link](https://saibisa-102.firebaseapp.com)
 
 ## Setup Instructions
 

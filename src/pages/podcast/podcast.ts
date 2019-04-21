@@ -12,7 +12,6 @@ import { pluck, filter, map, distinctUntilChanged } from 'rxjs/operators';
 
 import { MusicControls } from '@ionic-native/music-controls';
 import { isCordovaAvailable } from '../../common/is-cordova-available';
-import { BindingFlags } from '@angular/compiler/src/core';
 
 @IonicPage()
 @Component({
@@ -48,7 +47,7 @@ import { BindingFlags } from '@angular/compiler/src/core';
 })
 export class PodcastPage {
 
-  title: string = 'Chords of Consciousness';
+  title: string = 'Chords of Consciousness1';
   subTitle: string = 'Let us Chant Sai Sai Sai';
   files: any = [];
   seekbar: FormControl = new FormControl("seekbar");
@@ -96,14 +95,14 @@ export class PodcastPage {
     this.logger.setCurrentScreen(this.title);
     // let loader = this.presentLoading();
 
-    this._fl.getApp().content.get('chordsOfConsciousness', { populate: true })
+    this._fl.getApp().content.get('music', { populate: true })
       .then(data => {
-        console.log('chordsOfConsciousness, content', data);
+        console.log('music, content', data);
         this.processResponse(data);
         // loader.dismiss();
       })
       .catch(error => {
-        console.error('chordsOfConsciousness, error', error);
+        console.error('music, error', error);
       })
 
     // this.events.subscribe('pauseAudio', (object) => {
@@ -137,7 +136,7 @@ export class PodcastPage {
           artist: ele.artist,
           composer: ele.composer,
           lyricist: ele.lyricist,
-          newLaunchFlag: !!ele.launchMessage,
+          highlight: ele.highlight,
           launchMessage: ele.launchMessage,
 
         });
@@ -262,6 +261,7 @@ export class PodcastPage {
       this.audioProvider.pause();
     } catch (e) { }
   }
+
 
   play() {
     if(!this.currentFile.index) {

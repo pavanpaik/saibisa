@@ -23,9 +23,9 @@
         <!-- <ion-scroll> -->
           <ng-container *ngFor="let file of files; let i = index; let first = first">
             <div class="box">
-              <div *ngIf="first && file.newLaunchFlag" class="corner-ribbon">New Release</div>
+              <!-- <div *ngIf="first && file.newLaunchFlag" class="corner-ribbon">New Release</div> -->
 
-                <ion-item text-wrap (tap)="openFile(file, i)" [ngClass]="{'new' : file.newLaunchFlag}">
+                <ion-item text-wrap (tap)="openFile(file, i)" [ngClass]="{'new' : file.highlight}">
                 <ion-icon color="primary" item-start name="musical-note"></ion-icon>
                 
                 <p class="music_launch">{{ file.launchMessage }}</p>

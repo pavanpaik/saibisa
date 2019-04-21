@@ -7,6 +7,7 @@ export const MainPage = 'TabsPage';
 
 // The initial root pages for our tabs (remove if not using tabs)
 export const Tab1Root = 'HomePage';
-export const Tab2Root = 'PodcastPage';
+export const Tab2Root = 'ArticlePage';
 export const Tab3Root = 'InitiativesPage';
 export const Tab4Root = 'HealingPage';
+export const Tab5Root = 'PodcastPage';

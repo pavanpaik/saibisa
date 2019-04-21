@@ -1,7 +1,7 @@
 <ion-tabs (ionChange)="tabChange($event)">
-  <ion-tab [root]="tab1Root" [tabTitle]="tab1Title" tabIcon="fa-fal-home"></ion-tab>
-  <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" tabIcon="fa-fal-audio"></ion-tab>
-  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="fa-fal-initiatives"></ion-tab>
-  <ion-tab [root]="tab4Root" [tabTitle]="tab4Title" tabIcon="fa-fal-healing"></ion-tab>
-  <ion-tab [root]="tab5Root" [rootParams]="{articleId: '1538910075447'}" [tabTitle]="tab5Title" tabIcon="fa-fal-dijaan"></ion-tab>
+  <ion-tab [root]="tab1Root" [tabTitle]="tab1Title" [tabIcon]="tab1Icon"></ion-tab>
+  <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" [tabIcon]="tab2Icon" [rootParams]="tab2PostData"></ion-tab>
+  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" [tabIcon]="tab3Icon"></ion-tab>
+  <ion-tab [root]="tab4Root" [tabTitle]="tab4Title" [tabIcon]="tab4Icon"></ion-tab>
+  <ion-tab [root]="tab5Root" [tabTitle]="tab5Title" [tabIcon]="tab5Icon"></ion-tab>
 </ion-tabs>
