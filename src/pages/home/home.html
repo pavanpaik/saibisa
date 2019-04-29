@@ -11,8 +11,11 @@
   <ion-card *ngIf="bannerScrollText">
     <ion-card-header 
       (click)="openEventsPage()" 
-      style="padding:10px; background: #FFE4B5;">
-      <marquee behavior="scroll" direction="left">{{bannerScrollText}}</marquee>
+      style="padding:0px; background: #FFE4B5;">
+      <div class="scroll-left">
+        <p>{{bannerScrollText}}</p>
+        </div>
+      <!-- <marquee behavior="scroll" direction="left">{{bannerScrollText}}</marquee> -->
     </ion-card-header>
     <!-- <ion-card-content>
     Add card content here!
