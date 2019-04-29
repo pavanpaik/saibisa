@@ -23,7 +23,13 @@ export class HomePage {
   slides: any;
   splashBg: string = '../assets/img/static-app-banner.png';
   splashLogo: string = '../assets/img/splash-logo-loading.png';
-
+  bannerScrollText: string = '';
+  bannerPageLink: any = { component: 'ArticlePage',
+    params: {
+      articleId: '1538935661036'
+    }
+  };
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -95,11 +101,18 @@ export class HomePage {
       this.title = data.pageTitle;
       this.msgTitle = data.mainMessageTitle;
       this.msgContent = data.mainMessageContent;
+
+      this.bannerScrollText = data.bannerScrollText;
+      this.bannerPageLink = data.bannerPageLink;
+
       let temp: any = [];
       data.imageDeck.forEach((ele) => {
         temp.push({ image: ele.image[0].url });
       })
       this.slides = temp;
+
+      //this.showToastMessage({title: "Schedule/Events", body: "Di Jaans updacoming Schedule.. updated", buttonTxt:"View More"});
+      console.info('homePage, slides', temp);
       if (data.splashBg && data.splashBg.length > 0) {
         this.splashBg = data.splashBg[0].url;
       }
@@ -109,5 +122,9 @@ export class HomePage {
     } catch (error) {
       console.error('homePage, error', error);
     }
+  }
+
+  openEventsPage() {
+    this.events.publish('navigationEvent', this.bannerPageLink);
   }
 }
