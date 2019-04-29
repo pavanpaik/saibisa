@@ -7,6 +7,27 @@
   </ion-navbar>
 </ion-header>
 <ion-content scroll="false">
+
+  <ion-card *ngIf="bannerScrollText">
+    <ion-card-header 
+      (click)="openEventsPage()" 
+      style="padding:0px; background: #FFE4B5;">
+      <div class="scroll-left">
+        <p>{{bannerScrollText}}</p>
+        </div>
+      <!-- <marquee behavior="scroll" direction="left">{{bannerScrollText}}</marquee> -->
+    </ion-card-header>
+    <!-- <ion-card-content>
+    Add card content here!
+    </ion-card-content> -->
+  </ion-card>
+    <!-- <div class="splash-bg">
+        <ion-slides *ngIf="slides && slides.length"  autoplay="2000" loop="true" speed="300">
+          <ion-slide *ngFor="let imageElement of slides; index as i" >
+              <img [src]="imageElement.image">
+          </ion-slide>
+        </ion-slides> 
+    </div> -->
   <div class="splash-bg" background-image="{{ splashBg }}">
   </div>
     <div class="splash-info">
