@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle icon-only class="menu-button" *ngIf="!modal">
+        <ion-icon name='menu'></ion-icon>
+      </button>
+      <ion-title>{{title}}</ion-title>
+      <ion-buttons end *ngIf="modal">
+          <button ion-button (tap)="closeModal()" class="close close-modal">
+              <ion-icon item-right name="ios-close-outline"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-card>
+          <ion-card-content class="pdf-content">
+              <object data="assets/img/Sri-Sai-Satcharitra-English.pdf" type="application/pdf" width="100%" height="600px">
+                <embed src="assets/img/Sri-Sai-Satcharitra-English.pdf" type="application/pdf" width="100%" height="600px" />
+              </object>
+
+              
+          </ion-card-content>
+        </ion-card>
+  </ion-content>

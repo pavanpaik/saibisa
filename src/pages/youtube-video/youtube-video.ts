@@ -71,7 +71,7 @@ export class YoutubeVideoPage {
 		this.callPlayer("youtubeChannelPlayer", "playVideo");
 	}
 	prepareResource() {
-		let url = this.youtubeUrl + 'embed/' + this.video.snippet.resourceId.videoId + '?enablejsapi=1&modestbranding=1&rel=0&showinfo=0';
+		let url = 'https://balticlivecam.com/cameras/india/shirdi/sai-baba-samadhi-mandir/?embed'; //this.youtubeUrl + 'embed/' + this.video.snippet.resourceId.videoId + '?enablejsapi=1&modestbranding=1&rel=0&showinfo=0';
 		this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
 	}
 

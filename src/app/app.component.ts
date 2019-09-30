@@ -80,11 +80,37 @@ export class MyApp {
         }
       },
       {
+        title: 'Live Darshan',
+        icon: 'fa-fal-video',
+        component: 'YoutubeVideoPage',
+        params: {
+          video: {
+            snippet: {
+              title: 'Live Darshan',
+              description: 'Live Darshan...',
+              resourceId: {
+                videoId: '123'
+              }
+            }
+          },
+          liveurl: 'https://www.sai.org.in/en/sai-video-popup',
+          title: 'Live Darshan'
+        }
+      },
+      {
         title: 'Di Jaan - Books',
         icon: 'fa-fal-books',
         component: 'ArticlePage',
         params: {
           articleId: '1538935188821'
+        }
+      },
+      {
+        title: 'Sri Sai Satcharitra',
+        icon: 'fa-fal-books',
+        component: 'BookPage',
+        params: {
+          bookId: '1538935188821'
         }
       },
       {

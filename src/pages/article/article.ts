@@ -135,11 +135,7 @@ export class ArticlePage {
   }
 
   loadPost(post) {
-    this.logger.logActivityEvent({ page: 'YoutubeVideo', action: 'loadPost', articleId: post.articleId });
-    // this.navCtrl.push('ArticlePage', {
-    //   articleId: post.articleId
-    // });
-
+    this.logger.logActivityEvent({ page: 'ArticlePage', action: 'loadPost', articleId: post.articleId });
     this.modalCtrl.create('ArticlePage', {
       articleId: post.articleId,
       modal: true
@@ -155,7 +151,7 @@ export class ArticlePage {
   }
 
   openImageSlider(index) {
-    this.logger.logActivityEvent({ page: 'YoutubeVideo', action: 'openImageSlider', index: index });
+    this.logger.logActivityEvent({ page: 'ArticlePage', action: 'openImageSlider', index: index });
     this.modalCtrl.create('ImageSliderPage', {
       index: index
 		}).present();
