@@ -24,9 +24,19 @@ export class HomePage {
   splashBg: string = '../assets/img/static-app-banner.png';
   splashLogo: string = '../assets/img/splash-logo-loading.png';
   bannerScrollText: string = '';
-  bannerPageLink: any = { component: 'ArticlePage',
+  bannerPageLink: any = { component: 'YoutubeVideoPage',
     params: {
-      articleId: '1538935661036'
+      video: {
+        snippet: {
+          title: 'BABA\'S LIVE DARSHAN FROM SHIRDI',
+          description: "Hard coded content",
+          resourceId: {
+            videoId: '123'
+          }
+        }
+      },
+      liveurl: 'https://balticlivecam.com/cameras/india/shirdi/sai-baba-samadhi-mandir/?embed',
+      title: 'Live Darshan'
     }
   };
   
@@ -103,7 +113,7 @@ export class HomePage {
       this.msgContent = data.mainMessageContent;
 
       this.bannerScrollText = data.bannerScrollText;
-      this.bannerPageLink = data.bannerPageLink;
+      //this.bannerPageLink = data.bannerPageLink;
 
       let temp: any = [];
       data.imageDeck.forEach((ele) => {

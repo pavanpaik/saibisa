@@ -12,6 +12,7 @@ import { EventLoggerProvider } from '../../providers/event-logger/event-logger';
 })
 export class YoutubeVideoPage {
 	video: any;
+	liveurl: any;
 	videoUrl: any;
 	youtubeUrl: string;
 
@@ -24,6 +25,7 @@ export class YoutubeVideoPage {
 		public platform: Platform,
 		public logger: EventLoggerProvider) {
 		this.video = navParams.get('video');
+		this.liveurl = navParams.get('liveurl');
 		this.youtubeUrl = config.youtubeUrl;
 		this.prepareResource();
 
@@ -71,7 +73,11 @@ export class YoutubeVideoPage {
 		this.callPlayer("youtubeChannelPlayer", "playVideo");
 	}
 	prepareResource() {
-		let url = 'https://balticlivecam.com/cameras/india/shirdi/sai-baba-samadhi-mandir/?embed'; //this.youtubeUrl + 'embed/' + this.video.snippet.resourceId.videoId + '?enablejsapi=1&modestbranding=1&rel=0&showinfo=0';
+		let url = this.youtubeUrl + 'embed/' + this.video.snippet.resourceId.videoId + '?enablejsapi=1&modestbranding=1&rel=0&showinfo=0';
+		if(!!this.liveurl) {
+			url = 'https://balticlivecam.com/cameras/india/shirdi/sai-baba-samadhi-mandir/?embed';
+			this.video.snippet.description = "BABA'S LIVE DARSHAN FROM SHIRDI \n \n SAIBISA is delighted to bring to you Live Darshans of Baba Sai straight from His Holy Abode - Samadhi Mandir at Shirdi. Let us immerse ourselves in the ambrosia of Baba's Love 🤗 \n\n Live Web Streaming is available - courtesy Shri Sai Baba Sansthan Trust, Shirdi. 🙏🏻\n\nBaba's Live Darshans from Shirdi Samadhi Mandir commence at 4.15 a.m. (IST) with the Bhupali Arti and end at 11 p.m. (IST) with the Shej Arti. 👣\n\nThe Live Streaming may not be available at times, due to problems with the main server or network related concerns. 🙏🏻🙏🏻\n\nHappy Blessed Darshans🤗😊\n\nYa Sai❤🙏🏻";
+		}
 		this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
 	}
 

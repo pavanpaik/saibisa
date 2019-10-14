@@ -16,7 +16,21 @@
   <div padding>
     <h2>{{video.snippet.title}}</h2>
     <!-- <p>Published by <strong>{{video.snippet.channelTitle}}</strong></p> -->
-    <p [innerHtml]="video.snippet.description"></p>
+      <span *ngIf="liveurl">
+      SAIBISA is delighted to bring to you Live Darshans of Baba Sai straight from His Holy Abode - Samadhi Mandir at Shirdi. Let us immerse ourselves in the ambrosia of Baba's Love 🤗
+      <br><br>
+      Live Web Streaming is available - courtesy Shri Sai Baba Sansthan Trust, Shirdi. 🙏🏻
+      <br><br>
+      Baba's Live Darshans from Shirdi Samadhi Mandir commence at 4.15 a.m. (IST) with the Bhupali Arti and end at 11 p.m. (IST) with the Shej Arti. 👣
+      <br><br>
+      The Live Streaming may not be available at times, due to problems with the main server or network related concerns. 🙏🏻🙏🏻
+      <br><br>
+      Happy Blessed Darshans🤗😊
+      <br><br>
+      Ya Sai❤🙏🏻</span>
+    <span *ngIf="!liveurl">
+      <p [innerHtml]="video.snippet.description"></p>
+    </span>
     <!-- <button (click)="onPause()" ion-button icon-only>pause</button>
           <button (click)="onResume()" ion-button icon-only>play</button> -->
   </div>

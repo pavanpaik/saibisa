@@ -80,20 +80,20 @@ export class MyApp {
         }
       },
       {
-        title: 'Live Darshan',
+        title: 'Live Darshan from Shirdi',
         icon: 'fa-fal-video',
         component: 'YoutubeVideoPage',
         params: {
           video: {
             snippet: {
-              title: 'Live Darshan',
-              description: 'Live Darshan...',
+              title: 'BABA\'S LIVE DARSHAN FROM SHIRDI',
+              description: "Hard coded content",
               resourceId: {
                 videoId: '123'
               }
             }
           },
-          liveurl: 'https://www.sai.org.in/en/sai-video-popup',
+          liveurl: 'https://balticlivecam.com/cameras/india/shirdi/sai-baba-samadhi-mandir/?embed',
           title: 'Live Darshan'
         }
       },
@@ -105,14 +105,14 @@ export class MyApp {
           articleId: '1538935188821'
         }
       },
-      {
-        title: 'Sri Sai Satcharitra',
-        icon: 'fa-fal-books',
-        component: 'BookPage',
-        params: {
-          bookId: '1538935188821'
-        }
-      },
+      // {
+      //   title: 'Sri Sai Satcharitra',
+      //   icon: 'fa-fal-books',
+      //   component: 'BookPage',
+      //   params: {
+      //     bookId: '1538935188821'
+      //   }
+      // },
       {
         title: 'Events',
         icon: 'fa-fal-events',
