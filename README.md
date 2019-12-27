@@ -49,7 +49,7 @@ ionic cordova emulate android --emulator --livereload --consolelogs
 npm upgrade -g firebase-tools
 
 firebase use saibisa-103 # create project using firebase ui
-firebase deploy # --only hosting
+firebase deploy --only hosting
 ```
 
 ### Mobile
